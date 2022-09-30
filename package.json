@@ -1,0 +1,8 @@
+{
+  "name": "preserve-dev-api",
+  "version": "1.0.0",
+  "main": "src/index.ts ",
+  "author": "Chase Gladish",
+  "license": "MIT",
+  "private": true
+}
