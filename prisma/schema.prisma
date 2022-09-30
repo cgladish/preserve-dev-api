@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  username  String    @db.VarChar(255)
+  snippets  Snippet[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([email, username])
+}
+
+model App {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AppUser {
+  id         Int       @id @default(autoincrement())
+  username   String    @db.VarChar(255)
+  identifier String?   @db.VarChar(255)
+  externalId String    @db.VarChar(255)
+  avatarUrl  String?   @db.VarChar(255)
+  Message    Message[]
+
+  @@index([externalId])
+}
+
+model Snippet {
+  id                  Int       @id @default(autoincrement())
+  public              Boolean   @default(false)
+  title               String?   @db.VarChar(255)
+  appSpecificDataJson String?   @db.VarChar(255)
+  views               Int
+  creator             User      @relation(fields: [creatorId], references: [id])
+  creatorId           Int
+  messages            Message[]
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+model Message {
+  id                  Int      @id @default(autoincrement())
+  content             String   @db.VarChar(4096)
+  sentAt              DateTime
+  appSpecificDataJson String?  @db.VarChar(255)
+  author              AppUser  @relation(fields: [authorId], references: [id])
+  authorId            Int
+  Snippet             Snippet  @relation(fields: [snippetId], references: [id])
+  snippetId           Int
+}
