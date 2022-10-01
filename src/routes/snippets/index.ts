@@ -5,6 +5,7 @@ import { Request } from "../../types";
 import { Message, Snippet } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../prisma";
 import { pick } from "lodash";
+import { JoiExternalId, JoiString } from "../../joi";
 
 const router = express.Router();
 const validator = createValidator();
@@ -84,21 +85,22 @@ export type CreateSnippetInput = {
   }[];
 };
 const createSnippetSchema = Joi.object<CreateSnippetInput>({
-  appId: Joi.string().required(),
+  appId: JoiExternalId,
   public: Joi.boolean().required(),
-  title: Joi.string().empty(""),
+  title: JoiString.max(50),
   appSpecificData: Joi.object(),
   messages: Joi.array()
     .min(1)
+    .max(500)
     .required()
     .items(
       Joi.object({
-        content: Joi.string().required(),
+        content: JoiString.max(4000).required(),
         sentAt: Joi.date().required(),
         appSpecificData: Joi.object(),
-        authorUsername: Joi.string().required(),
-        authorIdentifier: Joi.string(),
-        authorAvatarUrl: Joi.string(),
+        authorUsername: JoiString.max(50).required(),
+        authorIdentifier: JoiString.max(50),
+        authorAvatarUrl: JoiString.max(200),
       })
     ),
 });

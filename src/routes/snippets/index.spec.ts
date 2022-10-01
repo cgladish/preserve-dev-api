@@ -3,6 +3,7 @@ import prisma from "../../prisma";
 import request from "supertest";
 import { CreateSnippetInput } from ".";
 import { set } from "lodash";
+import { randText } from "@ngneat/falso";
 
 describe("snippets routes", () => {
   describe("GET /:id", () => {
@@ -61,6 +62,15 @@ describe("snippets routes", () => {
       ["messages[0].content", null],
       ["messages[0].sentAt", null],
       ["messages[0].authorUsername", null],
+      ["appId", ""],
+      ["messages[0].content", ""],
+      ["messages[0].authorUsername", ""],
+      ["appId", randText({ charCount: 21 })],
+      ["title", randText({ charCount: 51 })],
+      ["messages[0].content", randText({ charCount: 4001 })],
+      ["messages[0].authorUsername", randText({ charCount: 51 })],
+      ["messages[0].authorIdentifier", randText({ charCount: 51 })],
+      ["messages[0].authorAvatarUrl", randText({ charCount: 201 })],
       ["title", 123],
       ["appSpecificData", "bad"],
       ["messages[0].appSpecificData", "bad"],
@@ -106,16 +116,16 @@ describe("snippets routes", () => {
         public: true,
         title: "Test snippet title",
         appSpecificData: { key: "value" },
-        messages: [
-          {
-            content: "Content",
-            sentAt: new Date(10),
-            appSpecificData: { key2: "value2" },
+        messages: Array(20)
+          .fill(null)
+          .map((_, index) => ({
+            content: `Content ${index}`,
+            sentAt: new Date(index * 5),
+            appSpecificData: { key: `value ${index}` },
             authorUsername: "Icyspawn",
             authorIdentifier: "1234",
             authorAvatarUrl: "http://example.com/123.png",
-          },
-        ],
+          })),
       };
 
       const response = await request(app)

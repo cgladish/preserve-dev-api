@@ -13,7 +13,7 @@ datasource db {
 model User {
   id        Int       @id @default(autoincrement())
   email     String    @unique
-  username  String    @db.VarChar(255)
+  username  String    @db.VarChar(50)
   snippets  Snippet[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -23,7 +23,7 @@ model User {
 
 model App {
   id        Int       @id @default(autoincrement())
-  name      String    @db.VarChar(255)
+  name      String    @db.VarChar(50)
   snippets  Snippet[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -32,8 +32,8 @@ model App {
 model Snippet {
   id                  Int       @id @default(autoincrement())
   public              Boolean   @default(false)
-  title               String?   @db.VarChar(255)
-  appSpecificDataJson String?   @db.VarChar(255)
+  title               String?   @db.VarChar(50)
+  appSpecificDataJson String?   @db.VarChar(1000)
   views               Int       @default(0)
   creator             User      @relation(fields: [creatorId], references: [id])
   creatorId           Int
@@ -46,12 +46,12 @@ model Snippet {
 
 model Message {
   id                  Int      @id @default(autoincrement())
-  content             String   @db.VarChar(4096)
+  content             String   @db.VarChar(4000)
   sentAt              DateTime
-  appSpecificDataJson String?  @db.VarChar(255)
-  authorUsername      String   @db.VarChar(255)
-  authorIdentifier    String?  @db.VarChar(255)
-  authorAvatarUrl     String?  @db.VarChar(255)
+  appSpecificDataJson String?  @db.VarChar(1000)
+  authorUsername      String   @db.VarChar(50)
+  authorIdentifier    String?  @db.VarChar(50)
+  authorAvatarUrl     String?  @db.VarChar(150)
   snippet             Snippet  @relation(fields: [snippetId], references: [id])
   snippetId           Int
 }
