@@ -26,6 +26,7 @@ CREATE TABLE "AppUser" (
     "identifier" VARCHAR(255),
     "externalId" VARCHAR(255) NOT NULL,
     "avatarUrl" VARCHAR(255),
+    "appId" INTEGER NOT NULL,
 
     CONSTRAINT "AppUser_pkey" PRIMARY KEY ("id")
 );
@@ -64,6 +65,9 @@ CREATE INDEX "User_email_username_idx" ON "User"("email", "username");
 
 -- CreateIndex
 CREATE INDEX "AppUser_externalId_idx" ON "AppUser"("externalId");
+
+-- AddForeignKey
+ALTER TABLE "AppUser" ADD CONSTRAINT "AppUser_appId_fkey" FOREIGN KEY ("appId") REFERENCES "App"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Snippet" ADD CONSTRAINT "Snippet_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
