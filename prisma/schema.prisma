@@ -15,6 +15,7 @@ model User {
   email     String    @unique
   username  String    @db.VarChar(50)
   snippets  Snippet[]
+  comments  Comment[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 
@@ -40,6 +41,7 @@ model Snippet {
   app                 App       @relation(fields: [appId], references: [id])
   appId               Int
   messages            Message[]
+  comments            Comment[]
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
 }
@@ -54,4 +56,15 @@ model Message {
   authorAvatarUrl     String?  @db.VarChar(150)
   snippet             Snippet  @relation(fields: [snippetId], references: [id])
   snippetId           Int
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String   @db.VarChar(2000)
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId Int
+  snippet   Snippet  @relation(fields: [snippetId], references: [id])
+  snippetId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

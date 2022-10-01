@@ -17,6 +17,7 @@ export const makeIdUtils = (modelName: string): IdUtils => ({
 const prisma = new PrismaClient();
 const modelNames: (keyof typeof prisma)[] = [
   "app",
+  "comment",
   "message",
   "snippet",
   "user",
@@ -26,6 +27,7 @@ modelNames.forEach((modelName) =>
 );
 export type ExtendedPrismaClient = PrismaClient & {
   app: PrismaClient["app"] & IdUtils;
+  comment: PrismaClient["comment"] & IdUtils;
   message: PrismaClient["message"] & IdUtils;
   snippet: PrismaClient["snippet"] & IdUtils;
   user: PrismaClient["user"] & IdUtils;

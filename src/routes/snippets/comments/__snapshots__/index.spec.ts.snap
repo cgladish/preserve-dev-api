@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`comments routes GET / can get paginated comments after a cursor for a snippet 1`] = `
+[
+  {
+    "content": "Content 11",
+    "createdAt": "1970-01-01T00:00:00.055Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "1zw60rq",
+    "updatedAt": "1970-01-01T00:00:00.110Z",
+  },
+  {
+    "content": "Content 12",
+    "createdAt": "1970-01-01T00:00:00.060Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "GEwYnvo",
+    "updatedAt": "1970-01-01T00:00:00.120Z",
+  },
+  {
+    "content": "Content 13",
+    "createdAt": "1970-01-01T00:00:00.065Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "1zv5Rr4",
+    "updatedAt": "1970-01-01T00:00:00.130Z",
+  },
+  {
+    "content": "Content 14",
+    "createdAt": "1970-01-01T00:00:00.070Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "l8kNbkK",
+    "updatedAt": "1970-01-01T00:00:00.140Z",
+  },
+  {
+    "content": "Content 15",
+    "createdAt": "1970-01-01T00:00:00.075Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "J5rd9ke",
+    "updatedAt": "1970-01-01T00:00:00.150Z",
+  },
+  {
+    "content": "Content 16",
+    "createdAt": "1970-01-01T00:00:00.080Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "WVk4Dke",
+    "updatedAt": "1970-01-01T00:00:00.160Z",
+  },
+  {
+    "content": "Content 17",
+    "createdAt": "1970-01-01T00:00:00.085Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "Gdvy8wq",
+    "updatedAt": "1970-01-01T00:00:00.170Z",
+  },
+  {
+    "content": "Content 18",
+    "createdAt": "1970-01-01T00:00:00.090Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "DKrEowP",
+    "updatedAt": "1970-01-01T00:00:00.180Z",
+  },
+  {
+    "content": "Content 19",
+    "createdAt": "1970-01-01T00:00:00.095Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "JAk1Bw2",
+    "updatedAt": "1970-01-01T00:00:00.190Z",
+  },
+  {
+    "content": "Content 20",
+    "createdAt": "1970-01-01T00:00:00.100Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "PGr7pk2",
+    "updatedAt": "1970-01-01T00:00:00.200Z",
+  },
+]
+`;
+
+exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
+[
+  {
+    "content": "Content 0",
+    "createdAt": "1970-01-01T00:00:00.000Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "z9weAwy",
+    "updatedAt": "1970-01-01T00:00:00.000Z",
+  },
+  {
+    "content": "Content 1",
+    "createdAt": "1970-01-01T00:00:00.005Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "2NrBMvP",
+    "updatedAt": "1970-01-01T00:00:00.010Z",
+  },
+  {
+    "content": "Content 2",
+    "createdAt": "1970-01-01T00:00:00.010Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "x9wWnkO",
+    "updatedAt": "1970-01-01T00:00:00.020Z",
+  },
+  {
+    "content": "Content 3",
+    "createdAt": "1970-01-01T00:00:00.015Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "lWkQXr2",
+    "updatedAt": "1970-01-01T00:00:00.030Z",
+  },
+  {
+    "content": "Content 4",
+    "createdAt": "1970-01-01T00:00:00.020Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "PzkX7rb",
+    "updatedAt": "1970-01-01T00:00:00.040Z",
+  },
+  {
+    "content": "Content 5",
+    "createdAt": "1970-01-01T00:00:00.025Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "KekOlwN",
+    "updatedAt": "1970-01-01T00:00:00.050Z",
+  },
+  {
+    "content": "Content 6",
+    "createdAt": "1970-01-01T00:00:00.030Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "dXkj8vl",
+    "updatedAt": "1970-01-01T00:00:00.060Z",
+  },
+  {
+    "content": "Content 7",
+    "createdAt": "1970-01-01T00:00:00.035Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "9dwbAk3",
+    "updatedAt": "1970-01-01T00:00:00.070Z",
+  },
+  {
+    "content": "Content 8",
+    "createdAt": "1970-01-01T00:00:00.040Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "ebkPmwz",
+    "updatedAt": "1970-01-01T00:00:00.080Z",
+  },
+  {
+    "content": "Content 9",
+    "createdAt": "1970-01-01T00:00:00.045Z",
+    "creator": {
+      "id": "E21K9jm",
+      "username": "crasken",
+    },
+    "id": "NOkGWkW",
+    "updatedAt": "1970-01-01T00:00:00.090Z",
+  },
+]
+`;

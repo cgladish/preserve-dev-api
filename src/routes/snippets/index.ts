@@ -6,9 +6,12 @@ import { Message, Snippet } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../prisma";
 import { pick } from "lodash";
 import { JoiExternalId, JoiString } from "../../joi";
+import comments from "./comments";
 
 const router = express.Router();
 const validator = createValidator();
+
+router.use("/:snippetId/comments", comments);
 
 type ExternalMessage = {
   id: string;
@@ -54,13 +57,15 @@ const entityToType = (
 });
 
 router.get(
-  "/:id",
+  "/:snippetId",
   async (req: Request, res: Response<ExternalSnippet | null>) => {
-    const externalId = req.params.id;
+    const externalId = req.params.snippetId;
     const snippet = await req.prisma.snippet.findUnique({
       where: { id: req.prisma.snippet.externalIdToId(externalId) },
       include: {
-        messages: true,
+        messages: {
+          orderBy: { id: "asc" },
+        },
       },
     });
     if (!snippet) {
@@ -109,7 +114,7 @@ router.post(
   validator.body(createSnippetSchema),
   async (
     req: Request<{}, {}, CreateSnippetInput>,
-    res: Response<ExternalSnippet | null>
+    res: Response<ExternalSnippet>
   ) => {
     const input = req.body;
     const snippet = await req.prisma.snippet.create({

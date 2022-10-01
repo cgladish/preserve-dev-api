@@ -16,7 +16,9 @@ const entityToType = (prisma: ExtendedPrismaClient, app: App): ExternalApp => ({
 });
 
 router.get("/", async (req: Request, res: Response<ExternalApp[]>) => {
-  const apps = await req.prisma.app.findMany();
+  const apps = await req.prisma.app.findMany({
+    orderBy: { id: "asc" },
+  });
   res.status(200).json(apps.map((app) => entityToType(req.prisma, app)));
 });
 

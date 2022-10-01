@@ -4,21 +4,28 @@ import request from "supertest";
 import { CreateSnippetInput } from ".";
 import { set } from "lodash";
 import { randText } from "@ngneat/falso";
+import { App, User } from "@prisma/client";
 
 describe("snippets routes", () => {
+  let appEntity: App;
+  let creatorEntity: User;
+
+  beforeEach(async () => {
+    appEntity = await prisma.app.create({
+      data: {
+        name: "Discord",
+      },
+    });
+    creatorEntity = await prisma.user.create({
+      data: {
+        username: "crasken",
+        email: "chase.gladish@gmail.com",
+      },
+    });
+  });
+
   describe("GET /:id", () => {
     it("can get a snippet by external ID", async () => {
-      const appEntity = await prisma.app.create({
-        data: {
-          name: "Discord",
-        },
-      });
-      const creatorEntity = await prisma.user.create({
-        data: {
-          username: "crasken",
-          email: "chase.gladish@gmail.com",
-        },
-      });
       const snippetEntity = await prisma.snippet.create({
         data: {
           appId: appEntity.id,
@@ -76,7 +83,7 @@ describe("snippets routes", () => {
       ["messages[0].appSpecificData", "bad"],
       ["messages[0].authorIdentifier", 123],
       ["messages[0].authorAvatarUrl", 123],
-    ])("returns a 404 if %s = %p", async (key, value) => {
+    ])("returns a 400 if %s = %p", async (key, value) => {
       const input: CreateSnippetInput = {
         appId: prisma.app.idToExternalId(1),
         public: true,
@@ -99,18 +106,6 @@ describe("snippets routes", () => {
     });
 
     it("can create a snippet", async () => {
-      const appEntity = await prisma.app.create({
-        data: {
-          name: "Discord",
-        },
-      });
-      await prisma.user.create({
-        data: {
-          username: "crasken",
-          email: "chase.gladish@gmail.com",
-        },
-      });
-
       const input: CreateSnippetInput = {
         appId: prisma.app.idToExternalId(appEntity.id),
         public: true,
