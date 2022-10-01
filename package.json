@@ -5,6 +5,9 @@
   "author": "Chase Gladish",
   "license": "MIT",
   "private": true,
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",

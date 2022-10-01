@@ -3,9 +3,12 @@ import { Request } from "../../types";
 
 const router = express.Router();
 
-router.get("/", async (req: Request, res) => {
-  const snippets = req.prisma.snippet.findMany();
-  res.send(snippets);
+router.get("/:id", async (req: Request, res) => {
+  const externalId = req.params.id;
+  const snippet = await req.prisma.snippet.findFirst({
+    where: { id: req.prisma.snippet.externalIdToId(externalId) },
+  });
+  res.send(snippet);
 });
 
 export default router;
