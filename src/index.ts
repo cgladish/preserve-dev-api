@@ -17,6 +17,10 @@ app.use(express.json());
 
 app.use("/snippets", snippets);
 
-app.listen(port, () => {
-  console.log(`Server is running at https://localhost:${port}`);
-});
+if (!process.env.JEST_WORKER_ID) {
+  app.listen(port, () => {
+    console.log(`Server is running at https://localhost:${port}`);
+  });
+}
+
+export default app;

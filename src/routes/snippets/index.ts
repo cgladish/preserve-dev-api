@@ -65,7 +65,7 @@ router.get(
     if (!snippet) {
       return res.sendStatus(404);
     }
-    res.status(200).send(snippet && entityToType(req.prisma, snippet));
+    res.status(200).json(snippet && entityToType(req.prisma, snippet));
   }
 );
 
