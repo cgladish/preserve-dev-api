@@ -8,3 +8,8 @@ services:
       - POSTGRES_PASSWORD=pass
     ports:
       - "5432:5432"
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "6379:6379"

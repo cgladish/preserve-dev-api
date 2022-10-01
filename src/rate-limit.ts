@@ -1,14 +1,22 @@
-import { NextFunction, Response } from "express";
-import { Request } from "./types";
+import rateLimit from "express-rate-limit";
+import RedisStore from "rate-limit-redis";
+import getRedisClient from "./redis";
 
-const rateLimitMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const ipAddress = req.socket.remoteAddress;
+const createRateLimiter = (
+  path: string,
+  windowMs: number,
+  maxPerWindow: number
+) =>
+  rateLimit({
+    windowMs: windowMs,
+    max: maxPerWindow,
+    standardHeaders: true,
+    legacyHeaders: false,
+    store: new RedisStore({
+      prefix: `rl:${path}:`,
+      sendCommand: async (...args: string[]) =>
+        (await getRedisClient()).sendCommand(args),
+    }),
+  });
 
-  next();
-};
-
-export default rateLimitMiddleware;
+export default createRateLimiter;

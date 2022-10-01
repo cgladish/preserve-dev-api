@@ -1487,6 +1487,11 @@ express-joi-validation@^5.0.1:
   resolved "https://registry.yarnpkg.com/express-joi-validation/-/express-joi-validation-5.0.1.tgz#ded03f35ba5d95b57da6ebe22b2b6d2e4ab074c4"
   integrity sha512-BztcU64addcAdxys2j42pZVSnJjEyFaLxNko7YSYDUuEBtKq2XnhzYZuy9ex9Q+Fdhef+NwLXhX1djwZmShCLg==
 
+express-rate-limit@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/express-rate-limit/-/express-rate-limit-6.6.0.tgz#3bbc2546540d327b1b0bfa9ab5f1b2c49075af98"
+  integrity sha512-HFN2+4ZGdkQOS8Qli4z6knmJFnw6lZed67o6b7RGplWeb1Z0s8VXaj3dUgPIdm9hrhZXTRpCTHXA0/2Eqex0vA==
+
 express@^4.18.1:
   version "4.18.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.18.1.tgz#7797de8b9c72c857b9cd0e14a5eea80666267caf"
@@ -2644,6 +2649,11 @@ range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
+
+rate-limit-redis@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/rate-limit-redis/-/rate-limit-redis-3.0.1.tgz#f12425417e03c1a4b9a7cdfa153113fd649a898c"
+  integrity sha512-L6yhOUBrAZ8VEMX9DwlM3X6hfm8yq+gBO4LoOW7+JgmNq59zE7QmLz4v5VnwYPvLeSh/e7PDcrzUI3UumJw1iw==
 
 raw-body@2.5.1:
   version "2.5.1"
