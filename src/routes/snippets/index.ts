@@ -69,7 +69,7 @@ router.get(
   }
 );
 
-type CreateSnippetInput = {
+export type CreateSnippetInput = {
   appId: string;
   public: boolean;
   title?: string;
@@ -95,7 +95,7 @@ const createSnippetSchema = Joi.object<CreateSnippetInput>({
       Joi.object({
         content: Joi.string().required(),
         sentAt: Joi.date().required(),
-        appSpecificDataJson: Joi.object(),
+        appSpecificData: Joi.object(),
         authorUsername: Joi.string().required(),
         authorIdentifier: Joi.string(),
         authorAvatarUrl: Joi.string(),
