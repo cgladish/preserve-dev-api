@@ -18,6 +18,9 @@ app.use(express.json());
 
 app.use("/apps", apps);
 app.use("/snippets", snippets);
+app.get("/", (req: Request, res) => {
+  res.sendStatus(200);
+});
 
 if (!process.env.JEST_WORKER_ID) {
   app.listen(port, () => {
