@@ -6,6 +6,7 @@ import { Comment, User } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../../prisma";
 import { pick } from "lodash";
 import { JoiExternalIdOptional, JoiString } from "../../../joi";
+import rateLimit from "../../../rate-limit";
 
 const router = express.Router({ mergeParams: true });
 const validator = createValidator();
@@ -78,6 +79,16 @@ const createCommentSchema = Joi.object<CreateCommentInput>({
 });
 router.post(
   "/",
+  rateLimit(
+    "snippet-comments-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "snippet-comments-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    5000
+  ),
   validator.body(createCommentSchema),
   async (
     req: Request<{ snippetId: string }, {}, CreateCommentInput>,

@@ -7,6 +7,7 @@ import { ExtendedPrismaClient } from "../../prisma";
 import { pick } from "lodash";
 import { JoiExternalId, JoiString } from "../../joi";
 import comments from "./comments";
+import rateLimit from "../../rate-limit";
 
 const router = express.Router();
 const validator = createValidator();
@@ -111,6 +112,16 @@ const createSnippetSchema = Joi.object<CreateSnippetInput>({
 });
 router.post(
   "/",
+  rateLimit(
+    "snippets-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "snippets-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    1000
+  ),
   validator.body(createSnippetSchema),
   async (
     req: Request<{}, {}, CreateSnippetInput>,
