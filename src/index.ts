@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== "development") {
       secret: process.env.AUTH0_CLIENT_SECRET,
       baseURL: `http://localhost:${port}`,
       clientID: process.env.AUTH0_CLIENT_ID,
-      issuerBaseURL: process.env.AUTH0_DOMAIN,
+      issuerBaseURL: `https://${process.env.AUTH0_DOMAIN}`,
     })
   );
 }
