@@ -11,7 +11,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon --watch 'src/**' --ext 'ts,json' --ignore 'src/**/*.spec.ts' --exec 'ts-node src/index.ts'",
+    "dev": "nodemon --watch 'src/**' --ext 'ts,json' --ignore 'src/**/*.spec.ts' --exec 'NODE_ENV=development ts-node src/index.ts'",
     "test": "jest --runInBand"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "express-joi-validation": "^5.0.1",
+    "express-openid-connect": "^2.8.0",
     "express-rate-limit": "^6.6.0",
     "hashids": "^2.2.10",
     "joi": "^17.6.2",
