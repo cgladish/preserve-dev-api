@@ -34,10 +34,10 @@ model Snippet {
   public              Boolean   @default(false)
   title               String?   @db.VarChar(255)
   appSpecificDataJson String?   @db.VarChar(255)
-  views               Int
+  views               Int       @default(0)
   creator             User      @relation(fields: [creatorId], references: [id])
   creatorId           Int
-  App                 App       @relation(fields: [appId], references: [id])
+  app                 App       @relation(fields: [appId], references: [id])
   appId               Int
   messages            Message[]
   createdAt           DateTime  @default(now())
@@ -52,6 +52,6 @@ model Message {
   authorUsername      String   @db.VarChar(255)
   authorIdentifier    String?  @db.VarChar(255)
   authorAvatarUrl     String?  @db.VarChar(255)
-  Snippet             Snippet  @relation(fields: [snippetId], references: [id])
+  snippet             Snippet  @relation(fields: [snippetId], references: [id])
   snippetId           Int
 }

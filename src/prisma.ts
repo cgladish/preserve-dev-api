@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import Hashids from "hashids";
 
 const PADDED_ID_LENGTH = 7;
@@ -17,7 +17,6 @@ export const makeIdUtils = (modelName: string): IdUtils => ({
 const prisma = new PrismaClient();
 const modelNames: (keyof typeof prisma)[] = [
   "app",
-  "appUser",
   "message",
   "snippet",
   "user",
@@ -25,10 +24,10 @@ const modelNames: (keyof typeof prisma)[] = [
 modelNames.forEach((modelName) =>
   Object.assign(prisma[modelName], makeIdUtils(modelName))
 );
-export default prisma as PrismaClient & {
+export type ExtendedPrismaClient = PrismaClient & {
   app: PrismaClient["app"] & IdUtils;
-  appUser: PrismaClient["appUser"] & IdUtils;
   message: PrismaClient["message"] & IdUtils;
   snippet: PrismaClient["snippet"] & IdUtils;
   user: PrismaClient["user"] & IdUtils;
 };
+export default prisma as ExtendedPrismaClient;
