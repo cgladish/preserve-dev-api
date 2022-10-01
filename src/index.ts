@@ -4,12 +4,14 @@ import prisma from "./prisma";
 import { Request } from "./types";
 import apps from "./routes/apps";
 import snippets from "./routes/snippets";
+import rateLimitMiddleware from "./rate-limit";
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
 
+app.use(rateLimitMiddleware);
 app.use((req: Request, res, next) => {
   req.prisma = prisma;
   next();
