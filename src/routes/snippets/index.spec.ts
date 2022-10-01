@@ -48,7 +48,7 @@ describe("snippets routes", () => {
     });
 
     it("returns 404 if no entity found", async () => {
-      const response = await request(app)
+      await request(app)
         .get(`/snippets/${prisma.snippet.idToExternalId(1)}`)
         .expect(404);
     });

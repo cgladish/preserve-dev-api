@@ -1,8 +1,9 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
-import snippets from "./routes/snippets";
 import prisma from "./prisma";
 import { Request } from "./types";
+import apps from "./routes/apps";
+import snippets from "./routes/snippets";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use((req: Request, res, next) => {
 });
 app.use(express.json());
 
+app.use("/apps", apps);
 app.use("/snippets", snippets);
 
 if (!process.env.JEST_WORKER_ID) {
