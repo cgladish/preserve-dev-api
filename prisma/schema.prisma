@@ -24,22 +24,9 @@ model User {
 model App {
   id        Int       @id @default(autoincrement())
   name      String    @db.VarChar(255)
-  users     AppUser[]
+  snippets  Snippet[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-}
-
-model AppUser {
-  id         Int       @id @default(autoincrement())
-  username   String    @db.VarChar(255)
-  identifier String?   @db.VarChar(255)
-  externalId String    @db.VarChar(255)
-  avatarUrl  String?   @db.VarChar(255)
-  App        App       @relation(fields: [appId], references: [id])
-  appId      Int
-  Message    Message[]
-
-  @@index([externalId])
 }
 
 model Snippet {
@@ -50,6 +37,8 @@ model Snippet {
   views               Int
   creator             User      @relation(fields: [creatorId], references: [id])
   creatorId           Int
+  App                 App       @relation(fields: [appId], references: [id])
+  appId               Int
   messages            Message[]
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
@@ -60,8 +49,9 @@ model Message {
   content             String   @db.VarChar(4096)
   sentAt              DateTime
   appSpecificDataJson String?  @db.VarChar(255)
-  author              AppUser  @relation(fields: [authorId], references: [id])
-  authorId            Int
+  authorUsername      String   @db.VarChar(255)
+  authorIdentifier    String?  @db.VarChar(255)
+  authorAvatarUrl     String?  @db.VarChar(255)
   Snippet             Snippet  @relation(fields: [snippetId], references: [id])
   snippetId           Int
 }

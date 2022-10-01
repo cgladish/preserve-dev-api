@@ -13,6 +13,7 @@ app.use((req: Request, res, next) => {
   req.prisma = prisma;
   next();
 });
+app.use(express.json());
 
 app.use("/snippets", snippets);
 
