@@ -20,16 +20,7 @@ app.use(
   )
 );
 if (process.env.NODE_ENV !== "development") {
-  app.use(
-    auth({
-      authRequired: false,
-      auth0Logout: true,
-      secret: process.env.AUTH0_CLIENT_SECRET,
-      baseURL: `http://localhost:${port}`,
-      clientID: process.env.AUTH0_CLIENT_ID,
-      issuerBaseURL: `https://${process.env.AUTH0_DOMAIN}`,
-    })
-  );
+  app.use(auth());
 }
 app.use((req: Request, res, next) => {
   req.prisma = prisma;
