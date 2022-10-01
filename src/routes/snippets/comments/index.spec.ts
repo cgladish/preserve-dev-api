@@ -68,7 +68,7 @@ describe("comments routes", () => {
 
     it.each([["cursor", 1]])("returns a 400 if %s = %p", async (key, value) => {
       const query: PaginatedQueryParams = {
-        cursor: prisma.comment.idToExternalId(commentEntities[10].id),
+        cursor: prisma.comment.idToExternalId(commentEntities[9].id),
       };
       set(query, key, value);
 
@@ -101,7 +101,7 @@ describe("comments routes", () => {
           )}/comments`
         )
         .query({
-          cursor: prisma.comment.idToExternalId(commentEntities[10].id),
+          cursor: prisma.comment.idToExternalId(commentEntities[9].id),
         })
         .expect(200);
       expect(response.body).toMatchSnapshot();
