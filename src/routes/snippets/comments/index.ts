@@ -50,9 +50,6 @@ router.get(
   ) => {
     const cursor =
       req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
-    if (cursor !== null && cursor !== "" && Number.isNaN(cursor)) {
-      return res.sendStatus(400);
-    }
 
     const snippetExternalId = req.params.snippetId;
     const comments = await req.prisma.comment.findMany({

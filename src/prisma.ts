@@ -10,8 +10,15 @@ type IdUtils = {
 export const makeIdUtils = (modelName: string): IdUtils => ({
   idToExternalId: (id: number): string =>
     new Hashids(modelName, PADDED_ID_LENGTH).encode(id),
-  externalIdToId: (externalId: string): number =>
-    Number(new Hashids(modelName, PADDED_ID_LENGTH).decode(externalId)[0]),
+  externalIdToId: (externalId: string): number => {
+    const id = Number(
+      new Hashids(modelName, PADDED_ID_LENGTH).decode(externalId)[0]
+    );
+    if (Number.isNaN(id)) {
+      throw new Error("Invalid external ID");
+    }
+    return id;
+  },
 });
 
 const prisma = new PrismaClient();
