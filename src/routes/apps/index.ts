@@ -15,22 +15,33 @@ const entityToType = (prisma: ExtendedPrismaClient, app: App): ExternalApp => ({
   id: prisma.app.idToExternalId(app.id),
 });
 
-router.get("/", async (req: Request, res: Response<ExternalApp[]>) => {
-  const apps = await req.prisma.app.findMany({
-    orderBy: { id: "asc" },
-  });
-  res.status(200).json(apps.map((app) => entityToType(req.prisma, app)));
+router.get("/", async (req: Request, res: Response<ExternalApp[]>, next) => {
+  try {
+    const apps = await req.prisma.app.findMany({
+      orderBy: { id: "asc" },
+    });
+    res.status(200).json(apps.map((app) => entityToType(req.prisma, app)));
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get("/:id", async (req: Request, res: Response<ExternalApp | null>) => {
-  const externalId = req.params.id;
-  const app = await req.prisma.app.findUnique({
-    where: { id: req.prisma.app.externalIdToId(externalId) },
-  });
-  if (!app) {
-    return res.sendStatus(404);
+router.get(
+  "/:id",
+  async (req: Request, res: Response<ExternalApp | null>, next) => {
+    try {
+      const externalId = req.params.id;
+      const app = await req.prisma.app.findUnique({
+        where: { id: req.prisma.app.externalIdToId(externalId) },
+      });
+      if (!app) {
+        return res.sendStatus(404);
+      }
+      res.status(200).json(app && entityToType(req.prisma, app));
+    } catch (err) {
+      next(err);
+    }
   }
-  res.status(200).json(app && entityToType(req.prisma, app));
-});
+);
 
 export default router;

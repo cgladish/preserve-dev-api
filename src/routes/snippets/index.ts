@@ -59,20 +59,24 @@ const entityToType = (
 
 router.get(
   "/:snippetId",
-  async (req: Request, res: Response<ExternalSnippet | null>) => {
-    const externalId = req.params.snippetId;
-    const snippet = await req.prisma.snippet.findUnique({
-      where: { id: req.prisma.snippet.externalIdToId(externalId) },
-      include: {
-        messages: {
-          orderBy: { id: "asc" },
+  async (req: Request, res: Response<ExternalSnippet | null>, next) => {
+    try {
+      const externalId = req.params.snippetId;
+      const snippet = await req.prisma.snippet.findUnique({
+        where: { id: req.prisma.snippet.externalIdToId(externalId) },
+        include: {
+          messages: {
+            orderBy: { id: "asc" },
+          },
         },
-      },
-    });
-    if (!snippet) {
-      return res.sendStatus(404);
+      });
+      if (!snippet) {
+        return res.sendStatus(404);
+      }
+      res.status(200).json(snippet && entityToType(req.prisma, snippet));
+    } catch (err) {
+      next(err);
     }
-    res.status(200).json(snippet && entityToType(req.prisma, snippet));
   }
 );
 
@@ -125,34 +129,39 @@ router.post(
   validator.body(createSnippetSchema),
   async (
     req: Request<{}, {}, CreateSnippetInput>,
-    res: Response<ExternalSnippet>
+    res: Response<ExternalSnippet>,
+    next
   ) => {
-    const input = req.body;
-    const snippet = await req.prisma.snippet.create({
-      data: {
-        appId: req.prisma.app.externalIdToId(input.appId),
-        public: input.public,
-        title: input.title,
-        appSpecificDataJson: input.appSpecificData
-          ? JSON.stringify(input.appSpecificData)
-          : null,
-        creatorId: 1, // FIXME: PULL FROM JWT
-        messages: {
-          create: input.messages.map((message) => ({
-            content: message.content,
-            sentAt: message.sentAt,
-            appSpecificDataJson: message.appSpecificData
-              ? JSON.stringify(message.appSpecificData)
-              : null,
-            authorUsername: message.authorUsername,
-            authorIdentifier: message.authorIdentifier,
-            authorAvatarUrl: message.authorAvatarUrl,
-          })),
+    try {
+      const input = req.body;
+      const snippet = await req.prisma.snippet.create({
+        data: {
+          appId: req.prisma.app.externalIdToId(input.appId),
+          public: input.public,
+          title: input.title,
+          appSpecificDataJson: input.appSpecificData
+            ? JSON.stringify(input.appSpecificData)
+            : null,
+          creatorId: 1, // FIXME: PULL FROM JWT
+          messages: {
+            create: input.messages.map((message) => ({
+              content: message.content,
+              sentAt: message.sentAt,
+              appSpecificDataJson: message.appSpecificData
+                ? JSON.stringify(message.appSpecificData)
+                : null,
+              authorUsername: message.authorUsername,
+              authorIdentifier: message.authorIdentifier,
+              authorAvatarUrl: message.authorAvatarUrl,
+            })),
+          },
         },
-      },
-      include: { messages: true },
-    });
-    res.status(201).send(entityToType(req.prisma, snippet));
+        include: { messages: true },
+      });
+      res.status(201).send(entityToType(req.prisma, snippet));
+    } catch (err) {
+      next(err);
+    }
   }
 );
 
