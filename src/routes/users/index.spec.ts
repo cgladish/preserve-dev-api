@@ -73,8 +73,9 @@ describe("users routes", () => {
   describe("POST /", () => {
     it.each([
       ["displayName", null],
+      ["displayName", ""],
       ["displayName", "bad%chars"],
-      ["displayName", "with spaces"],
+      ["displayName", "With Spaces"],
     ])("returns a 400 if %s = %p", async (key, value) => {
       const input: CreateUserInput = {
         displayName: "Crasken",

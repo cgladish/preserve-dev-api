@@ -7,6 +7,7 @@ import { ExtendedPrismaClient } from "../../../prisma";
 import { pick } from "lodash";
 import { JoiExternalIdOptional, JoiString } from "../../../joi";
 import rateLimit from "../../../middleware/rate-limit";
+import { withUser } from "../../../middleware/with-user";
 
 const router = express.Router({ mergeParams: true });
 const validator = createValidator();
@@ -92,6 +93,7 @@ router.post(
     5000
   ),
   validator.body(createCommentSchema),
+  withUser({ required: true }),
   async (
     req: Request<{ snippetId: string }, {}, CreateCommentInput>,
     res: Response<ExternalComment>,
@@ -103,7 +105,7 @@ router.post(
       const comment = await req.prisma.comment.create({
         data: {
           content: input.content,
-          creatorId: 1, // FIXME: PULL FROM JWT
+          creatorId: req.user!.id,
           snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
         },
         include: {

@@ -209,3 +209,23 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
   },
 ]
 `;
+
+exports[`comments routes POST / can create a comment 1`] = `
+{
+  "content": "contented",
+  "creator": {
+    "id": "E21K9jm",
+    "username": "crasken",
+  },
+  "id": "z9weAwy",
+}
+`;
+
+exports[`comments routes POST / can create a comment 2`] = `
+{
+  "content": "contented",
+  "creatorId": 1,
+  "id": 1,
+  "snippetId": 1,
+}
+`;
