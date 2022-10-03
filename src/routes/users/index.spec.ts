@@ -73,9 +73,11 @@ describe("users routes", () => {
   describe("POST /", () => {
     it.each([
       ["displayName", null],
+      ["displayName", "sh"],
       ["displayName", ""],
       ["displayName", "bad%chars"],
       ["displayName", "With Spaces"],
+      ["displayName", "Toooooooooooooooooooooooolong"],
     ])("returns a 400 if %s = %p", async (key, value) => {
       const input: CreateUserInput = {
         displayName: "Crasken",
@@ -143,8 +145,11 @@ describe("users routes", () => {
   describe("POST /update", () => {
     it.each([
       ["displayName", null],
+      ["displayName", "sh"],
+      ["displayName", ""],
       ["displayName", "bad%chars"],
       ["displayName", "with spaces"],
+      ["displayName", "Toooooooooooooooooooooooolong"],
     ])("returns a 400 if %s = %p", async (key, value) => {
       const input: CreateUserInput = {
         displayName: "Crasken",

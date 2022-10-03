@@ -81,7 +81,7 @@ export type CreateUserInput = {
   displayName: string;
 };
 const createUserSchema = Joi.object<CreateUserInput>({
-  displayName: JoiString.alphanum().required().max(50),
+  displayName: JoiString.alphanum().required().min(3).max(20),
 });
 router.post(
   "/",
@@ -129,7 +129,7 @@ export type UpdateUserInput = {
   displayName: string;
 };
 const updateUserSchema = Joi.object<UpdateUserInput>({
-  displayName: JoiString.alphanum().required().max(50),
+  displayName: JoiString.alphanum().required().min(3).max(20),
 });
 router.post(
   "/update",

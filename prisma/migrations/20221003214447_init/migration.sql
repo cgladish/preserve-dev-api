@@ -2,8 +2,8 @@
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "sub" TEXT NOT NULL,
-    "username" VARCHAR(50) NOT NULL,
-    "displayName" VARCHAR(50) NOT NULL,
+    "username" VARCHAR(20) NOT NULL,
+    "displayName" VARCHAR(20) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
