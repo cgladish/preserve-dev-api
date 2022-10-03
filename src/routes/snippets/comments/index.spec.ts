@@ -66,22 +66,6 @@ describe("comments routes", () => {
       });
     });
 
-    it.each([["cursor", 1]])("returns a 400 if %s = %p", async (key, value) => {
-      const query: PaginatedQueryParams = {
-        cursor: prisma.comment.idToExternalId(commentEntities[9].id),
-      };
-      set(query, key, value);
-
-      const response = await request(app)
-        .get(
-          `/snippets/${prisma.snippet.idToExternalId(
-            snippetEntity.id
-          )}/comments`
-        )
-        .query(query)
-        .expect(400);
-    });
-
     it("can get paginated comments for a snippet", async () => {
       const response = await request(app)
         .get(

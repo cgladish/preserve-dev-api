@@ -1,10 +1,12 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+import { expressjwt } from "express-jwt";
 import prisma from "./prisma";
 import { Request } from "./types";
 import apps from "./routes/apps";
 import snippets from "./routes/snippets";
-import rateLimit from "./rate-limit";
+import rateLimit from "./middleware/rate-limit";
 
 dotenv.config();
 
@@ -16,6 +18,11 @@ if (process.env.NUMBER_OF_PROXIES) {
 }
 
 app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(
   rateLimit(
     "global",
     1000, // 1 second
@@ -26,6 +33,13 @@ app.use((req: Request, res, next) => {
   req.prisma = prisma;
   next();
 });
+app.use(
+  expressjwt({
+    secret: process.env.JWT_SECRET as string,
+    algorithms: ["HS512"],
+    credentialsRequired: false,
+  })
+);
 app.use(express.json());
 
 app.use("/apps", apps);

@@ -26,7 +26,7 @@ CREATE TABLE "Snippet" (
     "title" VARCHAR(50),
     "appSpecificDataJson" VARCHAR(1000),
     "views" INTEGER NOT NULL DEFAULT 0,
-    "creatorId" INTEGER NOT NULL,
+    "creatorId" INTEGER,
     "appId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -67,7 +67,7 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 CREATE INDEX "User_email_username_idx" ON "User"("email", "username");
 
 -- AddForeignKey
-ALTER TABLE "Snippet" ADD CONSTRAINT "Snippet_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Snippet" ADD CONSTRAINT "Snippet_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Snippet" ADD CONSTRAINT "Snippet_appId_fkey" FOREIGN KEY ("appId") REFERENCES "App"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -5,6 +5,7 @@ import { CreateSnippetInput } from ".";
 import { set } from "lodash";
 import { randText } from "@ngneat/falso";
 import { App, User } from "@prisma/client";
+import { testJwt } from "../../mockData";
 
 describe("snippets routes", () => {
   let appEntity: App;
@@ -19,7 +20,7 @@ describe("snippets routes", () => {
     creatorEntity = await prisma.user.create({
       data: {
         username: "crasken",
-        email: "chase.gladish@gmail.com",
+        email: "chasegladish@gmail.com",
       },
     });
   });
@@ -105,7 +106,7 @@ describe("snippets routes", () => {
       await request(app).post("/snippets").send(input).expect(400);
     });
 
-    it("can create a snippet", async () => {
+    it("can create a snippet with no auth", async () => {
       const input: CreateSnippetInput = {
         appId: prisma.app.idToExternalId(appEntity.id),
         public: true,
@@ -125,6 +126,32 @@ describe("snippets routes", () => {
 
       const response = await request(app)
         .post("/snippets")
+        .send(input)
+        .expect(201);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("can create a snippet with auth", async () => {
+      const input: CreateSnippetInput = {
+        appId: prisma.app.idToExternalId(appEntity.id),
+        public: true,
+        title: "Test snippet title",
+        appSpecificData: { key: "value" },
+        messages: Array(20)
+          .fill(null)
+          .map((_, index) => ({
+            content: `Content ${index}`,
+            sentAt: new Date(index * 5),
+            appSpecificData: { key: `value ${index}` },
+            authorUsername: "Icyspawn",
+            authorIdentifier: "1234",
+            authorAvatarUrl: "http://example.com/123.png",
+          })),
+      };
+
+      const response = await request(app)
+        .post("/snippets")
+        .set("Authorization", `Bearer ${testJwt}`)
         .send(input)
         .expect(201);
       expect(response.body).toMatchSnapshot();

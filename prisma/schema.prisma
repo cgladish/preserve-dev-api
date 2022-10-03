@@ -36,8 +36,8 @@ model Snippet {
   title               String?   @db.VarChar(50)
   appSpecificDataJson String?   @db.VarChar(1000)
   views               Int       @default(0)
-  creator             User      @relation(fields: [creatorId], references: [id])
-  creatorId           Int
+  creator             User?     @relation(fields: [creatorId], references: [id])
+  creatorId           Int?
   app                 App       @relation(fields: [appId], references: [id])
   appId               Int
   messages            Message[]

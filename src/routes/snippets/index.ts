@@ -7,7 +7,8 @@ import { ExtendedPrismaClient } from "../../prisma";
 import { pick } from "lodash";
 import { JoiExternalId, JoiString } from "../../joi";
 import comments from "./comments";
-import rateLimit from "../../rate-limit";
+import rateLimit from "../../middleware/rate-limit";
+import { withUser } from "../../middleware/require-auth";
 
 const router = express.Router();
 const validator = createValidator();
@@ -29,7 +30,7 @@ type ExternalSnippet = {
   title: string | null;
   appSpecificDataJson: string | null;
   views: number;
-  creatorId: string;
+  creatorId: string | null;
   appId: string;
   messages: ExternalMessage[];
 };
@@ -41,7 +42,9 @@ const entityToType = (
 ): ExternalSnippet => ({
   ...pick(snippet, "public", "title", "appSpecificDataJson", "views"),
   id: prisma.snippet.idToExternalId(snippet.id),
-  creatorId: prisma.user.idToExternalId(snippet.creatorId),
+  creatorId: snippet.creatorId
+    ? prisma.user.idToExternalId(snippet.creatorId)
+    : null,
   appId: prisma.app.idToExternalId(snippet.appId),
   messages: snippet.messages.map((message) => ({
     ...pick(
@@ -127,6 +130,7 @@ router.post(
     1000
   ),
   validator.body(createSnippetSchema),
+  withUser(),
   async (
     req: Request<{}, {}, CreateSnippetInput>,
     res: Response<ExternalSnippet>,
@@ -142,7 +146,7 @@ router.post(
           appSpecificDataJson: input.appSpecificData
             ? JSON.stringify(input.appSpecificData)
             : null,
-          creatorId: 1, // FIXME: PULL FROM JWT
+          creatorId: req.user?.id ?? null,
           messages: {
             create: input.messages.map((message) => ({
               content: message.content,

@@ -1,5 +1,7 @@
+import { User } from "@prisma/client";
 import { Request as _Request } from "express";
 import * as core from "express-serve-static-core";
+import { JwtPayload } from "jsonwebtoken";
 import { ExtendedPrismaClient } from "./prisma";
 
 export type Request<
@@ -10,4 +12,8 @@ export type Request<
   Locals extends Record<string, any> = Record<string, any>
 > = _Request<P, ResBody, ReqBody, ReqQuery, Locals> & {
   prisma: ExtendedPrismaClient;
+  auth?: JwtPayload & {
+    email?: string;
+  };
+  user?: User | null;
 };

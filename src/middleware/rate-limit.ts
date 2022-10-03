@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import expressRateLimit from "express-rate-limit";
 import RedisStore from "rate-limit-redis";
-import getRedisClient from "./redis";
+import getRedisClient from "../redis";
 
 const rateLimit = (
   prefix: string,

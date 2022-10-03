@@ -6,7 +6,7 @@ import { Comment, User } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../../prisma";
 import { pick } from "lodash";
 import { JoiExternalIdOptional, JoiString } from "../../../joi";
-import rateLimit from "../../../rate-limit";
+import rateLimit from "../../../middleware/rate-limit";
 
 const router = express.Router({ mergeParams: true });
 const validator = createValidator();
@@ -46,25 +46,30 @@ router.get(
   validator.query(paginatedQuerySchema),
   async (
     req: Request<{ snippetId: string }, {}, {}, PaginatedQueryParams>,
-    res: Response<ExternalComment[]>
+    res: Response<ExternalComment[]>,
+    next
   ) => {
-    const cursor =
-      req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
+    try {
+      const cursor =
+        req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
 
-    const snippetExternalId = req.params.snippetId;
-    const comments = await req.prisma.comment.findMany({
-      where: {
-        snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
-      },
-      include: { creator: true },
-      orderBy: { id: "asc" },
-      take: 10,
-      skip: req.query.cursor ? 1 : undefined,
-      cursor: cursor ? { id: cursor } : undefined,
-    });
-    res
-      .status(200)
-      .json(comments.map((comment) => entityToType(req.prisma, comment)));
+      const snippetExternalId = req.params.snippetId;
+      const comments = await req.prisma.comment.findMany({
+        where: {
+          snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
+        },
+        include: { creator: true },
+        orderBy: { id: "asc" },
+        take: 10,
+        skip: req.query.cursor ? 1 : undefined,
+        cursor: cursor ? { id: cursor } : undefined,
+      });
+      res
+        .status(200)
+        .json(comments.map((comment) => entityToType(req.prisma, comment)));
+    } catch (err) {
+      next(err);
+    }
   }
 );
 
@@ -89,21 +94,26 @@ router.post(
   validator.body(createCommentSchema),
   async (
     req: Request<{ snippetId: string }, {}, CreateCommentInput>,
-    res: Response<ExternalComment>
+    res: Response<ExternalComment>,
+    next
   ) => {
-    const snippetExternalId = req.params.snippetId;
-    const input = req.body;
-    const comment = await req.prisma.comment.create({
-      data: {
-        content: input.content,
-        creatorId: 1, // FIXME: PULL FROM JWT
-        snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
-      },
-      include: {
-        creator: true,
-      },
-    });
-    res.status(201).send(entityToType(req.prisma, comment));
+    try {
+      const snippetExternalId = req.params.snippetId;
+      const input = req.body;
+      const comment = await req.prisma.comment.create({
+        data: {
+          content: input.content,
+          creatorId: 1, // FIXME: PULL FROM JWT
+          snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
+        },
+        include: {
+          creator: true,
+        },
+      });
+      res.status(201).send(entityToType(req.prisma, comment));
+    } catch (err) {
+      next(err);
+    }
   }
 );
 
