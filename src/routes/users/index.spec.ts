@@ -138,4 +138,75 @@ describe("users routes", () => {
       expect(omit(users[0], "createdAt", "updatedAt")).toMatchSnapshot();
     });
   });
+
+  describe("POST /update", () => {
+    it.each([
+      ["displayName", null],
+      ["displayName", "bad%chars"],
+      ["displayName", "with spaces"],
+    ])("returns a 400 if %s = %p", async (key, value) => {
+      const input: CreateUserInput = {
+        displayName: "Crasken",
+      };
+      set(input, key, value);
+
+      await request(app)
+        .post("/users/update")
+        .set("authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(400);
+    });
+
+    it("returns a 401 if no authorization", async () => {
+      const input: CreateUserInput = {
+        displayName: "Crasken",
+      };
+      await request(app).post("/users").send(input).expect(401);
+    });
+
+    it("returns a 401 if user does not exist", async () => {
+      const input: CreateUserInput = {
+        displayName: "Crasken",
+      };
+      await request(app)
+        .post("/users/update")
+        .set("authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(401);
+    });
+
+    it("returns a 409 if username is taken", async () => {
+      await makeUser();
+      await makeUser({
+        sub: "other-sub",
+        username: "brasken",
+        displayName: "Brasken",
+      });
+      const input: CreateUserInput = {
+        displayName: "Brasken",
+      };
+      await request(app)
+        .post("/users/update")
+        .set("authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(409);
+    });
+
+    it("can update a user", async () => {
+      await makeUser();
+      const input: CreateUserInput = {
+        displayName: "Brasken",
+      };
+      const response = await request(app)
+        .post("/users/update")
+        .set("authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(200);
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
+
+      const users = await prisma.user.findMany();
+      expect(users.length).toEqual(1);
+      expect(omit(users[0], "createdAt", "updatedAt")).toMatchSnapshot();
+    });
+  });
 });

@@ -43,3 +43,20 @@ exports[`users routes POST / can create a user 2`] = `
   "username": "crasken",
 }
 `;
+
+exports[`users routes POST /update can update a user 1`] = `
+{
+  "displayName": "Brasken",
+  "id": "E21K9jm",
+  "username": "brasken",
+}
+`;
+
+exports[`users routes POST /update can update a user 2`] = `
+{
+  "displayName": "Brasken",
+  "id": 1,
+  "sub": "google-oauth2|116644327347918921624",
+  "username": "brasken",
+}
+`;
