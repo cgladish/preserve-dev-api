@@ -20,7 +20,7 @@ describe("comments routes", () => {
     creatorEntity = await prisma.user.create({
       data: {
         username: "crasken",
-        email: "chase.gladish@gmail.com",
+        sub: "google-oauth2|116644327347918921624",
       },
     });
     snippetEntity = await prisma.snippet.create({

@@ -25,6 +25,7 @@
     "express-rate-limit": "^6.6.0",
     "hashids": "^2.2.10",
     "joi": "^17.6.2",
+    "jwks-rsa": "^2.1.4",
     "lodash": "^4.17.21",
     "rate-limit-redis": "^3.0.1",
     "redis": "^4.3.1"

@@ -8,7 +8,7 @@ import { pick } from "lodash";
 import { JoiExternalId, JoiString } from "../../joi";
 import comments from "./comments";
 import rateLimit from "../../middleware/rate-limit";
-import { withUser } from "../../middleware/require-auth";
+import { withUser } from "../../middleware/with-user";
 
 const router = express.Router();
 const validator = createValidator();

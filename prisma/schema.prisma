@@ -12,14 +12,14 @@ datasource db {
 
 model User {
   id        Int       @id @default(autoincrement())
-  email     String    @unique
+  sub       String    @unique
   username  String    @db.VarChar(50)
   snippets  Snippet[]
   comments  Comment[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 
-  @@index([email, username])
+  @@index([sub, username])
 }
 
 model App {

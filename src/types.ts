@@ -13,7 +13,7 @@ export type Request<
 > = _Request<P, ResBody, ReqBody, ReqQuery, Locals> & {
   prisma: ExtendedPrismaClient;
   auth?: JwtPayload & {
-    email?: string;
+    sub?: string;
   };
   user?: User | null;
 };
