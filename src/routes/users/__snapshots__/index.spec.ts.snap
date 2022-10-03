@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`apps routes GET / can get all apps 1`] = `
+[
+  {
+    "id": "zNrpboD",
+    "name": "Discord",
+  },
+  {
+    "id": "1erwMox",
+    "name": "Twitter",
+  },
+]
+`;
+
+exports[`apps routes GET /:id can get an app by external ID 1`] = `
+{
+  "id": "zNrpboD",
+  "name": "Discord",
+}
+`;

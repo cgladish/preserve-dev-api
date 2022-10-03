@@ -28,7 +28,11 @@ router.get("/", async (req: Request, res: Response<ExternalApp[]>, next) => {
 
 router.get(
   "/:id",
-  async (req: Request, res: Response<ExternalApp | null>, next) => {
+  async (
+    req: Request<{ id: string }>,
+    res: Response<ExternalApp | null>,
+    next
+  ) => {
     try {
       const externalId = req.params.id;
       const app = await req.prisma.app.findUnique({

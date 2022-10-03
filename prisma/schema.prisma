@@ -11,13 +11,14 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  sub       String    @unique
-  username  String    @db.VarChar(50)
-  snippets  Snippet[]
-  comments  Comment[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id          Int       @id @default(autoincrement())
+  sub         String    @unique
+  username    String    @unique @db.VarChar(50)
+  displayName String    @db.VarChar(50)
+  snippets    Snippet[]
+  comments    Comment[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@index([sub, username])
 }

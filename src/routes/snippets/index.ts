@@ -61,10 +61,14 @@ const entityToType = (
 });
 
 router.get(
-  "/:snippetId",
-  async (req: Request, res: Response<ExternalSnippet | null>, next) => {
+  "/:id",
+  async (
+    req: Request<{ id: string }>,
+    res: Response<ExternalSnippet | null>,
+    next
+  ) => {
     try {
-      const externalId = req.params.snippetId;
+      const externalId = req.params.id;
       const snippet = await req.prisma.snippet.findUnique({
         where: { id: req.prisma.snippet.externalIdToId(externalId) },
         include: {
