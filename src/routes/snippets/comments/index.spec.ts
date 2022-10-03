@@ -1,10 +1,8 @@
 import app from "../../../index";
 import prisma from "../../../prisma";
 import request from "supertest";
-import { set } from "lodash";
-import { randText } from "@ngneat/falso";
 import { App, Snippet, User, Comment } from "@prisma/client";
-import { PaginatedQueryParams } from ".";
+import { makeUser } from "../../../mockData";
 
 describe("comments routes", () => {
   let appEntity: App;
@@ -17,12 +15,7 @@ describe("comments routes", () => {
         name: "Discord",
       },
     });
-    creatorEntity = await prisma.user.create({
-      data: {
-        username: "crasken",
-        sub: "google-oauth2|116644327347918921624",
-      },
-    });
+    creatorEntity = await makeUser();
     snippetEntity = await prisma.snippet.create({
       data: {
         appId: appEntity.id,

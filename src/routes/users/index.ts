@@ -99,7 +99,7 @@ router.post(
   ) => {
     try {
       if (!req.auth?.sub) {
-        return res.status(401);
+        return res.sendStatus(401);
       }
       if (req.user) {
         return res.status(409).send("User already exists");
@@ -132,7 +132,7 @@ const updateUserSchema = Joi.object<UpdateUserInput>({
   displayName: JoiString.alphanum().required().max(50),
 });
 router.post(
-  "/",
+  "/update",
   rateLimit(
     "users-per-second",
     1000, // 1 second

@@ -9,6 +9,7 @@ import apps from "./routes/apps";
 import snippets from "./routes/snippets";
 import rateLimit from "./middleware/rate-limit";
 import { testJwtSecret } from "./mockData";
+import users from "./routes/users";
 
 dotenv.config();
 
@@ -61,9 +62,7 @@ app.use(express.json());
 
 app.use("/apps", apps);
 app.use("/snippets", snippets);
-app.get("/ping", (req: Request, res) => {
-  res.send(req.ip);
-});
+app.use("/users", users);
 
 if (!process.env.JEST_WORKER_ID) {
   app.listen(port, () => {

@@ -1,21 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`apps routes GET / can get all apps 1`] = `
-[
-  {
-    "id": "zNrpboD",
-    "name": "Discord",
-  },
-  {
-    "id": "1erwMox",
-    "name": "Twitter",
-  },
-]
+exports[`users routes GET /:id can get user by id 1`] = `
+{
+  "createdAt": "1970-01-01T00:00:00.010Z",
+  "displayName": "Crasken",
+  "id": "E21K9jm",
+  "username": "crasken",
+}
 `;
 
-exports[`apps routes GET /:id can get an app by external ID 1`] = `
+exports[`users routes GET /me can get current user 1`] = `
 {
-  "id": "zNrpboD",
-  "name": "Discord",
+  "createdAt": "1970-01-01T00:00:00.010Z",
+  "displayName": "Crasken",
+  "id": "E21K9jm",
+  "username": "crasken",
+}
+`;
+
+exports[`users routes GET /username/:username can get user by username 1`] = `
+{
+  "createdAt": "1970-01-01T00:00:00.010Z",
+  "displayName": "Crasken",
+  "id": "E21K9jm",
+  "username": "crasken",
+}
+`;
+
+exports[`users routes POST / can create a user 1`] = `
+{
+  "displayName": "Crasken",
+  "id": "E21K9jm",
+  "username": "crasken",
+}
+`;
+
+exports[`users routes POST / can create a user 2`] = `
+{
+  "displayName": "Crasken",
+  "id": 1,
+  "sub": "google-oauth2|116644327347918921624",
+  "username": "crasken",
 }
 `;

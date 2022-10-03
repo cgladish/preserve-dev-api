@@ -410,3 +410,15 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
   "views": 0,
 }
 `;
+
+exports[`snippets routes POST / can create a snippet with no auth 2`] = `
+{
+  "appId": 1,
+  "appSpecificDataJson": "{"key":"value"}",
+  "creatorId": null,
+  "id": 1,
+  "public": true,
+  "title": "Test snippet title",
+  "views": 0,
+}
+`;

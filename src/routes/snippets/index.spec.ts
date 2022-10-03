@@ -2,10 +2,10 @@ import app from "../../index";
 import prisma from "../../prisma";
 import request from "supertest";
 import { CreateSnippetInput } from ".";
-import { set } from "lodash";
+import { omit, set } from "lodash";
 import { randText } from "@ngneat/falso";
 import { App, User } from "@prisma/client";
-import { testJwt } from "../../mockData";
+import { makeUser, testJwt } from "../../mockData";
 
 describe("snippets routes", () => {
   let appEntity: App;
@@ -17,12 +17,7 @@ describe("snippets routes", () => {
         name: "Discord",
       },
     });
-    creatorEntity = await prisma.user.create({
-      data: {
-        username: "crasken",
-        sub: "google-oauth2|116644327347918921624",
-      },
-    });
+    creatorEntity = await makeUser();
   });
 
   describe("GET /:id", () => {
@@ -129,6 +124,12 @@ describe("snippets routes", () => {
         .send(input)
         .expect(201);
       expect(response.body).toMatchSnapshot();
+
+      const createdSnippets = await prisma.snippet.findMany();
+      expect(createdSnippets.length).toEqual(1);
+      expect(
+        omit(createdSnippets[0], "createdAt", "updatedAt")
+      ).toMatchSnapshot();
     });
 
     it("can create a snippet with auth", async () => {

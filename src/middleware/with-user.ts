@@ -11,10 +11,10 @@ export const withUser =
         });
       }
       if (required && !req.user) {
-        return res.sendStatus(401);
+        res.sendStatus(401);
       }
       next();
     } catch (err) {
-      res.sendStatus(500).send("Unable to fetch user info");
+      next(err);
     }
   };
