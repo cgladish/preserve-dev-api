@@ -12,13 +12,13 @@ import rateLimit from "../../middleware/rate-limit";
 const router = express.Router();
 const validator = createValidator();
 
-type ExternalUser = {
+export type ExternalUser = {
   id: string;
   username: string;
   displayName: string;
   createdAt: Date;
 };
-const entityToType = (
+export const entityToType = (
   prisma: ExtendedPrismaClient,
   user: User
 ): ExternalUser => ({

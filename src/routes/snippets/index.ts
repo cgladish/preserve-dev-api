@@ -2,7 +2,7 @@ import express, { Response } from "express";
 import * as Joi from "joi";
 import { createValidator } from "express-joi-validation";
 import { Request } from "../../types";
-import { App, Message, Snippet } from "@prisma/client";
+import { App, Message, Snippet, User } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../prisma";
 import { pick } from "lodash";
 import { JoiExternalId, JoiString } from "../../joi";
@@ -10,6 +10,7 @@ import comments from "./comments";
 import rateLimit from "../../middleware/rate-limit";
 import { withUser } from "../../middleware/with-user";
 import { ExternalApp, entityToType as appEntityToType } from "../apps";
+import { ExternalUser, entityToType as userEntityToType } from "../users";
 
 const router = express.Router();
 const validator = createValidator();
@@ -31,7 +32,7 @@ export type ExternalSnippet = {
   title: string | null;
   appSpecificDataJson: string | null;
   views: number;
-  creatorId: string | null;
+  creator: ExternalUser | null;
   app: ExternalApp;
   messages: ExternalMessage[];
   createdAt: Date;
@@ -39,6 +40,7 @@ export type ExternalSnippet = {
 const entityToType = (
   prisma: ExtendedPrismaClient,
   snippet: Snippet & {
+    creator: User | null;
     app: App;
     messages: Message[];
   }
@@ -52,9 +54,7 @@ const entityToType = (
     "createdAt"
   ),
   id: prisma.snippet.idToExternalId(snippet.id),
-  creatorId: snippet.creatorId
-    ? prisma.user.idToExternalId(snippet.creatorId)
-    : null,
+  creator: snippet.creator && userEntityToType(prisma, snippet.creator),
   app: appEntityToType(prisma, snippet.app),
   messages: snippet.messages.map((message) => ({
     ...pick(
@@ -85,6 +85,7 @@ router.get(
           messages: {
             orderBy: { sentAt: "asc" },
           },
+          creator: true,
           app: true,
         },
       });
@@ -179,6 +180,7 @@ router.post(
           messages: {
             orderBy: { sentAt: "asc" },
           },
+          creator: true,
           app: true,
         },
       });
