@@ -74,6 +74,7 @@ router.post(
         data: {
           views: { increment: 1 },
         },
+        select: null,
       });
       res.status(200);
     } catch (err) {
