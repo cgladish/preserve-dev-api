@@ -42,6 +42,7 @@ CREATE TABLE "Message" (
     "sentAt" TIMESTAMP(3) NOT NULL,
     "appSpecificDataJson" VARCHAR(2000),
     "authorUsername" VARCHAR(50) NOT NULL,
+    "authorIdentifier" VARCHAR(50),
     "authorAvatarUrl" VARCHAR(150),
     "snippetId" INTEGER NOT NULL,
 
