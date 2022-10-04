@@ -60,23 +60,21 @@ router.get(
 );
 
 router.post(
-  "/",
+  "/views",
   async (
     req: Request<{ snippetId: string }>,
     res: Response<ExternalSnippetInteraction | null>,
     next
   ) => {
     try {
-      await req.prisma.snippetInteraction.update({
-        where: {
-          snippetId: req.prisma.snippet.externalIdToId(req.params.snippetId),
-        },
-        data: {
-          views: { increment: 1 },
-        },
-        select: null,
-      });
-      res.status(200);
+      const result = await req.prisma
+        .$executeRaw`UPDATE "SnippetInteraction" SET "views" = "views" + 1 WHERE "snippetId" = ${req.prisma.snippet.externalIdToId(
+        req.params.snippetId
+      )}`;
+      if (result < 1) {
+        return res.sendStatus(404);
+      }
+      res.sendStatus(200);
     } catch (err) {
       next(err);
     }
