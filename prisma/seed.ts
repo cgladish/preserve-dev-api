@@ -6,9 +6,9 @@ async function main() {
   const appEntity = await prisma.app.create({ data: { name: "Discord" } });
   const userEntity = await prisma.user.create({
     data: {
-      username: "crasken",
-      displayName: "Crasken",
-      sub: "google-oauth2|116644327347918921624",
+      username: "preservedev",
+      displayName: "PreserveDev",
+      sub: "fake-sub",
     },
   });
   await prisma.snippet.create({
