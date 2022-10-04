@@ -18,6 +18,9 @@ async function main() {
       title: "Test snippet title",
       appSpecificDataJson: '{"key":"value"}',
       creatorId: userEntity.id,
+      interaction: {
+        create: {},
+      },
       messages: {
         create: [
           {

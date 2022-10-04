@@ -27,6 +27,7 @@ const modelNames: (keyof typeof prisma)[] = [
   "comment",
   "message",
   "snippet",
+  "snippetInteraction",
   "user",
 ];
 modelNames.forEach((modelName) =>
@@ -37,6 +38,7 @@ export type ExtendedPrismaClient = PrismaClient & {
   comment: PrismaClient["comment"] & IdUtils;
   message: PrismaClient["message"] & IdUtils;
   snippet: PrismaClient["snippet"] & IdUtils;
+  snippetInteraction: PrismaClient["snippetInteraction"] & IdUtils;
   user: PrismaClient["user"] & IdUtils;
 };
 export default prisma as ExtendedPrismaClient;

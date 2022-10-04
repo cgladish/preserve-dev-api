@@ -11,11 +11,13 @@ import rateLimit from "../../middleware/rate-limit";
 import { withUser } from "../../middleware/with-user";
 import { ExternalApp, entityToType as appEntityToType } from "../apps";
 import { ExternalUser, entityToType as userEntityToType } from "../users";
+import interaction from "./interaction";
 
 const router = express.Router();
 const validator = createValidator();
 
 router.use("/:snippetId/comments", comments);
+router.use("/:snippetId/interaction", interaction);
 
 export type ExternalMessage = {
   id: string;
@@ -31,7 +33,6 @@ export type ExternalSnippet = {
   public: boolean;
   title: string | null;
   appSpecificDataJson: string | null;
-  views: number;
   creator: ExternalUser | null;
   app: ExternalApp;
   messages: ExternalMessage[];
@@ -45,14 +46,7 @@ const entityToType = (
     messages: Message[];
   }
 ): ExternalSnippet => ({
-  ...pick(
-    snippet,
-    "public",
-    "title",
-    "appSpecificDataJson",
-    "views",
-    "createdAt"
-  ),
+  ...pick(snippet, "public", "title", "appSpecificDataJson", "createdAt"),
   id: prisma.snippet.idToExternalId(snippet.id),
   creator: snippet.creator && userEntityToType(prisma, snippet.creator),
   app: appEntityToType(prisma, snippet.app),
@@ -174,6 +168,9 @@ router.post(
               authorIdentifier: message.authorIdentifier,
               authorAvatarUrl: message.authorAvatarUrl,
             })),
+          },
+          interaction: {
+            create: {},
           },
         },
         include: {

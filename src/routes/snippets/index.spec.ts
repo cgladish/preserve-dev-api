@@ -47,7 +47,7 @@ describe("snippets routes", () => {
       const response = await request(app)
         .get(`/snippets/${prisma.snippet.idToExternalId(snippetEntity.id)}`)
         .expect(200);
-      expect(response.body).toMatchSnapshot();
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
     });
 
     it("returns 404 if no entity found", async () => {
@@ -122,7 +122,7 @@ describe("snippets routes", () => {
         .post("/snippets")
         .send(input)
         .expect(201);
-      expect(response.body).toMatchSnapshot();
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
 
       const createdSnippets = await prisma.snippet.findMany();
       expect(createdSnippets.length).toEqual(1);
@@ -154,7 +154,7 @@ describe("snippets routes", () => {
         .set("Authorization", `Bearer ${testJwt}`)
         .send(input)
         .expect(201);
-      expect(response.body).toMatchSnapshot();
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
     });
 
     it("can create a snippet with empty content message", async () => {
@@ -180,7 +180,7 @@ describe("snippets routes", () => {
         .set("Authorization", `Bearer ${testJwt}`)
         .send(input)
         .expect(201);
-      expect(response.body).toMatchSnapshot();
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
     });
   });
 });

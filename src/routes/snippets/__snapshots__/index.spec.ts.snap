@@ -7,7 +7,12 @@ exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
     "name": "Discord",
   },
   "appSpecificDataJson": "{"key":"value"}",
-  "creatorId": "E21K9jm",
+  "creator": {
+    "createdAt": "1970-01-01T00:00:00.010Z",
+    "displayName": "Crasken",
+    "id": "E21K9jm",
+    "username": "crasken",
+  },
   "id": "BQAYLpr",
   "messages": [
     {
@@ -22,7 +27,6 @@ exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
   ],
   "public": true,
   "title": "Test snippet title",
-  "views": 0,
 }
 `;
 
@@ -33,7 +37,12 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
     "name": "Discord",
   },
   "appSpecificDataJson": "{"key":"value"}",
-  "creatorId": "E21K9jm",
+  "creator": {
+    "createdAt": "1970-01-01T00:00:00.010Z",
+    "displayName": "Crasken",
+    "id": "E21K9jm",
+    "username": "crasken",
+  },
   "id": "BQAYLpr",
   "messages": [
     {
@@ -219,7 +228,6 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
   ],
   "public": true,
   "title": "Test snippet title",
-  "views": 0,
 }
 `;
 
@@ -230,7 +238,12 @@ exports[`snippets routes POST / can create a snippet with empty content message 
     "name": "Discord",
   },
   "appSpecificDataJson": "{"key":"value"}",
-  "creatorId": "E21K9jm",
+  "creator": {
+    "createdAt": "1970-01-01T00:00:00.010Z",
+    "displayName": "Crasken",
+    "id": "E21K9jm",
+    "username": "crasken",
+  },
   "id": "BQAYLpr",
   "messages": [
     {
@@ -245,7 +258,6 @@ exports[`snippets routes POST / can create a snippet with empty content message 
   ],
   "public": true,
   "title": "Test snippet title",
-  "views": 0,
 }
 `;
 
@@ -256,7 +268,7 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
     "name": "Discord",
   },
   "appSpecificDataJson": "{"key":"value"}",
-  "creatorId": null,
+  "creator": null,
   "id": "BQAYLpr",
   "messages": [
     {
@@ -442,7 +454,6 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
   ],
   "public": true,
   "title": "Test snippet title",
-  "views": 0,
 }
 `;
 
@@ -454,6 +465,5 @@ exports[`snippets routes POST / can create a snippet with no auth 2`] = `
   "id": 1,
   "public": true,
   "title": "Test snippet title",
-  "views": 0,
 }
 `;

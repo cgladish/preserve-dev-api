@@ -26,13 +26,23 @@ CREATE TABLE "Snippet" (
     "public" BOOLEAN NOT NULL DEFAULT false,
     "title" VARCHAR(50),
     "appSpecificDataJson" VARCHAR(1000),
-    "views" INTEGER NOT NULL DEFAULT 0,
     "creatorId" INTEGER,
     "appId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Snippet_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SnippetInteraction" (
+    "id" SERIAL NOT NULL,
+    "snippetId" INTEGER NOT NULL,
+    "views" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SnippetInteraction_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -70,11 +80,17 @@ CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 -- CreateIndex
 CREATE INDEX "User_sub_username_idx" ON "User"("sub", "username");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "SnippetInteraction_snippetId_key" ON "SnippetInteraction"("snippetId");
+
 -- AddForeignKey
 ALTER TABLE "Snippet" ADD CONSTRAINT "Snippet_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Snippet" ADD CONSTRAINT "Snippet_appId_fkey" FOREIGN KEY ("appId") REFERENCES "App"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SnippetInteraction" ADD CONSTRAINT "SnippetInteraction_snippetId_fkey" FOREIGN KEY ("snippetId") REFERENCES "Snippet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Message" ADD CONSTRAINT "Message_snippetId_fkey" FOREIGN KEY ("snippetId") REFERENCES "Snippet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
