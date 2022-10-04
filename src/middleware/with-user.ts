@@ -11,7 +11,7 @@ export const withUser =
         });
       }
       if (required && !req.user) {
-        res.sendStatus(401);
+        return res.sendStatus(401);
       }
       next();
     } catch (err) {

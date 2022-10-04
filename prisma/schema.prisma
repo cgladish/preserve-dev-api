@@ -51,9 +51,8 @@ model Message {
   id                  Int      @id @default(autoincrement())
   content             String   @db.VarChar(4000)
   sentAt              DateTime
-  appSpecificDataJson String?  @db.VarChar(1000)
+  appSpecificDataJson String?  @db.VarChar(2000)
   authorUsername      String   @db.VarChar(50)
-  authorIdentifier    String?  @db.VarChar(50)
   authorAvatarUrl     String?  @db.VarChar(150)
   snippet             Snippet  @relation(fields: [snippetId], references: [id])
   snippetId           Int

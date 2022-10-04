@@ -40,9 +40,8 @@ CREATE TABLE "Message" (
     "id" SERIAL NOT NULL,
     "content" VARCHAR(4000) NOT NULL,
     "sentAt" TIMESTAMP(3) NOT NULL,
-    "appSpecificDataJson" VARCHAR(1000),
+    "appSpecificDataJson" VARCHAR(2000),
     "authorUsername" VARCHAR(50) NOT NULL,
-    "authorIdentifier" VARCHAR(50),
     "authorAvatarUrl" VARCHAR(150),
     "snippetId" INTEGER NOT NULL,
 
