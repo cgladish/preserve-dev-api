@@ -10,6 +10,7 @@ import snippets from "./routes/snippets";
 import rateLimit from "./middleware/rate-limit";
 import { testJwtSecret } from "./mockData";
 import users from "./routes/users";
+import getRedisClient from "./redis";
 
 dotenv.config();
 
@@ -32,10 +33,6 @@ app.use(
     Number(process.env.RATE_LIMIT_PER_SECOND)
   )
 );
-app.use((req: Request, res, next) => {
-  req.prisma = prisma;
-  next();
-});
 app.use(
   expressjwt(
     process.env.JEST_WORKER_ID
@@ -58,6 +55,11 @@ app.use(
         }
   )
 );
+app.use(async (req: Request, res, next) => {
+  req.prisma = prisma;
+  req.redis = await getRedisClient();
+  next();
+});
 app.use(express.json());
 
 app.use("/apps", apps);

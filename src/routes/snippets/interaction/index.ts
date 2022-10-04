@@ -22,6 +22,7 @@ const entityToType = (
   snippetId: prisma.snippet.idToExternalId(interaction.snippetId),
 });
 
+const INTERACTION_REFRESH_RATE = 60; // 1 minute
 router.get(
   "/",
   async (
@@ -30,6 +31,12 @@ router.get(
     next
   ) => {
     try {
+      const redisKey = `snippet-interaction:${req.params.snippetId}`;
+      const cachedSnippetInteraction = await req.redis.get(redisKey);
+      if (cachedSnippetInteraction) {
+        return res.status(200).json(JSON.parse(cachedSnippetInteraction));
+      }
+
       const snippetInteraction = await req.prisma.snippetInteraction.findUnique(
         {
           where: {
@@ -40,7 +47,12 @@ router.get(
       if (!snippetInteraction) {
         return res.sendStatus(404);
       }
-      res.status(200).json(entityToType(req.prisma, snippetInteraction));
+      const externalEntity = entityToType(req.prisma, snippetInteraction);
+      res.status(200).json(externalEntity);
+
+      await req.redis.set(redisKey, JSON.stringify(externalEntity), {
+        EX: INTERACTION_REFRESH_RATE,
+      });
     } catch (err) {
       next(err);
     }
