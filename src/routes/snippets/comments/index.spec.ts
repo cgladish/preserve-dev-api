@@ -74,7 +74,17 @@ describe("comments routes", () => {
       const response = await request(app)
         .get(url)
         .query({
-          cursor: prisma.comment.idToExternalId(commentEntities[9].id),
+          cursor: prisma.comment.idToExternalId(commentEntities[19].id),
+        })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("finds last page correctly", async () => {
+      const response = await request(app)
+        .get(url)
+        .query({
+          cursor: prisma.comment.idToExternalId(commentEntities[39].id),
         })
         .expect(200);
       expect(response.body).toMatchSnapshot();

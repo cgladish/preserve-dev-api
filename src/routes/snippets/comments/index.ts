@@ -36,6 +36,7 @@ const entityToType = (
   },
 });
 
+const COMMENTS_PAGE_SIZE = 20;
 export type PaginatedQueryParams = {
   cursor?: string;
 };
@@ -47,7 +48,11 @@ router.get(
   validator.query(paginatedQuerySchema),
   async (
     req: Request<{ snippetId: string }, {}, {}, PaginatedQueryParams>,
-    res: Response<ExternalComment[]>,
+    res: Response<{
+      data: ExternalComment[];
+      totalCount: number;
+      isLastPage: boolean;
+    }>,
     next
   ) => {
     try {
@@ -55,19 +60,22 @@ router.get(
         req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
 
       const snippetExternalId = req.params.snippetId;
+      const totalCount = await req.prisma.comment.count();
       const comments = await req.prisma.comment.findMany({
         where: {
           snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
         },
         include: { creator: true },
         orderBy: { createdAt: "asc" },
-        take: 10,
+        take: COMMENTS_PAGE_SIZE + 1,
         skip: req.query.cursor ? 1 : undefined,
         cursor: cursor ? { id: cursor } : undefined,
       });
-      res
-        .status(200)
-        .json(comments.map((comment) => entityToType(req.prisma, comment)));
+      res.status(200).json({
+        data: comments.map((comment) => entityToType(req.prisma, comment)),
+        totalCount,
+        isLastPage: comments.length <= COMMENTS_PAGE_SIZE,
+      });
     } catch (err) {
       next(err);
     }
