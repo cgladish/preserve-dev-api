@@ -6,11 +6,14 @@ import { pick } from "lodash";
 
 const router = express.Router();
 
-type ExternalApp = {
+export type ExternalApp = {
   id: string;
   name: string;
 };
-const entityToType = (prisma: ExtendedPrismaClient, app: App): ExternalApp => ({
+export const entityToType = (
+  prisma: ExtendedPrismaClient,
+  app: App
+): ExternalApp => ({
   ...pick(app, "name"),
   id: prisma.app.idToExternalId(app.id),
 });

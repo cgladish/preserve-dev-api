@@ -60,7 +60,7 @@ router.get(
           snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
         },
         include: { creator: true },
-        orderBy: { id: "asc" },
+        orderBy: { createdAt: "asc" },
         take: 10,
         skip: req.query.cursor ? 1 : undefined,
         cursor: cursor ? { id: cursor } : undefined,

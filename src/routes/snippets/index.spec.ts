@@ -66,7 +66,6 @@ describe("snippets routes", () => {
       ["messages[0].sentAt", null],
       ["messages[0].authorUsername", null],
       ["appId", ""],
-      ["messages[0].content", ""],
       ["messages[0].authorUsername", ""],
       ["appId", randText({ charCount: 21 })],
       ["title", randText({ charCount: 51 })],
@@ -148,6 +147,32 @@ describe("snippets routes", () => {
             authorIdentifier: "1234",
             authorAvatarUrl: "http://example.com/123.png",
           })),
+      };
+
+      const response = await request(app)
+        .post("/snippets")
+        .set("Authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(201);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("can create a snippet with empty content message", async () => {
+      const input: CreateSnippetInput = {
+        appId: prisma.app.idToExternalId(appEntity.id),
+        public: true,
+        title: "Test snippet title",
+        appSpecificData: { key: "value" },
+        messages: [
+          {
+            content: ``,
+            sentAt: new Date(5),
+            appSpecificData: { key: `value` },
+            authorUsername: "Icyspawn",
+            authorIdentifier: "1234",
+            authorAvatarUrl: "http://example.com/123.png",
+          },
+        ],
       };
 
       const response = await request(app)

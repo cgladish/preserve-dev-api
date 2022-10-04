@@ -2,7 +2,10 @@
 
 exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
 {
-  "appId": "zNrpboD",
+  "app": {
+    "id": "zNrpboD",
+    "name": "Discord",
+  },
   "appSpecificDataJson": "{"key":"value"}",
   "creatorId": "E21K9jm",
   "id": "BQAYLpr",
@@ -25,7 +28,10 @@ exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
 
 exports[`snippets routes POST / can create a snippet with auth 1`] = `
 {
-  "appId": "zNrpboD",
+  "app": {
+    "id": "zNrpboD",
+    "name": "Discord",
+  },
   "appSpecificDataJson": "{"key":"value"}",
   "creatorId": "E21K9jm",
   "id": "BQAYLpr",
@@ -217,9 +223,38 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
 }
 `;
 
+exports[`snippets routes POST / can create a snippet with empty content message 1`] = `
+{
+  "app": {
+    "id": "zNrpboD",
+    "name": "Discord",
+  },
+  "appSpecificDataJson": "{"key":"value"}",
+  "creatorId": "E21K9jm",
+  "id": "BQAYLpr",
+  "messages": [
+    {
+      "appSpecificDataJson": "{"key":"value"}",
+      "authorAvatarUrl": "http://example.com/123.png",
+      "authorIdentifier": "1234",
+      "authorUsername": "Icyspawn",
+      "content": "",
+      "id": "1GX8zMN",
+      "sentAt": "1970-01-01T00:00:00.005Z",
+    },
+  ],
+  "public": true,
+  "title": "Test snippet title",
+  "views": 0,
+}
+`;
+
 exports[`snippets routes POST / can create a snippet with no auth 1`] = `
 {
-  "appId": "zNrpboD",
+  "app": {
+    "id": "zNrpboD",
+    "name": "Discord",
+  },
   "appSpecificDataJson": "{"key":"value"}",
   "creatorId": null,
   "id": "BQAYLpr",

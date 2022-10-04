@@ -2,20 +2,21 @@ import express, { Response } from "express";
 import * as Joi from "joi";
 import { createValidator } from "express-joi-validation";
 import { Request } from "../../types";
-import { Message, Snippet } from "@prisma/client";
+import { App, Message, Snippet } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../prisma";
 import { pick } from "lodash";
 import { JoiExternalId, JoiString } from "../../joi";
 import comments from "./comments";
 import rateLimit from "../../middleware/rate-limit";
 import { withUser } from "../../middleware/with-user";
+import { ExternalApp, entityToType as appEntityToType } from "../apps";
 
 const router = express.Router();
 const validator = createValidator();
 
 router.use("/:snippetId/comments", comments);
 
-type ExternalMessage = {
+export type ExternalMessage = {
   id: string;
   content: string;
   sentAt: string;
@@ -24,19 +25,20 @@ type ExternalMessage = {
   authorIdentifier: string | null;
   authorAvatarUrl: string | null;
 };
-type ExternalSnippet = {
+export type ExternalSnippet = {
   id: string;
   public: boolean;
   title: string | null;
   appSpecificDataJson: string | null;
   views: number;
   creatorId: string | null;
-  appId: string;
+  app: ExternalApp;
   messages: ExternalMessage[];
 };
 const entityToType = (
   prisma: ExtendedPrismaClient,
   snippet: Snippet & {
+    app: App;
     messages: Message[];
   }
 ): ExternalSnippet => ({
@@ -45,7 +47,7 @@ const entityToType = (
   creatorId: snippet.creatorId
     ? prisma.user.idToExternalId(snippet.creatorId)
     : null,
-  appId: prisma.app.idToExternalId(snippet.appId),
+  app: appEntityToType(prisma, snippet.app),
   messages: snippet.messages.map((message) => ({
     ...pick(
       message,
@@ -73,8 +75,9 @@ router.get(
         where: { id: req.prisma.snippet.externalIdToId(externalId) },
         include: {
           messages: {
-            orderBy: { id: "asc" },
+            orderBy: { sentAt: "asc" },
           },
+          app: true,
         },
       });
       if (!snippet) {
@@ -112,7 +115,7 @@ const createSnippetSchema = Joi.object<CreateSnippetInput>({
     .required()
     .items(
       Joi.object({
-        content: JoiString.max(4000).required(),
+        content: Joi.string().allow("").max(4000).required(),
         sentAt: Joi.date().required(),
         appSpecificData: Joi.object(),
         authorUsername: JoiString.max(50).required(),
@@ -164,7 +167,12 @@ router.post(
             })),
           },
         },
-        include: { messages: true },
+        include: {
+          messages: {
+            orderBy: { sentAt: "asc" },
+          },
+          app: true,
+        },
       });
       res.status(201).send(entityToType(req.prisma, snippet));
     } catch (err) {

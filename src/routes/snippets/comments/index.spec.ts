@@ -61,7 +61,7 @@ describe("comments routes", () => {
           })),
       });
       commentEntities = await prisma.comment.findMany({
-        orderBy: { id: "asc" },
+        orderBy: { createdAt: "asc" },
       });
     });
 
