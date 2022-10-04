@@ -34,6 +34,7 @@ export type ExternalSnippet = {
   creatorId: string | null;
   app: ExternalApp;
   messages: ExternalMessage[];
+  createdAt: Date;
 };
 const entityToType = (
   prisma: ExtendedPrismaClient,
@@ -42,7 +43,14 @@ const entityToType = (
     messages: Message[];
   }
 ): ExternalSnippet => ({
-  ...pick(snippet, "public", "title", "appSpecificDataJson", "views"),
+  ...pick(
+    snippet,
+    "public",
+    "title",
+    "appSpecificDataJson",
+    "views",
+    "createdAt"
+  ),
   id: prisma.snippet.idToExternalId(snippet.id),
   creatorId: snippet.creatorId
     ? prisma.user.idToExternalId(snippet.creatorId)
