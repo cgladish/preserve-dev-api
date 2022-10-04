@@ -83,6 +83,12 @@ CREATE INDEX "User_sub_username_idx" ON "User"("sub", "username");
 -- CreateIndex
 CREATE UNIQUE INDEX "SnippetInteraction_snippetId_key" ON "SnippetInteraction"("snippetId");
 
+-- CreateIndex
+CREATE INDEX "SnippetInteraction_snippetId_idx" ON "SnippetInteraction"("snippetId");
+
+-- CreateIndex
+CREATE INDEX "Comment_snippetId_idx" ON "Comment"("snippetId");
+
 -- AddForeignKey
 ALTER TABLE "Snippet" ADD CONSTRAINT "Snippet_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
