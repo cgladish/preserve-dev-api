@@ -7,6 +7,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 20",
       "createdAt": "1970-01-01T00:00:00.100Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -17,6 +19,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 21",
       "createdAt": "1970-01-01T00:00:00.105Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -27,6 +31,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 22",
       "createdAt": "1970-01-01T00:00:00.110Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -37,6 +43,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 23",
       "createdAt": "1970-01-01T00:00:00.115Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -47,6 +55,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 24",
       "createdAt": "1970-01-01T00:00:00.120Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -57,6 +67,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 25",
       "createdAt": "1970-01-01T00:00:00.125Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -67,6 +79,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 26",
       "createdAt": "1970-01-01T00:00:00.130Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -77,6 +91,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 27",
       "createdAt": "1970-01-01T00:00:00.135Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -87,6 +103,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 28",
       "createdAt": "1970-01-01T00:00:00.140Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -97,6 +115,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 29",
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -107,6 +127,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 30",
       "createdAt": "1970-01-01T00:00:00.150Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -117,6 +139,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 31",
       "createdAt": "1970-01-01T00:00:00.155Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -127,6 +151,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 32",
       "createdAt": "1970-01-01T00:00:00.160Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -137,6 +163,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 33",
       "createdAt": "1970-01-01T00:00:00.165Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -147,6 +175,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 34",
       "createdAt": "1970-01-01T00:00:00.170Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -157,6 +187,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 35",
       "createdAt": "1970-01-01T00:00:00.175Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -167,6 +199,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 36",
       "createdAt": "1970-01-01T00:00:00.180Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -177,6 +211,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 37",
       "createdAt": "1970-01-01T00:00:00.185Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -187,6 +223,8 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 38",
       "createdAt": "1970-01-01T00:00:00.190Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -197,21 +235,13 @@ exports[`comments routes GET / can get paginated comments after a cursor for a s
       "content": "Content 39",
       "createdAt": "1970-01-01T00:00:00.195Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
       "id": "VNkq2w1",
       "updatedAt": "1970-01-01T00:00:00.390Z",
-    },
-    {
-      "content": "Content 40",
-      "createdAt": "1970-01-01T00:00:00.200Z",
-      "creator": {
-        "id": "E21K9jm",
-        "username": "crasken",
-      },
-      "id": "PzrK8kN",
-      "updatedAt": "1970-01-01T00:00:00.400Z",
     },
   ],
   "isLastPage": false,
@@ -226,6 +256,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 0",
       "createdAt": "1970-01-01T00:00:00.000Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -236,6 +268,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 1",
       "createdAt": "1970-01-01T00:00:00.005Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -246,6 +280,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 2",
       "createdAt": "1970-01-01T00:00:00.010Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -256,6 +292,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 3",
       "createdAt": "1970-01-01T00:00:00.015Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -266,6 +304,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 4",
       "createdAt": "1970-01-01T00:00:00.020Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -276,6 +316,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 5",
       "createdAt": "1970-01-01T00:00:00.025Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -286,6 +328,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 6",
       "createdAt": "1970-01-01T00:00:00.030Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -296,6 +340,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 7",
       "createdAt": "1970-01-01T00:00:00.035Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -306,6 +352,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 8",
       "createdAt": "1970-01-01T00:00:00.040Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -316,6 +364,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 9",
       "createdAt": "1970-01-01T00:00:00.045Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -326,6 +376,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 10",
       "createdAt": "1970-01-01T00:00:00.050Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -336,6 +388,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 11",
       "createdAt": "1970-01-01T00:00:00.055Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -346,6 +400,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 12",
       "createdAt": "1970-01-01T00:00:00.060Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -356,6 +412,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 13",
       "createdAt": "1970-01-01T00:00:00.065Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -366,6 +424,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 14",
       "createdAt": "1970-01-01T00:00:00.070Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -376,6 +436,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 15",
       "createdAt": "1970-01-01T00:00:00.075Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -386,6 +448,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 16",
       "createdAt": "1970-01-01T00:00:00.080Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -396,6 +460,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 17",
       "createdAt": "1970-01-01T00:00:00.085Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -406,6 +472,8 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 18",
       "createdAt": "1970-01-01T00:00:00.090Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -416,21 +484,13 @@ exports[`comments routes GET / can get paginated comments for a snippet 1`] = `
       "content": "Content 19",
       "createdAt": "1970-01-01T00:00:00.095Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
       "id": "JAk1Bw2",
       "updatedAt": "1970-01-01T00:00:00.190Z",
-    },
-    {
-      "content": "Content 20",
-      "createdAt": "1970-01-01T00:00:00.100Z",
-      "creator": {
-        "id": "E21K9jm",
-        "username": "crasken",
-      },
-      "id": "PGr7pk2",
-      "updatedAt": "1970-01-01T00:00:00.200Z",
     },
   ],
   "isLastPage": false,
@@ -445,6 +505,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 40",
       "createdAt": "1970-01-01T00:00:00.200Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -455,6 +517,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 41",
       "createdAt": "1970-01-01T00:00:00.205Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -465,6 +529,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 42",
       "createdAt": "1970-01-01T00:00:00.210Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -475,6 +541,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 43",
       "createdAt": "1970-01-01T00:00:00.215Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -485,6 +553,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 44",
       "createdAt": "1970-01-01T00:00:00.220Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -495,6 +565,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 45",
       "createdAt": "1970-01-01T00:00:00.225Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -505,6 +577,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 46",
       "createdAt": "1970-01-01T00:00:00.230Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -515,6 +589,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 47",
       "createdAt": "1970-01-01T00:00:00.235Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -525,6 +601,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 48",
       "createdAt": "1970-01-01T00:00:00.240Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -535,6 +613,8 @@ exports[`comments routes GET / finds last page correctly 1`] = `
       "content": "Content 49",
       "createdAt": "1970-01-01T00:00:00.245Z",
       "creator": {
+        "createdAt": "1970-01-01T00:00:00.010Z",
+        "displayName": "Crasken",
         "id": "E21K9jm",
         "username": "crasken",
       },
@@ -551,6 +631,8 @@ exports[`comments routes POST / can create a comment 1`] = `
 {
   "content": "contented",
   "creator": {
+    "createdAt": "1970-01-01T00:00:00.010Z",
+    "displayName": "Crasken",
     "id": "E21K9jm",
     "username": "crasken",
   },

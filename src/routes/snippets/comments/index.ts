@@ -70,7 +70,9 @@ router.get(
         cursor: cursor ? { id: cursor } : undefined,
       });
       res.status(200).json({
-        data: comments.map((comment) => entityToType(req.prisma, comment)),
+        data: comments
+          .slice(0, COMMENTS_PAGE_SIZE)
+          .map((comment) => entityToType(req.prisma, comment)),
         totalCount,
         isLastPage: comments.length <= COMMENTS_PAGE_SIZE,
       });
