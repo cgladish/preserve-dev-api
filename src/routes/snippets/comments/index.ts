@@ -6,6 +6,7 @@ import { Comment, User } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../../prisma";
 import { pick } from "lodash";
 import { JoiExternalIdOptional, JoiString } from "../../../joi";
+import { entityToType as userEntityToType } from "../../users";
 import rateLimit from "../../../middleware/rate-limit";
 import { withUser } from "../../../middleware/with-user";
 
@@ -30,10 +31,7 @@ const entityToType = (
 ): ExternalComment => ({
   ...pick(comment, "content", "createdAt", "updatedAt"),
   id: prisma.comment.idToExternalId(comment.id),
-  creator: {
-    ...pick(comment.creator, "username"),
-    id: prisma.user.idToExternalId(comment.creator.id),
-  },
+  creator: userEntityToType(prisma, comment.creator),
 });
 
 const COMMENTS_PAGE_SIZE = 20;
