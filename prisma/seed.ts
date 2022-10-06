@@ -1,4 +1,6 @@
 import { PrismaClient } from "@prisma/client";
+import { randText } from "@ngneat/falso";
+import { randomInt } from "crypto";
 
 const prisma = new PrismaClient();
 
@@ -252,6 +254,38 @@ async function main() {
       },
     },
   });
+  for (let i = 0; i < 50; ++i) {
+    await prisma.snippet.create({
+      data: {
+        appId: appEntity.id,
+        public: true,
+        title: `Test snippet title ${i}`,
+        appSpecificDataJson: '{"key":"value"}',
+        creatorId: userEntity.id,
+        interaction: {
+          create: {
+            views: randomInt(30),
+          },
+        },
+        messages: {
+          create: new Array(randomInt(50)).fill(null).map(() => ({
+            content: randText({ charCount: randomInt(1, 2000) }),
+            sentAt: "2022-09-08T22:53:43.675000+00:00",
+            appSpecificDataJson: '{"attachments":[],"embeds":[]}',
+            authorUsername: randText({ charCount: randomInt(1, 30) }),
+            authorAvatarUrl:
+              "https://cdn.discordapp.com/avatars/91403530358775808/118670c2636c3ca9a045ad49a2b7d926",
+          })),
+        },
+        comments: {
+          create: new Array(randomInt(120)).fill(null).map(() => ({
+            content: randText({ charCount: randomInt(1, 2000) }),
+            creatorId: userEntity.id,
+          })),
+        },
+      },
+    });
+  }
 }
 
 main()
