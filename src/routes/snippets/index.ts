@@ -99,7 +99,7 @@ const SNIPPETS_PAGE_SIZE = 20;
 router.get(
   "/preview",
   async (
-    req: Request<{}, {}, {}, { cursor?: string }>,
+    req: Request<{}, {}, {}, { cursor?: string; creatorId?: string }>,
     res: Response<{
       data: ExternalSnippetPreview[];
       isLastPage: boolean;
@@ -109,7 +109,11 @@ router.get(
     try {
       const cursor =
         req.query.cursor && req.prisma.snippet.externalIdToId(req.query.cursor);
+      const creatorId =
+        req.query.creatorId &&
+        req.prisma.user.externalIdToId(req.query.creatorId);
       const snippets = await req.prisma.snippet.findMany({
+        where: creatorId ? { creatorId } : undefined,
         orderBy: { id: "desc" },
         take: SNIPPETS_PAGE_SIZE + 1,
         skip: req.query.cursor ? 1 : undefined,

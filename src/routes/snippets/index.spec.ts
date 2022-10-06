@@ -69,6 +69,61 @@ describe("snippets routes", () => {
       expect(response.body).toMatchSnapshot();
     });
 
+    it("can get when filtering by creator", async () => {
+      const otherCreatorEntity = await makeUser({
+        username: "bah",
+        displayName: "Bah",
+        sub: "wah",
+      });
+      for (let i = 0; i < 50; ++i) {
+        await prisma.snippet.create({
+          data: {
+            appId: appEntity.id,
+            public: true,
+            title: "eltit teppins tseT",
+            appSpecificDataJson: '{"key":"value"}',
+            creatorId: otherCreatorEntity.id,
+            messages: {
+              create: [
+                {
+                  content: `Content ${i}`,
+                  sentAt: new Date(10 * i).toISOString(),
+                  appSpecificDataJson: `{"key${i}":"value${i}"}`,
+                  authorUsername: "Icyspawn",
+                  authorIdentifier: "1234",
+                  authorAvatarUrl: "http://example.com/123.png",
+                },
+              ],
+            },
+            interaction: {
+              create: {},
+            },
+            comments: {
+              createMany: {
+                data: new Array(i).fill(null).map((_, j) => ({
+                  content: `Content ${j}`,
+                  creatorId: otherCreatorEntity.id,
+                  createdAt: new Date(7 * i),
+                })),
+              },
+            },
+            createdAt: new Date(5 * i),
+          },
+        });
+      }
+      let response = await request(app)
+        .get(`/snippets/preview`)
+        .query({ creatorId: prisma.user.idToExternalId(creatorEntity.id) })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+
+      response = await request(app)
+        .get(`/snippets/preview`)
+        .query({ creatorId: prisma.user.idToExternalId(otherCreatorEntity.id) })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
     it("can get paginated snippets after cursor", async () => {
       const response = await request(app)
         .get(`/snippets/preview`)
