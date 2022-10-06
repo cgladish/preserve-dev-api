@@ -4,7 +4,7 @@ import request from "supertest";
 import { CreateSnippetInput } from ".";
 import { omit, set } from "lodash";
 import { randText } from "@ngneat/falso";
-import { App, User } from "@prisma/client";
+import { App, Snippet, User } from "@prisma/client";
 import { makeUser, testJwt } from "../../mockData";
 
 describe("snippets routes", () => {
@@ -18,6 +18,76 @@ describe("snippets routes", () => {
       },
     });
     creatorEntity = await makeUser();
+  });
+
+  describe("GET /preview", () => {
+    let snippetEntities: Snippet[] = [];
+
+    beforeEach(async () => {
+      for (let i = 0; i < 50; ++i) {
+        snippetEntities.unshift(
+          await prisma.snippet.create({
+            data: {
+              appId: appEntity.id,
+              public: true,
+              title: "Test snippet title",
+              appSpecificDataJson: '{"key":"value"}',
+              creatorId: creatorEntity.id,
+              messages: {
+                create: [
+                  {
+                    content: `Content ${i}`,
+                    sentAt: new Date(10 * i).toISOString(),
+                    appSpecificDataJson: `{"key${i}":"value${i}"}`,
+                    authorUsername: "Icyspawn",
+                    authorIdentifier: "1234",
+                    authorAvatarUrl: "http://example.com/123.png",
+                  },
+                ],
+              },
+              interaction: {
+                create: {},
+              },
+              comments: {
+                createMany: {
+                  data: new Array(i).fill(null).map((_, j) => ({
+                    content: `Content ${j}`,
+                    creatorId: creatorEntity.id,
+                    createdAt: new Date(7 * i),
+                  })),
+                },
+              },
+              createdAt: new Date(5 * i),
+            },
+          })
+        );
+      }
+    });
+
+    it("can get paginated snippets", async () => {
+      const response = await request(app).get(`/snippets/preview`).expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("can get paginated snippets after cursor", async () => {
+      const response = await request(app)
+        .get(`/snippets/preview`)
+        .query({
+          cursor: prisma.snippet.idToExternalId(snippetEntities[19].id),
+        })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("can get last page of snippets", async () => {
+      const response = await request(app)
+        .get(`/snippets/preview`)
+        .query({
+          cursor: prisma.snippet.idToExternalId(snippetEntities[39].id),
+        })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
   });
 
   describe("GET /:id", () => {

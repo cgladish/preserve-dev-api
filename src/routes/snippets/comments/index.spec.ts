@@ -10,6 +10,7 @@ describe("comments routes", () => {
   let appEntity: App;
   let creatorEntity: User;
   let snippetEntity: Snippet;
+  let otherSnippetEntity: Snippet;
   let url: string;
 
   beforeEach(async () => {
@@ -40,6 +41,27 @@ describe("comments routes", () => {
         },
       },
     });
+    otherSnippetEntity = await prisma.snippet.create({
+      data: {
+        appId: appEntity.id,
+        public: true,
+        title: "Test snippet title 2",
+        appSpecificDataJson: '{"key2":"value2"}',
+        creatorId: creatorEntity.id,
+        messages: {
+          create: [
+            {
+              content: "Content2",
+              sentAt: new Date(10).toISOString(),
+              appSpecificDataJson: '{"key3":"value3"}',
+              authorUsername: "Icyspawn",
+              authorIdentifier: "1234",
+              authorAvatarUrl: "http://example.com/123.png",
+            },
+          ],
+        },
+      },
+    });
     url = `/snippets/${prisma.snippet.idToExternalId(
       snippetEntity.id
     )}/comments`;
@@ -62,6 +84,17 @@ describe("comments routes", () => {
       });
       commentEntities = await prisma.comment.findMany({
         orderBy: { createdAt: "asc" },
+      });
+      await prisma.comment.createMany({
+        data: Array(50)
+          .fill(null)
+          .map((_, index) => ({
+            content: `Content ${index}`,
+            creatorId: creatorEntity.id,
+            snippetId: otherSnippetEntity.id,
+            createdAt: new Date(index * 5),
+            updatedAt: new Date(index * 10),
+          })),
       });
     });
 

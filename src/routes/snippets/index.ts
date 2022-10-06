@@ -2,16 +2,25 @@ import express, { Response } from "express";
 import * as Joi from "joi";
 import { createValidator } from "express-joi-validation";
 import { Request } from "../../types";
-import { App, Message, Snippet, User } from "@prisma/client";
+import {
+  App,
+  Message,
+  Snippet,
+  SnippetInteraction,
+  User,
+} from "@prisma/client";
 import { ExtendedPrismaClient } from "../../prisma";
-import { pick } from "lodash";
-import { JoiExternalId, JoiString } from "../../joi";
+import { groupBy, keyBy, pick } from "lodash";
+import { JoiExternalId, JoiExternalIdOptional, JoiString } from "../../joi";
 import comments from "./comments";
 import rateLimit from "../../middleware/rate-limit";
 import { withUser } from "../../middleware/with-user";
 import { ExternalApp, entityToType as appEntityToType } from "../apps";
 import { ExternalUser, entityToType as userEntityToType } from "../users";
-import interaction from "./interaction";
+import interaction, {
+  ExternalSnippetInteraction,
+  entityToType as interactionEntityToType,
+} from "./interaction";
 
 const router = express.Router();
 const validator = createValidator();
@@ -38,6 +47,7 @@ export type ExternalSnippet = {
   messages: ExternalMessage[];
   createdAt: Date;
 };
+
 const entityToType = (
   prisma: ExtendedPrismaClient,
   snippet: Snippet & {
@@ -63,6 +73,76 @@ const entityToType = (
     sentAt: message.sentAt.toISOString(),
   })),
 });
+
+export type ExternalSnippetPreview = ExternalSnippet & {
+  interaction: ExternalSnippetInteraction | null;
+  totalComments: number;
+};
+
+export const previewEntityToType = (
+  prisma: ExtendedPrismaClient,
+  snippet: Snippet & {
+    creator: User | null;
+    app: App;
+    messages: Message[];
+    interaction: SnippetInteraction | null;
+    totalComments: number;
+  }
+): ExternalSnippetPreview => ({
+  ...entityToType(prisma, snippet),
+  ...pick(snippet, "totalComments"),
+  interaction:
+    snippet.interaction && interactionEntityToType(prisma, snippet.interaction),
+});
+
+const SNIPPETS_PAGE_SIZE = 20;
+router.get(
+  "/preview",
+  async (
+    req: Request<{}, {}, {}, { cursor?: string }>,
+    res: Response<{
+      data: ExternalSnippetPreview[];
+      isLastPage: boolean;
+    }>,
+    next
+  ) => {
+    try {
+      const cursor =
+        req.query.cursor && req.prisma.snippet.externalIdToId(req.query.cursor);
+      const snippets = await req.prisma.snippet.findMany({
+        orderBy: { id: "desc" },
+        take: SNIPPETS_PAGE_SIZE + 1,
+        skip: req.query.cursor ? 1 : undefined,
+        cursor: cursor ? { id: cursor } : undefined,
+        include: {
+          messages: {
+            orderBy: { sentAt: "asc" },
+          },
+          creator: true,
+          app: true,
+          interaction: true,
+        },
+      });
+      const commentCounts = await req.prisma.comment.groupBy({
+        by: ["snippetId"],
+        where: { snippetId: { in: snippets.map(({ id }) => id) } },
+        _count: true,
+      });
+      const commentCountsForSnippets = keyBy(commentCounts, "snippetId");
+      res.status(200).json({
+        data: snippets.map((snippet) =>
+          previewEntityToType(req.prisma, {
+            ...snippet,
+            totalComments: commentCountsForSnippets[snippet.id]?._count ?? 0,
+          })
+        ),
+        isLastPage: snippets.length <= SNIPPETS_PAGE_SIZE,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 router.get(
   "/:id",
@@ -179,6 +259,7 @@ router.post(
           },
           creator: true,
           app: true,
+          interaction: true,
         },
       });
       res.status(201).send(entityToType(req.prisma, snippet));

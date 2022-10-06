@@ -56,15 +56,16 @@ router.get(
     try {
       const cursor =
         req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
-
       const snippetExternalId = req.params.snippetId;
-      const totalCount = await req.prisma.comment.count();
+      const snippetId = req.prisma.snippet.externalIdToId(snippetExternalId);
+
+      const totalCount = await req.prisma.comment.count({
+        where: { snippetId },
+      });
       const comments = await req.prisma.comment.findMany({
-        where: {
-          snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
-        },
+        where: { snippetId },
         include: { creator: true },
-        orderBy: { createdAt: "asc" },
+        orderBy: { id: "asc" },
         take: COMMENTS_PAGE_SIZE + 1,
         skip: req.query.cursor ? 1 : undefined,
         cursor: cursor ? { id: cursor } : undefined,

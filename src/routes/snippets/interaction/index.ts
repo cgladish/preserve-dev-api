@@ -7,19 +7,13 @@ import { pick } from "lodash";
 const router = express.Router({ mergeParams: true });
 
 export type ExternalSnippetInteraction = {
-  id: string;
-  snippetId: string;
   views: number;
-  createdAt: Date;
-  updatedAt: Date;
 };
-const entityToType = (
+export const entityToType = (
   prisma: ExtendedPrismaClient,
   interaction: SnippetInteraction
 ): ExternalSnippetInteraction => ({
-  ...pick(interaction, "views", "createdAt", "updatedAt"),
-  id: prisma.snippetInteraction.idToExternalId(interaction.id),
-  snippetId: prisma.snippet.idToExternalId(interaction.snippetId),
+  ...pick(interaction, "views"),
 });
 
 const INTERACTION_REFRESH_RATE = 60; // 1 minute
@@ -31,11 +25,13 @@ router.get(
     next
   ) => {
     try {
+      /*
       const redisKey = `snippet-interaction:${req.params.snippetId}`;
       const cachedSnippetInteraction = await req.redis.get(redisKey);
       if (cachedSnippetInteraction) {
         return res.status(200).json(JSON.parse(cachedSnippetInteraction));
       }
+      */
 
       const snippetInteraction = await req.prisma.snippetInteraction.findUnique(
         {
@@ -50,9 +46,11 @@ router.get(
       const externalEntity = entityToType(req.prisma, snippetInteraction);
       res.status(200).json(externalEntity);
 
+      /*
       await req.redis.set(redisKey, JSON.stringify(externalEntity), {
         EX: INTERACTION_REFRESH_RATE,
       });
+      */
     } catch (err) {
       next(err);
     }
