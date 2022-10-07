@@ -259,7 +259,7 @@ async function main() {
       data: {
         appId: appEntity.id,
         public: true,
-        title: `Test snippet title ${i}`,
+        title: randText({ charCount: randomInt(1, 50) }),
         appSpecificDataJson: '{"key":"value"}',
         creatorId: userEntity.id,
         interaction: {
