@@ -314,7 +314,7 @@ const createTwitterSnippetSchema = Joi.object<CreateTwitterSnippetInput>({
   tweetIds: Joi.array().min(1).required().items(Joi.string().required()),
 });
 router.post(
-  "/",
+  "/twitter",
   rateLimit(
     "snippets-per-second",
     1000, // 1 second
@@ -333,14 +333,20 @@ router.post(
   ) => {
     try {
       const { tweetIds } = req.body;
-      const tweets = await retry(() =>
-        twitterClient.tweets.findTweetsById({
-          ids: tweetIds,
-          expansions: ["author_id"],
-          "user.fields": ["profile_image_url", "username"],
-          "tweet.fields": ["created_at", "text", "attachments"],
-        })
+      const tweets = await retry(
+        () =>
+          twitterClient.tweets.findTweetsById({
+            ids: tweetIds,
+            expansions: ["author_id"],
+            "user.fields": ["profile_image_url", "username"],
+            "tweet.fields": ["created_at", "text", "attachments"],
+          }),
+        { retries: 3 }
       );
+
+      if (!tweets.data?.length) {
+        return res.sendStatus(400);
+      }
 
       const snippet = await req.prisma.snippet.create({
         data: {
