@@ -25,14 +25,22 @@ describe("comments routes", () => {
         appId: appEntity.id,
         public: true,
         title: "Test snippet title",
-        appSpecificDataJson: '{"key":"value"}',
         creatorId: creatorEntity.id,
         messages: {
           create: [
             {
               content: "Content",
               sentAt: new Date(10).toISOString(),
-              appSpecificDataJson: '{"key2":"value2"}',
+              attachments: {
+                create: [
+                  {
+                    type: "photo",
+                    url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                    height: 599,
+                    width: 672,
+                  },
+                ],
+              },
               authorUsername: "Icyspawn",
               authorIdentifier: "1234",
               authorAvatarUrl: "http://example.com/123.png",
@@ -46,14 +54,22 @@ describe("comments routes", () => {
         appId: appEntity.id,
         public: true,
         title: "Test snippet title 2",
-        appSpecificDataJson: '{"key2":"value2"}',
         creatorId: creatorEntity.id,
         messages: {
           create: [
             {
               content: "Content2",
               sentAt: new Date(10).toISOString(),
-              appSpecificDataJson: '{"key3":"value3"}',
+              attachments: {
+                create: [
+                  {
+                    type: "photo",
+                    url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                    height: 599,
+                    width: 672,
+                  },
+                ],
+              },
               authorUsername: "Icyspawn",
               authorIdentifier: "1234",
               authorAvatarUrl: "http://example.com/123.png",

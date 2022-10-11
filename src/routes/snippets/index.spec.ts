@@ -31,14 +31,22 @@ describe("snippets routes", () => {
               appId: appEntity.id,
               public: true,
               title: "Test snippet title",
-              appSpecificDataJson: '{"key":"value"}',
               creatorId: creatorEntity.id,
               messages: {
                 create: [
                   {
                     content: `Content ${i}`,
                     sentAt: new Date(10 * i).toISOString(),
-                    appSpecificDataJson: `{"key${i}":"value${i}"}`,
+                    attachments: {
+                      create: [
+                        {
+                          type: "photo",
+                          url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                          height: 599,
+                          width: 672,
+                        },
+                      ],
+                    },
                     authorUsername: "Icyspawn",
                     authorIdentifier: "1234",
                     authorAvatarUrl: "http://example.com/123.png",
@@ -81,14 +89,22 @@ describe("snippets routes", () => {
             appId: appEntity.id,
             public: true,
             title: "eltit teppins tseT",
-            appSpecificDataJson: '{"key":"value"}',
             creatorId: otherCreatorEntity.id,
             messages: {
               create: [
                 {
                   content: `Content ${i}`,
                   sentAt: new Date(10 * i).toISOString(),
-                  appSpecificDataJson: `{"key${i}":"value${i}"}`,
+                  attachments: {
+                    create: [
+                      {
+                        type: "photo",
+                        url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                        height: 599,
+                        width: 672,
+                      },
+                    ],
+                  },
                   authorUsername: "Icyspawn",
                   authorIdentifier: "1234",
                   authorAvatarUrl: "http://example.com/123.png",
@@ -152,14 +168,22 @@ describe("snippets routes", () => {
           appId: appEntity.id,
           public: true,
           title: "Test snippet title",
-          appSpecificDataJson: '{"key":"value"}',
           creatorId: creatorEntity.id,
           messages: {
             create: [
               {
                 content: "Content",
                 sentAt: new Date(10).toISOString(),
-                appSpecificDataJson: '{"key2":"value2"}',
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
                 authorUsername: "Icyspawn",
                 authorIdentifier: "1234",
                 authorAvatarUrl: "http://example.com/123.png",
@@ -189,14 +213,22 @@ describe("snippets routes", () => {
           appId: appEntity.id,
           public: true,
           title: "Test snippet title",
-          appSpecificDataJson: '{"key":"value"}',
           creatorId: creatorEntity.id,
           messages: {
             create: [
               {
                 content: "Content",
                 sentAt: new Date(10).toISOString(),
-                appSpecificDataJson: '{"key2":"value2"}',
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
                 authorUsername: "Icyspawn",
                 authorIdentifier: "1234",
                 authorAvatarUrl: "http://example.com/123.png",
@@ -224,14 +256,22 @@ describe("snippets routes", () => {
           appId: appEntity.id,
           public: true,
           title: "Test snippet title",
-          appSpecificDataJson: '{"key":"value"}',
           creatorId: creatorEntity.id,
           messages: {
             create: [
               {
                 content: "Content",
                 sentAt: new Date(10).toISOString(),
-                appSpecificDataJson: '{"key2":"value2"}',
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
                 authorUsername: "Icyspawn",
                 authorIdentifier: "1234",
                 authorAvatarUrl: "http://example.com/123.png",
@@ -278,8 +318,9 @@ describe("snippets routes", () => {
       ["messages[0].authorIdentifier", randText({ charCount: 51 })],
       ["messages[0].authorAvatarUrl", randText({ charCount: 201 })],
       ["title", 123],
-      ["appSpecificData", "bad"],
-      ["messages[0].appSpecificData", "bad"],
+      ["messages[0].attachments", "bad"],
+      ["messages[0].attachments[0]", [{ type: "" }]],
+      ["messages[0].attachments[0]", [{ type: 123 }]],
       ["messages[0].authorIdentifier", 123],
       ["messages[0].authorAvatarUrl", 123],
     ])("returns a 400 if %s = %p", async (key, value) => {
@@ -287,12 +328,18 @@ describe("snippets routes", () => {
         appId: prisma.app.idToExternalId(1),
         public: true,
         title: "Test snippet title",
-        appSpecificData: { key: "value" },
         messages: [
           {
             content: "Content",
             sentAt: new Date(10),
-            appSpecificData: { key2: "value2" },
+            attachments: [
+              {
+                type: "photo",
+                url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                height: 599,
+                width: 672,
+              },
+            ],
             authorUsername: "Icyspawn",
             authorIdentifier: "1234",
             authorAvatarUrl: "http://example.com/123.png",
@@ -309,13 +356,19 @@ describe("snippets routes", () => {
         appId: prisma.app.idToExternalId(appEntity.id),
         public: true,
         title: "Test snippet title",
-        appSpecificData: { key: "value" },
         messages: Array(20)
           .fill(null)
           .map((_, index) => ({
             content: `Content ${index}`,
             sentAt: new Date(index * 5),
-            appSpecificData: { key: `value ${index}` },
+            attachments: [
+              {
+                type: "photo",
+                url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                height: 599,
+                width: 672,
+              },
+            ],
             authorUsername: "Icyspawn",
             authorIdentifier: "1234",
             authorAvatarUrl: "http://example.com/123.png",
@@ -340,13 +393,19 @@ describe("snippets routes", () => {
         appId: prisma.app.idToExternalId(appEntity.id),
         public: true,
         title: "Test snippet title",
-        appSpecificData: { key: "value" },
         messages: Array(20)
           .fill(null)
           .map((_, index) => ({
             content: `Content ${index}`,
             sentAt: new Date(index * 5),
-            appSpecificData: { key: `value ${index}` },
+            attachments: [
+              {
+                type: "photo",
+                url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                height: 599,
+                width: 672,
+              },
+            ],
             authorUsername: "Icyspawn",
             authorIdentifier: "1234",
             authorAvatarUrl: "http://example.com/123.png",
@@ -366,12 +425,18 @@ describe("snippets routes", () => {
         appId: prisma.app.idToExternalId(appEntity.id),
         public: true,
         title: "Test snippet title",
-        appSpecificData: { key: "value" },
         messages: [
           {
             content: ``,
             sentAt: new Date(5),
-            appSpecificData: { key: `value` },
+            attachments: [
+              {
+                type: "photo",
+                url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                height: 599,
+                width: 672,
+              },
+            ],
             authorUsername: "Icyspawn",
             authorIdentifier: "1234",
             authorAvatarUrl: "http://example.com/123.png",

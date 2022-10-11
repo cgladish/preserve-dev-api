@@ -6,6 +6,7 @@ import { Request } from "../../types";
 import {
   App,
   Message,
+  MessageAttachment,
   Snippet,
   SnippetInteraction,
   User,
@@ -30,11 +31,20 @@ const validator = createValidator();
 router.use("/:snippetId/comments", comments);
 router.use("/:snippetId/interaction", interaction);
 
+export type ExternalAttachment = {
+  id: string;
+  type: string;
+  filename: string | null;
+  url: string | null;
+  width: number | null;
+  height: number | null;
+  size: number | null;
+};
 export type ExternalMessage = {
   id: string;
   content: string;
   sentAt: string;
-  appSpecificDataJson: string | null;
+  attachments: ExternalAttachment[];
   authorUsername: string;
   authorIdentifier: string | null;
   authorAvatarUrl: string | null;
@@ -43,7 +53,6 @@ export type ExternalSnippet = {
   id: string;
   public: boolean;
   title: string | null;
-  appSpecificDataJson: string | null;
   creator: ExternalUser | null;
   app: ExternalApp;
   messages: ExternalMessage[];
@@ -55,10 +64,12 @@ const entityToType = (
   snippet: Snippet & {
     creator: User | null;
     app: App;
-    messages: Message[];
+    messages: (Message & {
+      attachments: MessageAttachment[];
+    })[];
   }
 ): ExternalSnippet => ({
-  ...pick(snippet, "public", "title", "appSpecificDataJson", "createdAt"),
+  ...pick(snippet, "public", "title", "createdAt"),
   id: prisma.snippet.idToExternalId(snippet.id),
   creator: snippet.creator && userEntityToType(prisma, snippet.creator),
   app: appEntityToType(prisma, snippet.app),
@@ -66,13 +77,16 @@ const entityToType = (
     ...pick(
       message,
       "content",
-      "appSpecificDataJson",
       "authorUsername",
       "authorIdentifier",
       "authorAvatarUrl"
     ),
     id: prisma.message.idToExternalId(message.id),
     sentAt: message.sentAt.toISOString(),
+    attachments: message.attachments.map((attachment) => ({
+      ...pick(attachment, "type", "filename", "url", "width", "height", "size"),
+      id: prisma.messageAttachment.idToExternalId(attachment.id),
+    })),
   })),
 });
 
@@ -86,7 +100,9 @@ export const previewEntityToType = (
   snippet: Snippet & {
     creator: User | null;
     app: App;
-    messages: Message[];
+    messages: (Message & {
+      attachments: MessageAttachment[];
+    })[];
     interaction: SnippetInteraction | null;
     totalComments: number;
   }
@@ -123,6 +139,9 @@ router.get(
         include: {
           messages: {
             orderBy: { sentAt: "asc" },
+            include: {
+              attachments: true,
+            },
           },
           creator: true,
           app: true,
@@ -164,6 +183,9 @@ router.get(
         include: {
           messages: {
             orderBy: { sentAt: "asc" },
+            include: {
+              attachments: true,
+            },
           },
           creator: true,
           app: true,
@@ -183,11 +205,16 @@ export type CreateSnippetInput = {
   appId: string;
   public: boolean;
   title?: string;
-  appSpecificData?: object;
   messages: {
     content: string;
     sentAt: Date;
-    appSpecificData?: object;
+    attachments?: {
+      type: string;
+      url?: string;
+      width?: number;
+      height?: number;
+      size?: number;
+    }[];
     authorUsername: string;
     authorIdentifier?: string;
     authorAvatarUrl?: string;
@@ -197,7 +224,6 @@ const createSnippetSchema = Joi.object<CreateSnippetInput>({
   appId: JoiExternalId,
   public: Joi.boolean().required(),
   title: JoiString.max(50),
-  appSpecificData: Joi.object(),
   messages: Joi.array()
     .min(1)
     .max(500)
@@ -206,7 +232,15 @@ const createSnippetSchema = Joi.object<CreateSnippetInput>({
       Joi.object({
         content: Joi.string().allow("").max(4000).required(),
         sentAt: Joi.date().required(),
-        appSpecificData: Joi.object(),
+        attachments: Joi.array().items(
+          Joi.object({
+            type: Joi.string().required(),
+            url: Joi.string(),
+            width: Joi.number().integer(),
+            height: Joi.number().integer(),
+            size: Joi.number().integer(),
+          })
+        ),
         authorUsername: JoiString.max(50).required(),
         authorIdentifier: JoiString.max(50),
         authorAvatarUrl: JoiString.max(200),
@@ -239,17 +273,14 @@ router.post(
           appId: req.prisma.app.externalIdToId(input.appId),
           public: input.public,
           title: input.title,
-          appSpecificDataJson: input.appSpecificData
-            ? JSON.stringify(input.appSpecificData)
-            : null,
           creatorId: req.user?.id ?? null,
           messages: {
             create: input.messages.map((message) => ({
               content: message.content,
               sentAt: message.sentAt,
-              appSpecificDataJson: message.appSpecificData
-                ? JSON.stringify(message.appSpecificData)
-                : null,
+              attachments: {
+                create: message.attachments,
+              },
               authorUsername: message.authorUsername,
               authorIdentifier: message.authorIdentifier,
               authorAvatarUrl: message.authorAvatarUrl,
@@ -262,6 +293,9 @@ router.post(
         include: {
           messages: {
             orderBy: { sentAt: "asc" },
+            include: {
+              attachments: true,
+            },
           },
           creator: true,
           app: true,
@@ -337,9 +371,10 @@ router.post(
         () =>
           twitterClient.tweets.findTweetsById({
             ids: tweetIds,
-            expansions: ["author_id"],
+            expansions: ["author_id", "attachments.media_keys"],
             "user.fields": ["profile_image_url", "username"],
             "tweet.fields": ["created_at", "text", "attachments"],
+            "media.fields": ["url", "type", "width", "height"],
           }),
         { retries: 3 }
       );
@@ -353,7 +388,6 @@ router.post(
           appId: Number(process.env.TWITTER_APP_ID!),
           public: false,
           title: null,
-          appSpecificDataJson: null,
           creatorId: null,
           messages: {
             create:
@@ -364,10 +398,22 @@ router.post(
                 return {
                   content: tweet.text,
                   sentAt: tweet.created_at!,
-                  appSpecificDataJson: JSON.stringify({
-                    attachments:
-                      tweets.data?.map(({ attachments }) => attachments) ?? [],
-                  }),
+                  attachments:
+                    tweet.attachments?.media_keys
+                      ?.map((mediaKey) => {
+                        const media = tweets.includes?.media?.find(
+                          ({ media_key }) => media_key === mediaKey
+                        );
+                        return (
+                          media && {
+                            type: media.type,
+                            url: (media as any).url,
+                            width: media.width,
+                            height: media.height,
+                          }
+                        );
+                      })
+                      .filter((attachment) => attachment) ?? [],
                   authorUsername: author?.username ?? "unknown",
                   authorIdentifier: null,
                   authorAvatarUrl: author?.profile_image_url,
@@ -381,6 +427,9 @@ router.post(
         include: {
           messages: {
             orderBy: { sentAt: "asc" },
+            include: {
+              attachments: true,
+            },
           },
           creator: true,
           app: true,

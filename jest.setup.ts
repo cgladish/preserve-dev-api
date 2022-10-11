@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 beforeEach(async () => {
   for (let tableName of [
     "Comment",
+    "MessageAttachment",
     "Message",
     "SnippetInteraction",
     "Snippet",

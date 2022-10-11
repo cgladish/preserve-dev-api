@@ -26,7 +26,6 @@ CREATE TABLE "Snippet" (
     "public" BOOLEAN NOT NULL DEFAULT false,
     "claimed" BOOLEAN NOT NULL DEFAULT false,
     "title" VARCHAR(50),
-    "appSpecificDataJson" VARCHAR(1000),
     "creatorId" INTEGER,
     "appId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -51,13 +50,26 @@ CREATE TABLE "Message" (
     "id" SERIAL NOT NULL,
     "content" VARCHAR(4000) NOT NULL,
     "sentAt" TIMESTAMP(3) NOT NULL,
-    "appSpecificDataJson" VARCHAR(2000),
     "authorUsername" VARCHAR(50) NOT NULL,
     "authorIdentifier" VARCHAR(50),
     "authorAvatarUrl" VARCHAR(150),
     "snippetId" INTEGER NOT NULL,
 
     CONSTRAINT "Message_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "MessageAttachment" (
+    "id" SERIAL NOT NULL,
+    "type" VARCHAR(20) NOT NULL,
+    "filename" VARCHAR(150),
+    "url" VARCHAR(150),
+    "width" INTEGER,
+    "height" INTEGER,
+    "size" INTEGER,
+    "messageId" INTEGER,
+
+    CONSTRAINT "MessageAttachment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -107,6 +119,9 @@ ALTER TABLE "SnippetInteraction" ADD CONSTRAINT "SnippetInteraction_snippetId_fk
 
 -- AddForeignKey
 ALTER TABLE "Message" ADD CONSTRAINT "Message_snippetId_fkey" FOREIGN KEY ("snippetId") REFERENCES "Snippet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "MessageAttachment" ADD CONSTRAINT "MessageAttachment_messageId_fkey" FOREIGN KEY ("messageId") REFERENCES "Message"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

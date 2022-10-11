@@ -32,20 +32,19 @@ model App {
 }
 
 model Snippet {
-  id                  Int                 @id @default(autoincrement())
-  public              Boolean             @default(false)
-  claimed             Boolean             @default(false)
-  title               String?             @db.VarChar(50)
-  appSpecificDataJson String?             @db.VarChar(1000)
-  creator             User?               @relation(fields: [creatorId], references: [id])
-  creatorId           Int?
-  app                 App                 @relation(fields: [appId], references: [id])
-  appId               Int
-  interaction         SnippetInteraction?
-  messages            Message[]
-  comments            Comment[]
-  createdAt           DateTime            @default(now())
-  updatedAt           DateTime            @updatedAt
+  id          Int                 @id @default(autoincrement())
+  public      Boolean             @default(false)
+  claimed     Boolean             @default(false)
+  title       String?             @db.VarChar(50)
+  creator     User?               @relation(fields: [creatorId], references: [id])
+  creatorId   Int?
+  app         App                 @relation(fields: [appId], references: [id])
+  appId       Int
+  interaction SnippetInteraction?
+  messages    Message[]
+  comments    Comment[]
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
 
   @@index([createdAt])
 }
@@ -62,17 +61,29 @@ model SnippetInteraction {
 }
 
 model Message {
-  id                  Int      @id @default(autoincrement())
-  content             String   @db.VarChar(4000)
-  sentAt              DateTime
-  appSpecificDataJson String?  @db.VarChar(2000)
-  authorUsername      String   @db.VarChar(50)
-  authorIdentifier    String?  @db.VarChar(50)
-  authorAvatarUrl     String?  @db.VarChar(150)
-  snippet             Snippet  @relation(fields: [snippetId], references: [id])
-  snippetId           Int
+  id               Int                 @id @default(autoincrement())
+  content          String              @db.VarChar(4000)
+  sentAt           DateTime
+  attachments      MessageAttachment[]
+  authorUsername   String              @db.VarChar(50)
+  authorIdentifier String?             @db.VarChar(50)
+  authorAvatarUrl  String?             @db.VarChar(150)
+  snippet          Snippet             @relation(fields: [snippetId], references: [id])
+  snippetId        Int
 
   @@index([sentAt])
+}
+
+model MessageAttachment {
+  id        Int      @id @default(autoincrement())
+  type      String   @db.VarChar(20)
+  filename  String?  @db.VarChar(150)
+  url       String?  @db.VarChar(150)
+  width     Int?
+  height    Int?
+  size      Int?
+  Message   Message? @relation(fields: [messageId], references: [id])
+  messageId Int?
 }
 
 model Comment {

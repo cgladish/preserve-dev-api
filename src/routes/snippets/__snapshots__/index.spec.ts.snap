@@ -6,7 +6,6 @@ exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
     "id": "zNrpboD",
     "name": "Discord",
   },
-  "appSpecificDataJson": "{"key":"value"}",
   "creator": {
     "createdAt": "1970-01-01T00:00:00.010Z",
     "displayName": "Crasken",
@@ -16,7 +15,17 @@ exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
   "id": "BQAYLpr",
   "messages": [
     {
-      "appSpecificDataJson": "{"key2":"value2"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "k8LOd59",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -38,7 +47,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.045Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -52,7 +60,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key9":"value9"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Jm576LO",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -70,7 +88,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.040Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -84,7 +101,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key8":"value8"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "ZqQn6Q6",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -102,7 +129,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.035Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -116,7 +142,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key7":"value7"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "kg5mgQ3",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -134,7 +170,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.030Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -148,7 +183,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key6":"value6"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Mn5vN5x",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -166,7 +211,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.025Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -180,7 +224,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key5":"value5"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "GB28mQb",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -198,7 +252,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.020Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -212,7 +265,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key4":"value4"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "mVQbe2b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -230,7 +293,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.015Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -244,7 +306,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key3":"value3"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "vz5aZ2p",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -262,7 +334,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.010Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -276,7 +347,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key2":"value2"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "BKLyK2N",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -294,7 +375,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.005Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -308,7 +388,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key1":"value1"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Ep5K35b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -326,7 +416,6 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.000Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -340,7 +429,17 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key0":"value0"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "k8LOd59",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -366,7 +465,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.245Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -380,7 +478,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key49":"value49"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "B28Gm5b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -398,7 +506,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.240Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -412,7 +519,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key48":"value48"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "VQbxe5b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -430,7 +547,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.235Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -444,7 +560,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key47":"value47"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "z5alZLp",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -462,7 +588,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.230Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -476,7 +601,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key46":"value46"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "KLy7K2N",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -494,7 +629,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.225Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -508,7 +642,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key45":"value45"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "p5Km3Qb",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -526,7 +670,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.220Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -540,7 +683,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key44":"value44"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "8LOdd59",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -558,7 +711,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.215Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -572,7 +724,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key43":"value43"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "75eEK5P",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -590,7 +752,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.210Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -604,7 +765,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key42":"value42"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "9PQPALp",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -622,7 +793,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.205Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -636,7 +806,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key41":"value41"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "VXQYJLl",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -654,7 +834,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.200Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -668,7 +847,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key40":"value40"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "lDQZGLZ",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -686,7 +875,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.195Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -700,7 +888,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key39":"value39"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "JnL0XLz",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -718,7 +916,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.190Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -732,7 +929,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key38":"value38"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "OGL9ALk",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -750,7 +957,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.185Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -764,7 +970,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key37":"value37"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "0Z5WaQ8",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -782,7 +998,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.180Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -796,7 +1011,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key36":"value36"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "pmQN92e",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -814,7 +1039,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.175Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -828,7 +1052,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key35":"value35"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "vn51Z2e",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -846,7 +1080,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.170Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -860,7 +1093,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key34":"value34"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "zX5RxQ9",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -878,7 +1121,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.165Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -892,7 +1134,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key33":"value33"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "wn5GjLK",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -910,7 +1162,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.160Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -924,7 +1175,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key32":"value32"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "YJ5DX57",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -942,7 +1203,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.155Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -956,7 +1216,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key31":"value31"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "1r5qR2k",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -974,7 +1244,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.150Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -988,7 +1257,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key30":"value30"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "7oLAdQV",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1006,7 +1285,6 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1020,7 +1298,17 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key29":"value29"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "o3LjO5v",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1046,7 +1334,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1060,7 +1347,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key29":"value29"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "o3LjO5v",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1078,7 +1375,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.140Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1092,7 +1388,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key28":"value28"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "YmQrWLa",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1110,7 +1416,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.135Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1124,7 +1429,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key27":"value27"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "MaQ3v2V",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1142,7 +1457,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.130Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1156,7 +1470,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key26":"value26"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Gy2wpQe",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1174,7 +1498,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.125Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1188,7 +1511,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key25":"value25"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "yPL6X2d",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1206,7 +1539,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.120Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1220,7 +1552,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key24":"value24"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "B72MZQJ",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1238,7 +1580,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.115Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1252,7 +1593,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key23":"value23"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "KzQglLm",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1270,7 +1621,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.110Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1284,7 +1634,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key22":"value22"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "aN2oaLy",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1302,7 +1662,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.105Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1316,7 +1675,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key21":"value21"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "xrLBaQg",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1334,7 +1703,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.100Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1348,7 +1716,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key20":"value20"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "gk2EkLm",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1366,7 +1744,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.095Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1380,7 +1757,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key19":"value19"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "kZQkpL1",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1398,7 +1785,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.090Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1412,7 +1798,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key18":"value18"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "meQlb5E",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1430,7 +1826,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.085Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1444,7 +1839,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key17":"value17"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Dz24o5Y",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1462,7 +1867,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.080Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1476,7 +1880,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key16":"value16"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "g3Qz92r",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1494,7 +1908,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.075Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1508,7 +1921,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key15":"value15"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Y1Lx0Lp",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1526,7 +1949,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.070Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1540,7 +1962,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key14":"value14"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "aWQdk24",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1558,7 +1990,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.065Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1572,7 +2003,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key13":"value13"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "MaLJ82N",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1590,7 +2031,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.060Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1604,7 +2044,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key12":"value12"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "zA5pY20",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1622,7 +2072,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.055Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1636,7 +2085,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key11":"value11"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "kq2Vm5d",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1654,7 +2113,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.050Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1668,7 +2126,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key10":"value10"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "y7QX32m",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1686,7 +2154,6 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.045Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1700,7 +2167,17 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key9":"value9"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Jm576LO",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1726,7 +2203,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.245Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1740,7 +2216,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key49":"value49"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "B28Gm5b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1758,7 +2244,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.240Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1772,7 +2257,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key48":"value48"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "VQbxe5b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1790,7 +2285,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.235Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1804,7 +2298,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key47":"value47"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "z5alZLp",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1822,7 +2326,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.230Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1836,7 +2339,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key46":"value46"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "KLy7K2N",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1854,7 +2367,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.225Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1868,7 +2380,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key45":"value45"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "p5Km3Qb",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1886,7 +2408,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.220Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1900,7 +2421,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key44":"value44"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "8LOdd59",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1918,7 +2449,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.215Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1932,7 +2462,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key43":"value43"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "75eEK5P",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1950,7 +2490,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.210Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1964,7 +2503,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key42":"value42"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "9PQPALp",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -1982,7 +2531,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.205Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1996,7 +2544,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key41":"value41"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "VXQYJLl",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2014,7 +2572,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.200Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2028,7 +2585,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key40":"value40"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "lDQZGLZ",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2046,7 +2613,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.195Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2060,7 +2626,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key39":"value39"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "JnL0XLz",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2078,7 +2654,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.190Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2092,7 +2667,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key38":"value38"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "OGL9ALk",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2110,7 +2695,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.185Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2124,7 +2708,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key37":"value37"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "0Z5WaQ8",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2142,7 +2736,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.180Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2156,7 +2749,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key36":"value36"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "pmQN92e",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2174,7 +2777,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.175Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2188,7 +2790,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key35":"value35"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "vn51Z2e",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2206,7 +2818,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.170Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2220,7 +2831,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key34":"value34"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "zX5RxQ9",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2238,7 +2859,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.165Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2252,7 +2872,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key33":"value33"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "wn5GjLK",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2270,7 +2900,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.160Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2284,7 +2913,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key32":"value32"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "YJ5DX57",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2302,7 +2941,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.155Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2316,7 +2954,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key31":"value31"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "1r5qR2k",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2334,7 +2982,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.150Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2348,7 +2995,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key30":"value30"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "7oLAdQV",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2366,7 +3023,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2380,7 +3036,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key29":"value29"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "o3LjO5v",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2406,7 +3072,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.245Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2420,7 +3085,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key49":"value49"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "75ePDLP",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2438,7 +3113,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.240Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2452,7 +3126,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key48":"value48"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "7QXr35m",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2470,7 +3154,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.235Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2484,7 +3167,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key47":"value47"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "m57v6LO",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2502,7 +3195,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.230Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2516,7 +3208,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key46":"value46"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "qQnX656",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2534,7 +3236,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.225Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2548,7 +3249,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key45":"value45"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "g5m7gQ3",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2566,7 +3277,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.220Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2580,7 +3290,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key44":"value44"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "n5vbN5x",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2598,7 +3318,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.215Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2612,7 +3331,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key43":"value43"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "B28Pm2b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2630,7 +3359,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.210Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2644,7 +3372,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key42":"value42"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "VQb3eLb",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2662,7 +3400,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.205Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2676,7 +3413,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key41":"value41"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "z5aNZ2p",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2694,7 +3441,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.200Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2708,7 +3454,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key40":"value40"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "KLyOK2N",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2726,7 +3482,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.195Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2740,7 +3495,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key39":"value39"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "p5K335b",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2758,7 +3523,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.190Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2772,7 +3536,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key38":"value38"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "8LOxd59",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2790,7 +3564,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.185Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2804,7 +3577,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key37":"value37"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "75ePKLP",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2822,7 +3605,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.180Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2836,7 +3618,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key36":"value36"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "PQPnA5p",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2854,7 +3646,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.175Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2868,7 +3659,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key35":"value35"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "XQYyJQl",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2886,7 +3687,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.170Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2900,7 +3700,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key34":"value34"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "DQZjGQZ",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2918,7 +3728,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.165Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2932,7 +3741,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key33":"value33"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "nL01X5z",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2950,7 +3769,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.160Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2964,7 +3782,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key32":"value32"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "GL91ALk",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -2982,7 +3810,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.155Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2996,7 +3823,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key31":"value31"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "Z5W1aQ8",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -3014,7 +3851,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.150Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3028,7 +3864,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key30":"value30"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "mQNA92e",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -3046,7 +3892,6 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
-      "appSpecificDataJson": "{"key":"value"}",
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3060,7 +3905,17 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
       },
       "messages": [
         {
-          "appSpecificDataJson": "{"key29":"value29"}",
+          "attachments": [
+            {
+              "filename": null,
+              "height": 599,
+              "id": "n51AZ5e",
+              "size": null,
+              "type": "photo",
+              "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+              "width": 672,
+            },
+          ],
           "authorAvatarUrl": "http://example.com/123.png",
           "authorIdentifier": "1234",
           "authorUsername": "Icyspawn",
@@ -3084,7 +3939,6 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
     "id": "zNrpboD",
     "name": "Discord",
   },
-  "appSpecificDataJson": "{"key":"value"}",
   "creator": {
     "createdAt": "1970-01-01T00:00:00.010Z",
     "displayName": "Crasken",
@@ -3094,7 +3948,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
   "id": "BQAYLpr",
   "messages": [
     {
-      "appSpecificDataJson": "{"key":"value 0"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "k8LOd59",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3103,7 +3967,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.000Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 1"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Ep5K35b",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3112,7 +3986,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.005Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 2"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "BKLyK2N",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3121,7 +4005,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.010Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 3"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "vz5aZ2p",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3130,7 +4024,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.015Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 4"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "mVQbe2b",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3139,7 +4043,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.020Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 5"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "GB28mQb",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3148,7 +4062,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.025Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 6"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Mn5vN5x",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3157,7 +4081,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.030Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 7"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "kg5mgQ3",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3166,7 +4100,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.035Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 8"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "ZqQn6Q6",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3175,7 +4119,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.040Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 9"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Jm576LO",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3184,7 +4138,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.045Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 10"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "y7QX32m",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3193,7 +4157,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.050Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 11"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "kq2Vm5d",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3202,7 +4176,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.055Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 12"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "zA5pY20",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3211,7 +4195,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.060Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 13"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "MaLJ82N",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3220,7 +4214,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.065Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 14"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "aWQdk24",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3229,7 +4233,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.070Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 15"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Y1Lx0Lp",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3238,7 +4252,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.075Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 16"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "g3Qz92r",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3247,7 +4271,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.080Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 17"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Dz24o5Y",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3256,7 +4290,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.085Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 18"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "meQlb5E",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3265,7 +4309,17 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.090Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 19"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "kZQkpL1",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3285,7 +4339,6 @@ exports[`snippets routes POST / can create a snippet with empty content message 
     "id": "zNrpboD",
     "name": "Discord",
   },
-  "appSpecificDataJson": "{"key":"value"}",
   "creator": {
     "createdAt": "1970-01-01T00:00:00.010Z",
     "displayName": "Crasken",
@@ -3295,7 +4348,17 @@ exports[`snippets routes POST / can create a snippet with empty content message 
   "id": "BQAYLpr",
   "messages": [
     {
-      "appSpecificDataJson": "{"key":"value"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "k8LOd59",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3315,12 +4378,21 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
     "id": "zNrpboD",
     "name": "Discord",
   },
-  "appSpecificDataJson": "{"key":"value"}",
   "creator": null,
   "id": "BQAYLpr",
   "messages": [
     {
-      "appSpecificDataJson": "{"key":"value 0"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "k8LOd59",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3329,7 +4401,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.000Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 1"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Ep5K35b",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3338,7 +4420,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.005Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 2"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "BKLyK2N",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3347,7 +4439,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.010Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 3"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "vz5aZ2p",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3356,7 +4458,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.015Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 4"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "mVQbe2b",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3365,7 +4477,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.020Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 5"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "GB28mQb",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3374,7 +4496,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.025Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 6"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Mn5vN5x",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3383,7 +4515,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.030Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 7"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "kg5mgQ3",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3392,7 +4534,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.035Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 8"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "ZqQn6Q6",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3401,7 +4553,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.040Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 9"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Jm576LO",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3410,7 +4572,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.045Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 10"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "y7QX32m",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3419,7 +4591,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.050Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 11"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "kq2Vm5d",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3428,7 +4610,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.055Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 12"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "zA5pY20",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3437,7 +4629,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.060Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 13"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "MaLJ82N",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3446,7 +4648,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.065Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 14"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "aWQdk24",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3455,7 +4667,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.070Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 15"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Y1Lx0Lp",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3464,7 +4686,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.075Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 16"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "g3Qz92r",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3473,7 +4705,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.080Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 17"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "Dz24o5Y",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3482,7 +4724,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.085Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 18"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "meQlb5E",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3491,7 +4743,17 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
       "sentAt": "1970-01-01T00:00:00.090Z",
     },
     {
-      "appSpecificDataJson": "{"key":"value 19"}",
+      "attachments": [
+        {
+          "filename": null,
+          "height": 599,
+          "id": "kZQkpL1",
+          "size": null,
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+          "width": 672,
+        },
+      ],
       "authorAvatarUrl": "http://example.com/123.png",
       "authorIdentifier": "1234",
       "authorUsername": "Icyspawn",
@@ -3508,7 +4770,6 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
 exports[`snippets routes POST / can create a snippet with no auth 2`] = `
 {
   "appId": 1,
-  "appSpecificDataJson": "{"key":"value"}",
   "claimed": false,
   "creatorId": null,
   "id": 1,
@@ -3520,7 +4781,6 @@ exports[`snippets routes POST / can create a snippet with no auth 2`] = `
 exports[`snippets routes POST /:id/claim can claim a snippet by external ID 1`] = `
 {
   "appId": 1,
-  "appSpecificDataJson": "{"key":"value"}",
   "claimed": true,
   "creatorId": 1,
   "id": 1,
@@ -3532,7 +4792,6 @@ exports[`snippets routes POST /:id/claim can claim a snippet by external ID 1`] 
 exports[`snippets routes POST /:id/claim can claim a snippet by external ID when authorized 1`] = `
 {
   "appId": 1,
-  "appSpecificDataJson": "{"key":"value"}",
   "claimed": true,
   "creatorId": 1,
   "id": 1,
