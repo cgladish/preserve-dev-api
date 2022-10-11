@@ -1,6 +1,7 @@
 import express, { Response } from "express";
 import * as Joi from "joi";
 import { createValidator } from "express-joi-validation";
+import retry from "async-retry";
 import { Request } from "../../types";
 import {
   App,
@@ -10,8 +11,9 @@ import {
   User,
 } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../prisma";
-import { groupBy, keyBy, pick } from "lodash";
-import { JoiExternalId, JoiExternalIdOptional, JoiString } from "../../joi";
+import { keyBy, pick } from "lodash";
+import { Client } from "twitter-api-sdk";
+import { JoiExternalId, JoiString } from "../../joi";
 import comments from "./comments";
 import rateLimit from "../../middleware/rate-limit";
 import { withUser } from "../../middleware/with-user";
@@ -252,6 +254,119 @@ router.post(
               authorIdentifier: message.authorIdentifier,
               authorAvatarUrl: message.authorAvatarUrl,
             })),
+          },
+          interaction: {
+            create: {},
+          },
+        },
+        include: {
+          messages: {
+            orderBy: { sentAt: "asc" },
+          },
+          creator: true,
+          app: true,
+          interaction: true,
+        },
+      });
+      res.status(201).send(entityToType(req.prisma, snippet));
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.post(
+  "/:id/claim",
+  rateLimit(
+    "snippets-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "snippets-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    1000
+  ),
+  withUser(),
+  async (
+    req: Request<{ id: string }>,
+    res: Response<ExternalSnippet>,
+    next
+  ) => {
+    try {
+      const externalId = req.params.id;
+      await req.prisma.snippet.update({
+        where: { id: req.prisma.snippet.externalIdToId(externalId) },
+        data: { creatorId: req.user && req.user.id, claimed: true },
+      });
+      res.sendStatus(200);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+const twitterClient = new Client(process.env.TWITTER_BEARER_TOKEN!);
+export type CreateTwitterSnippetInput = {
+  tweetIds: string[];
+};
+const createTwitterSnippetSchema = Joi.object<CreateTwitterSnippetInput>({
+  tweetIds: Joi.array().min(1).required().items(Joi.string().required()),
+});
+router.post(
+  "/",
+  rateLimit(
+    "snippets-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "snippets-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    1000
+  ),
+  validator.body(createTwitterSnippetSchema),
+  async (
+    req: Request<{}, {}, CreateTwitterSnippetInput>,
+    res: Response<ExternalSnippet>,
+    next
+  ) => {
+    try {
+      const { tweetIds } = req.body;
+      const tweets = await retry(() =>
+        twitterClient.tweets.findTweetsById({
+          ids: tweetIds,
+          expansions: ["author_id"],
+          "user.fields": ["profile_image_url", "username"],
+          "tweet.fields": ["created_at", "text", "attachments"],
+        })
+      );
+
+      const snippet = await req.prisma.snippet.create({
+        data: {
+          appId: Number(process.env.TWITTER_APP_ID!),
+          public: false,
+          title: null,
+          appSpecificDataJson: null,
+          creatorId: null,
+          messages: {
+            create:
+              tweets.data?.map((tweet) => {
+                const author = tweets.includes?.users?.find(
+                  ({ id }) => id === tweet.author_id
+                );
+                return {
+                  content: tweet.text,
+                  sentAt: tweet.created_at!,
+                  appSpecificDataJson: JSON.stringify({
+                    attachments:
+                      tweets.data?.map(({ attachments }) => attachments) ?? [],
+                  }),
+                  authorUsername: author?.username ?? "unknown",
+                  authorIdentifier: null,
+                  authorAvatarUrl: author?.profile_image_url,
+                };
+              }) ?? [],
           },
           interaction: {
             create: {},

@@ -24,6 +24,7 @@ CREATE TABLE "App" (
 CREATE TABLE "Snippet" (
     "id" SERIAL NOT NULL,
     "public" BOOLEAN NOT NULL DEFAULT false,
+    "claimed" BOOLEAN NOT NULL DEFAULT false,
     "title" VARCHAR(50),
     "appSpecificDataJson" VARCHAR(1000),
     "creatorId" INTEGER,

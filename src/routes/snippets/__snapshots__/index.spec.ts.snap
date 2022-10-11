@@ -3509,7 +3509,32 @@ exports[`snippets routes POST / can create a snippet with no auth 2`] = `
 {
   "appId": 1,
   "appSpecificDataJson": "{"key":"value"}",
+  "claimed": false,
   "creatorId": null,
+  "id": 1,
+  "public": true,
+  "title": "Test snippet title",
+}
+`;
+
+exports[`snippets routes POST /:id/claim can claim a snippet by external ID 1`] = `
+{
+  "appId": 1,
+  "appSpecificDataJson": "{"key":"value"}",
+  "claimed": true,
+  "creatorId": 1,
+  "id": 1,
+  "public": true,
+  "title": "Test snippet title",
+}
+`;
+
+exports[`snippets routes POST /:id/claim can claim a snippet by external ID when authorized 1`] = `
+{
+  "appId": 1,
+  "appSpecificDataJson": "{"key":"value"}",
+  "claimed": true,
+  "creatorId": 1,
   "id": 1,
   "public": true,
   "title": "Test snippet title",

@@ -182,6 +182,85 @@ describe("snippets routes", () => {
     });
   });
 
+  describe("POST /:id/claim", () => {
+    it("can claim a snippet by external ID", async () => {
+      const snippetEntity = await prisma.snippet.create({
+        data: {
+          appId: appEntity.id,
+          public: true,
+          title: "Test snippet title",
+          appSpecificDataJson: '{"key":"value"}',
+          creatorId: creatorEntity.id,
+          messages: {
+            create: [
+              {
+                content: "Content",
+                sentAt: new Date(10).toISOString(),
+                appSpecificDataJson: '{"key2":"value2"}',
+                authorUsername: "Icyspawn",
+                authorIdentifier: "1234",
+                authorAvatarUrl: "http://example.com/123.png",
+              },
+            ],
+          },
+        },
+      });
+
+      await request(app)
+        .post(
+          `/snippets/${prisma.snippet.idToExternalId(snippetEntity.id)}/claim`
+        )
+        .expect(200);
+
+      const updatedSnippet = await prisma.snippet.findUnique({
+        where: { id: snippetEntity.id },
+      });
+      expect(omit(updatedSnippet, "createdAt", "updatedAt")).toMatchSnapshot();
+    });
+
+    it("can claim a snippet by external ID when authorized", async () => {
+      const snippetEntity = await prisma.snippet.create({
+        data: {
+          appId: appEntity.id,
+          public: true,
+          title: "Test snippet title",
+          appSpecificDataJson: '{"key":"value"}',
+          creatorId: creatorEntity.id,
+          messages: {
+            create: [
+              {
+                content: "Content",
+                sentAt: new Date(10).toISOString(),
+                appSpecificDataJson: '{"key2":"value2"}',
+                authorUsername: "Icyspawn",
+                authorIdentifier: "1234",
+                authorAvatarUrl: "http://example.com/123.png",
+              },
+            ],
+          },
+        },
+      });
+
+      await request(app)
+        .post(
+          `/snippets/${prisma.snippet.idToExternalId(snippetEntity.id)}/claim`
+        )
+        .set("Authorization", `Bearer ${testJwt}`)
+        .expect(200);
+
+      const updatedSnippet = await prisma.snippet.findUnique({
+        where: { id: snippetEntity.id },
+      });
+      expect(omit(updatedSnippet, "createdAt", "updatedAt")).toMatchSnapshot();
+    });
+
+    it("returns 500 if no entity found", async () => {
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}/claim`)
+        .expect(500);
+    });
+  });
+
   describe("POST /", () => {
     it.each([
       ["appId", null],

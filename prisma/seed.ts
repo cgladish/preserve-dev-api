@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   const appEntity = await prisma.app.create({ data: { name: "Discord" } });
+  await prisma.app.create({ data: { name: "Twitter" } });
   const userEntity = await prisma.user.create({
     data: {
       username: "preservedev",
