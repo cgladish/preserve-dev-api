@@ -1,7 +1,7 @@
 import app from "../../index";
 import prisma from "../../prisma";
 import request from "supertest";
-import { CreateSnippetInput } from ".";
+import { CreateSnippetInput, UpdateSnippetInput } from ".";
 import { omit, set } from "lodash";
 import { randText } from "@ngneat/falso";
 import { App, Snippet, User } from "@prisma/client";
@@ -199,6 +199,44 @@ describe("snippets routes", () => {
       expect(omit(response.body, "createdAt")).toMatchSnapshot();
     });
 
+    it("can get a full snippet by external ID", async () => {
+      const snippetEntity = await prisma.snippet.create({
+        data: {
+          appId: appEntity.id,
+          public: true,
+          title: "Test snippet title",
+          creatorId: creatorEntity.id,
+          messages: {
+            create: [
+              {
+                content: "Content",
+                sentAt: new Date(10).toISOString(),
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
+                authorUsername: "Icyspawn",
+                authorIdentifier: "1234",
+                authorAvatarUrl: "http://example.com/123.png",
+              },
+            ],
+          },
+        },
+      });
+
+      const response = await request(app)
+        .get(`/snippets/${prisma.snippet.idToExternalId(snippetEntity.id)}`)
+        .query({ full: true })
+        .expect(200);
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
+    });
+
     it("returns 404 if no entity found", async () => {
       await request(app)
         .get(`/snippets/${prisma.snippet.idToExternalId(1)}`)
@@ -294,10 +332,49 @@ describe("snippets routes", () => {
       expect(omit(updatedSnippet, "createdAt", "updatedAt")).toMatchSnapshot();
     });
 
-    it("returns 500 if no entity found", async () => {
+    it("can't claim an already claimed snippet", async () => {
+      const snippetEntity = await prisma.snippet.create({
+        data: {
+          appId: appEntity.id,
+          public: true,
+          title: "Test snippet title",
+          creatorId: creatorEntity.id,
+          claimed: true,
+          messages: {
+            create: [
+              {
+                content: "Content",
+                sentAt: new Date(10).toISOString(),
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
+                authorUsername: "Icyspawn",
+                authorIdentifier: "1234",
+                authorAvatarUrl: "http://example.com/123.png",
+              },
+            ],
+          },
+        },
+      });
+
+      await request(app)
+        .post(
+          `/snippets/${prisma.snippet.idToExternalId(snippetEntity.id)}/claim`
+        )
+        .expect(401);
+    });
+
+    it("returns 404 if no entity found", async () => {
       await request(app)
         .post(`/snippets/${prisma.snippet.idToExternalId(1)}/claim`)
-        .expect(500);
+        .expect(404);
     });
   });
 
@@ -450,6 +527,132 @@ describe("snippets routes", () => {
         .send(input)
         .expect(201);
       expect(omit(response.body, "createdAt")).toMatchSnapshot();
+    });
+  });
+
+  describe("POST /:id", () => {
+    beforeEach(async () => {
+      await prisma.snippet.create({
+        data: {
+          appId: appEntity.id,
+          public: false,
+          title: "Test snippet title",
+          creatorId: creatorEntity.id,
+          messages: {
+            create: [
+              {
+                content: "Content",
+                sentAt: new Date(10).toISOString(),
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
+                authorUsername: "Icyspawn",
+                authorIdentifier: "1234",
+                authorAvatarUrl: "http://example.com/123.png",
+              },
+            ],
+          },
+        },
+      });
+    });
+
+    it.each([
+      ["public", "asdf"],
+      ["title", 123],
+    ])("returns a 400 if %s = %p", async (key, value) => {
+      const input: UpdateSnippetInput = {
+        public: true,
+        title: "Test snippet title",
+      };
+      set(input, key, value);
+
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}`)
+        .set("Authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(400);
+    });
+
+    it("returns a 401 if unauthorized", async () => {
+      const input: UpdateSnippetInput = {
+        title: "Test snippet title",
+      };
+
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}`)
+        .send(input)
+        .expect(401);
+    });
+
+    it("returns a 404 if snippet does not exist", async () => {
+      const input: UpdateSnippetInput = {
+        title: "Test snippet title",
+      };
+
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(2)}`)
+        .set("Authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(404);
+    });
+
+    it("returns a 400 if snippet has been made public", async () => {
+      await prisma.snippet.update({
+        where: { id: 1 },
+        data: { public: true },
+      });
+      const input: UpdateSnippetInput = {
+        title: "Test snippet title",
+      };
+
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}`)
+        .set("Authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(400);
+    });
+
+    it("can update a snippet title", async () => {
+      const input: UpdateSnippetInput = {
+        title: "Test snippet title",
+      };
+      const response = await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}`)
+        .set("Authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(200);
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
+
+      const updatedSnippets = await prisma.snippet.findMany();
+      expect(updatedSnippets.length).toEqual(1);
+      expect(
+        omit(updatedSnippets[0], "createdAt", "updatedAt")
+      ).toMatchSnapshot();
+    });
+
+    it("can make a snippet public", async () => {
+      const input: UpdateSnippetInput = {
+        public: true,
+      };
+      const response = await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}`)
+        .set("Authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(200);
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
+
+      const updatedSnippets = await prisma.snippet.findMany();
+      expect(updatedSnippets.length).toEqual(1);
+      expect(
+        omit(updatedSnippets[0], "createdAt", "updatedAt")
+      ).toMatchSnapshot();
     });
   });
 });

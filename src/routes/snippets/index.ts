@@ -44,7 +44,7 @@ export type ExternalMessage = {
   id: string;
   content: string;
   sentAt: string;
-  attachments: ExternalAttachment[];
+  attachments: ExternalAttachment[] | null;
   authorUsername: string;
   authorIdentifier: string | null;
   authorAvatarUrl: string | null;
@@ -52,42 +52,57 @@ export type ExternalMessage = {
 export type ExternalSnippet = {
   id: string;
   public: boolean;
+  claimed: boolean;
   title: string | null;
+  creatorId: string | null;
   creator: ExternalUser | null;
-  app: ExternalApp;
-  messages: ExternalMessage[];
+  app: ExternalApp | null;
+  messages: ExternalMessage[] | null;
   createdAt: Date;
 };
 
 const entityToType = (
   prisma: ExtendedPrismaClient,
   snippet: Snippet & {
-    creator: User | null;
-    app: App;
-    messages: (Message & {
-      attachments: MessageAttachment[];
+    creator?: User | null;
+    app?: App;
+    messages?: (Message & {
+      attachments?: MessageAttachment[];
     })[];
   }
 ): ExternalSnippet => ({
-  ...pick(snippet, "public", "title", "createdAt"),
+  ...pick(snippet, "public", "claimed", "title", "createdAt"),
   id: prisma.snippet.idToExternalId(snippet.id),
-  creator: snippet.creator && userEntityToType(prisma, snippet.creator),
-  app: appEntityToType(prisma, snippet.app),
-  messages: snippet.messages.map((message) => ({
-    ...pick(
-      message,
-      "content",
-      "authorUsername",
-      "authorIdentifier",
-      "authorAvatarUrl"
-    ),
-    id: prisma.message.idToExternalId(message.id),
-    sentAt: message.sentAt.toISOString(),
-    attachments: message.attachments.map((attachment) => ({
-      ...pick(attachment, "type", "filename", "url", "width", "height", "size"),
-      id: prisma.messageAttachment.idToExternalId(attachment.id),
-    })),
-  })),
+  creatorId: snippet.creatorId
+    ? prisma.user.idToExternalId(snippet.creatorId)
+    : null,
+  creator: snippet.creator ? userEntityToType(prisma, snippet.creator) : null,
+  app: snippet.app ? appEntityToType(prisma, snippet.app) : null,
+  messages:
+    snippet.messages?.map((message) => ({
+      ...pick(
+        message,
+        "content",
+        "authorUsername",
+        "authorIdentifier",
+        "authorAvatarUrl"
+      ),
+      id: prisma.message.idToExternalId(message.id),
+      sentAt: message.sentAt.toISOString(),
+      attachments:
+        message.attachments?.map((attachment) => ({
+          ...pick(
+            attachment,
+            "type",
+            "filename",
+            "url",
+            "width",
+            "height",
+            "size"
+          ),
+          id: prisma.messageAttachment.idToExternalId(attachment.id),
+        })) ?? null,
+    })) ?? null,
 });
 
 export type ExternalSnippetPreview = ExternalSnippet & {
@@ -172,24 +187,27 @@ router.get(
 router.get(
   "/:id",
   async (
-    req: Request<{ id: string }>,
+    req: Request<{ id: string }, {}, { full?: string }>,
     res: Response<ExternalSnippet | null>,
     next
   ) => {
     try {
       const externalId = req.params.id;
+      const full = req.query.full === "true";
       const snippet = await req.prisma.snippet.findUnique({
         where: { id: req.prisma.snippet.externalIdToId(externalId) },
-        include: {
-          messages: {
-            orderBy: { sentAt: "asc" },
-            include: {
-              attachments: true,
-            },
-          },
-          creator: true,
-          app: true,
-        },
+        include: full
+          ? {
+              messages: {
+                orderBy: { sentAt: "asc" },
+                include: {
+                  attachments: true,
+                },
+              },
+              creator: true,
+              app: true,
+            }
+          : undefined,
       });
       if (!snippet) {
         return res.sendStatus(404);
@@ -309,6 +327,68 @@ router.post(
   }
 );
 
+export type UpdateSnippetInput = {
+  public?: boolean;
+  title?: string;
+};
+const updateSnippetSchema = Joi.object<UpdateSnippetInput>({
+  public: Joi.boolean(),
+  title: JoiString.max(50),
+});
+router.post(
+  "/:id",
+  rateLimit(
+    "snippets-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "snippets-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    1000
+  ),
+  validator.body(updateSnippetSchema),
+  withUser({ required: true }),
+  async (
+    req: Request<{ id: string }, {}, UpdateSnippetInput>,
+    res: Response<ExternalSnippet>,
+    next
+  ) => {
+    try {
+      const externalId = req.params.id;
+      const input = req.body;
+      const id = req.prisma.snippet.externalIdToId(externalId);
+      const existingSnippet = await req.prisma.snippet.findUnique({
+        where: { id },
+      });
+      if (!existingSnippet) {
+        return res.sendStatus(404);
+      }
+      if (
+        !existingSnippet.creatorId ||
+        existingSnippet.creatorId !== req.user?.id
+      ) {
+        return res.sendStatus(401);
+      }
+      if (existingSnippet.public) {
+        return res.sendStatus(400); // Can't update once public
+      }
+      const snippet = await req.prisma.snippet.update({
+        where: {
+          id: req.prisma.snippet.externalIdToId(externalId),
+        },
+        data: {
+          public: input.public ? true : undefined, // Can't go back to private once public
+          title: input.title,
+        },
+      });
+      res.status(200).send(entityToType(req.prisma, snippet));
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 router.post(
   "/:id/claim",
   rateLimit(
@@ -329,8 +409,18 @@ router.post(
   ) => {
     try {
       const externalId = req.params.id;
+      const id = req.prisma.snippet.externalIdToId(externalId);
+      const existingSnippet = await req.prisma.snippet.findUnique({
+        where: { id },
+      });
+      if (!existingSnippet) {
+        return res.sendStatus(404);
+      }
+      if (existingSnippet.claimed) {
+        return res.sendStatus(401);
+      }
       await req.prisma.snippet.update({
-        where: { id: req.prisma.snippet.externalIdToId(externalId) },
+        where: { id },
         data: { creatorId: req.user && req.user.id, claimed: true },
       });
       res.sendStatus(200);
@@ -398,22 +488,22 @@ router.post(
                 return {
                   content: tweet.text,
                   sentAt: tweet.created_at!,
-                  attachments:
-                    tweet.attachments?.media_keys
-                      ?.map((mediaKey) => {
-                        const media = tweets.includes?.media?.find(
-                          ({ media_key }) => media_key === mediaKey
-                        );
-                        return (
-                          media && {
+                  attachments: {
+                    create:
+                      tweet.attachments?.media_keys
+                        ?.map((mediaKey) => {
+                          const media = tweets.includes?.media?.find(
+                            ({ media_key }) => media_key === mediaKey
+                          );
+                          return (media && {
                             type: media.type,
                             url: (media as any).url,
                             width: media.width,
                             height: media.height,
-                          }
-                        );
-                      })
-                      .filter((attachment) => attachment) ?? [],
+                          })!;
+                        })
+                        .filter((attachment) => attachment) ?? [],
+                  },
                   authorUsername: author?.username ?? "unknown",
                   authorIdentifier: null,
                   authorAvatarUrl: author?.profile_image_url,

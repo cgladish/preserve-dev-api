@@ -1,17 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
+exports[`snippets routes GET /:id can get a full snippet by external ID 1`] = `
 {
   "app": {
     "id": "zNrpboD",
     "name": "Discord",
   },
+  "claimed": false,
   "creator": {
     "createdAt": "1970-01-01T00:00:00.010Z",
     "displayName": "Crasken",
     "id": "E21K9jm",
     "username": "crasken",
   },
+  "creatorId": "E21K9jm",
   "id": "BQAYLpr",
   "messages": [
     {
@@ -39,6 +41,19 @@ exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
 }
 `;
 
+exports[`snippets routes GET /:id can get a snippet by external ID 1`] = `
+{
+  "app": null,
+  "claimed": false,
+  "creator": null,
+  "creatorId": "E21K9jm",
+  "id": "BQAYLpr",
+  "messages": null,
+  "public": true,
+  "title": "Test snippet title",
+}
+`;
+
 exports[`snippets routes GET /preview can get last page of snippets 1`] = `
 {
   "data": [
@@ -47,6 +62,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.045Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -54,6 +70,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "4GAx529",
       "interaction": {
         "views": 0,
@@ -88,6 +105,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.040Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -95,6 +113,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "m4AqDpK",
       "interaction": {
         "views": 0,
@@ -129,6 +148,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.035Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -136,6 +156,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "lrNX1pV",
       "interaction": {
         "views": 0,
@@ -170,6 +191,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.030Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -177,6 +199,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "6RpZWAk",
       "interaction": {
         "views": 0,
@@ -211,6 +234,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.025Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -218,6 +242,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "nJ2yOp9",
       "interaction": {
         "views": 0,
@@ -252,6 +277,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.020Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -259,6 +285,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "4WNoqAZ",
       "interaction": {
         "views": 0,
@@ -293,6 +320,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.015Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -300,6 +328,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "zl2WXNZ",
       "interaction": {
         "views": 0,
@@ -334,6 +363,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.010Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -341,6 +371,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "MVNeRpL",
       "interaction": {
         "views": 0,
@@ -375,6 +406,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.005Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -382,6 +414,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "x9N6Q2j",
       "interaction": {
         "views": 0,
@@ -416,6 +449,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.000Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -423,6 +457,7 @@ exports[`snippets routes GET /preview can get last page of snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "BQAYLpr",
       "interaction": {
         "views": 0,
@@ -465,6 +500,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.245Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -472,6 +508,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "J2y7Op9",
       "interaction": {
         "views": 0,
@@ -506,6 +543,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.240Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -513,6 +551,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "WNoKqNZ",
       "interaction": {
         "views": 0,
@@ -547,6 +586,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.235Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -554,6 +594,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "l2WyXpZ",
       "interaction": {
         "views": 0,
@@ -588,6 +629,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.230Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -595,6 +637,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "VNe5RNL",
       "interaction": {
         "views": 0,
@@ -629,6 +672,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.225Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -636,6 +680,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "9N64QAj",
       "interaction": {
         "views": 0,
@@ -670,6 +715,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.220Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -677,6 +723,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "QAYLLpr",
       "interaction": {
         "views": 0,
@@ -711,6 +758,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.215Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -718,6 +766,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "nABow20",
       "interaction": {
         "views": 0,
@@ -752,6 +801,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.210Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -759,6 +809,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "eZN59NR",
       "interaction": {
         "views": 0,
@@ -793,6 +844,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.205Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -800,6 +852,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "B1NvdAd",
       "interaction": {
         "views": 0,
@@ -834,6 +887,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.200Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -841,6 +895,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "DJ2RqAB",
       "interaction": {
         "views": 0,
@@ -875,6 +930,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.195Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -882,6 +938,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "MV2O8NJ",
       "interaction": {
         "views": 0,
@@ -916,6 +973,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.190Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -923,6 +981,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "e7AKqN8",
       "interaction": {
         "views": 0,
@@ -957,6 +1016,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.185Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -964,6 +1024,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "5QNj12x",
       "interaction": {
         "views": 0,
@@ -998,6 +1059,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.180Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1005,6 +1067,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "8Bp8WNj",
       "interaction": {
         "views": 0,
@@ -1039,6 +1102,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.175Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1046,6 +1110,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "60Ab9pg",
       "interaction": {
         "views": 0,
@@ -1080,6 +1145,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.170Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1087,6 +1153,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "9GAwQNj",
       "interaction": {
         "views": 0,
@@ -1121,6 +1188,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.165Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1128,6 +1196,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "MYAPkpV",
       "interaction": {
         "views": 0,
@@ -1162,6 +1231,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.160Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1169,6 +1239,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "y02Vb2d",
       "interaction": {
         "views": 0,
@@ -1203,6 +1274,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.155Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1210,6 +1282,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "3r23EpP",
       "interaction": {
         "views": 0,
@@ -1244,6 +1317,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.150Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1251,6 +1325,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "xRNMKA4",
       "interaction": {
         "views": 0,
@@ -1285,6 +1360,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1292,6 +1368,7 @@ exports[`snippets routes GET /preview can get paginated snippets 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "L1A4Q2q",
       "interaction": {
         "views": 0,
@@ -1334,6 +1411,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1341,6 +1419,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "L1A4Q2q",
       "interaction": {
         "views": 0,
@@ -1375,6 +1454,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.140Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1382,6 +1462,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "3VNGgNj",
       "interaction": {
         "views": 0,
@@ -1416,6 +1497,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.135Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1423,6 +1505,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "nopEnAw",
       "interaction": {
         "views": 0,
@@ -1457,6 +1540,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.130Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1464,6 +1548,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "BV2LRpb",
       "interaction": {
         "views": 0,
@@ -1498,6 +1583,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.125Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1505,6 +1591,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "V1p7jNW",
       "interaction": {
         "views": 0,
@@ -1539,6 +1626,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.120Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1546,6 +1634,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "lBAmXpg",
       "interaction": {
         "views": 0,
@@ -1580,6 +1669,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.115Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1587,6 +1677,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "0XNlLND",
       "interaction": {
         "views": 0,
@@ -1621,6 +1712,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.110Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1628,6 +1720,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "m920GAL",
       "interaction": {
         "views": 0,
@@ -1662,6 +1755,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.105Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1669,6 +1763,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "GnADe2q",
       "interaction": {
         "views": 0,
@@ -1703,6 +1798,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.100Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1710,6 +1806,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "4b2JmAe",
       "interaction": {
         "views": 0,
@@ -1744,6 +1841,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.095Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1751,6 +1849,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "vYp9JAX",
       "interaction": {
         "views": 0,
@@ -1785,6 +1884,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.090Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1792,6 +1892,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "rapz6p4",
       "interaction": {
         "views": 0,
@@ -1826,6 +1927,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.085Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1833,6 +1935,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "KaNr92j",
       "interaction": {
         "views": 0,
@@ -1867,6 +1970,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.080Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1874,6 +1978,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "5kA1mA3",
       "interaction": {
         "views": 0,
@@ -1908,6 +2013,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.075Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1915,6 +2021,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "G62kzAP",
       "interaction": {
         "views": 0,
@@ -1949,6 +2056,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.070Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1956,6 +2064,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "06NQ9NX",
       "interaction": {
         "views": 0,
@@ -1990,6 +2099,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.065Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -1997,6 +2107,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "gP2arNr",
       "interaction": {
         "views": 0,
@@ -2031,6 +2142,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.060Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2038,6 +2150,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "YqpdxpO",
       "interaction": {
         "views": 0,
@@ -2072,6 +2185,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.055Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2079,6 +2193,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "RgAnVAQ",
       "interaction": {
         "views": 0,
@@ -2113,6 +2228,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.050Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2120,6 +2236,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "jYAgnpQ",
       "interaction": {
         "views": 0,
@@ -2154,6 +2271,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.045Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2161,6 +2279,7 @@ exports[`snippets routes GET /preview can get paginated snippets after cursor 1`
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "4GAx529",
       "interaction": {
         "views": 0,
@@ -2203,6 +2322,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.245Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2210,6 +2330,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "J2y7Op9",
       "interaction": {
         "views": 0,
@@ -2244,6 +2365,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.240Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2251,6 +2373,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "WNoKqNZ",
       "interaction": {
         "views": 0,
@@ -2285,6 +2408,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.235Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2292,6 +2416,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "l2WyXpZ",
       "interaction": {
         "views": 0,
@@ -2326,6 +2451,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.230Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2333,6 +2459,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "VNe5RNL",
       "interaction": {
         "views": 0,
@@ -2367,6 +2494,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.225Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2374,6 +2502,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "9N64QAj",
       "interaction": {
         "views": 0,
@@ -2408,6 +2537,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.220Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2415,6 +2545,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "QAYLLpr",
       "interaction": {
         "views": 0,
@@ -2449,6 +2580,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.215Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2456,6 +2588,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "nABow20",
       "interaction": {
         "views": 0,
@@ -2490,6 +2623,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.210Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2497,6 +2631,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "eZN59NR",
       "interaction": {
         "views": 0,
@@ -2531,6 +2666,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.205Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2538,6 +2674,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "B1NvdAd",
       "interaction": {
         "views": 0,
@@ -2572,6 +2709,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.200Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2579,6 +2717,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "DJ2RqAB",
       "interaction": {
         "views": 0,
@@ -2613,6 +2752,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.195Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2620,6 +2760,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "MV2O8NJ",
       "interaction": {
         "views": 0,
@@ -2654,6 +2795,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.190Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2661,6 +2803,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "e7AKqN8",
       "interaction": {
         "views": 0,
@@ -2695,6 +2838,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.185Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2702,6 +2846,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "5QNj12x",
       "interaction": {
         "views": 0,
@@ -2736,6 +2881,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.180Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2743,6 +2889,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "8Bp8WNj",
       "interaction": {
         "views": 0,
@@ -2777,6 +2924,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.175Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2784,6 +2932,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "60Ab9pg",
       "interaction": {
         "views": 0,
@@ -2818,6 +2967,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.170Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2825,6 +2975,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "9GAwQNj",
       "interaction": {
         "views": 0,
@@ -2859,6 +3010,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.165Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2866,6 +3018,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "MYAPkpV",
       "interaction": {
         "views": 0,
@@ -2900,6 +3053,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.160Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2907,6 +3061,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "y02Vb2d",
       "interaction": {
         "views": 0,
@@ -2941,6 +3096,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.155Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2948,6 +3104,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "3r23EpP",
       "interaction": {
         "views": 0,
@@ -2982,6 +3139,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.150Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -2989,6 +3147,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "xRNMKA4",
       "interaction": {
         "views": 0,
@@ -3023,6 +3182,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3030,6 +3190,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 1`] = `
         "id": "E21K9jm",
         "username": "crasken",
       },
+      "creatorId": "E21K9jm",
       "id": "L1A4Q2q",
       "interaction": {
         "views": 0,
@@ -3072,6 +3233,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.245Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3079,6 +3241,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "nABWk20",
       "interaction": {
         "views": 0,
@@ -3113,6 +3276,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.240Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3120,6 +3284,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "YAgwnAQ",
       "interaction": {
         "views": 0,
@@ -3154,6 +3319,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.235Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3161,6 +3327,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "GAxn5N9",
       "interaction": {
         "views": 0,
@@ -3195,6 +3362,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.230Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3202,6 +3370,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "4AqKDNK",
       "interaction": {
         "views": 0,
@@ -3236,6 +3405,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.225Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3243,6 +3413,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "rNX41NV",
       "interaction": {
         "views": 0,
@@ -3277,6 +3448,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.220Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3284,6 +3456,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "RpZZWpk",
       "interaction": {
         "views": 0,
@@ -3318,6 +3491,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.215Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3325,6 +3499,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "J2yEO29",
       "interaction": {
         "views": 0,
@@ -3359,6 +3534,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.210Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3366,6 +3542,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "WNoeqAZ",
       "interaction": {
         "views": 0,
@@ -3400,6 +3577,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.205Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3407,6 +3585,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "l2WMXpZ",
       "interaction": {
         "views": 0,
@@ -3441,6 +3620,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.200Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3448,6 +3628,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "VNe9RNL",
       "interaction": {
         "views": 0,
@@ -3482,6 +3663,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.195Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3489,6 +3671,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "9N6QQ2j",
       "interaction": {
         "views": 0,
@@ -3523,6 +3706,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.190Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3530,6 +3714,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "QAYXLpr",
       "interaction": {
         "views": 0,
@@ -3564,6 +3749,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.185Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3571,6 +3757,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "nABWw20",
       "interaction": {
         "views": 0,
@@ -3605,6 +3792,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.180Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3612,6 +3800,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "ZN519NR",
       "interaction": {
         "views": 0,
@@ -3646,6 +3835,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.175Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3653,6 +3843,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "1Nved2d",
       "interaction": {
         "views": 0,
@@ -3687,6 +3878,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.170Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3694,6 +3886,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "J2Rjq2B",
       "interaction": {
         "views": 0,
@@ -3728,6 +3921,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.165Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3735,6 +3929,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "V2OP8NJ",
       "interaction": {
         "views": 0,
@@ -3769,6 +3964,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.160Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3776,6 +3972,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "7AK1qN8",
       "interaction": {
         "views": 0,
@@ -3810,6 +4007,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.155Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3817,6 +4015,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "QNjG1px",
       "interaction": {
         "views": 0,
@@ -3851,6 +4050,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.150Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3858,6 +4058,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "Bp8QWAj",
       "interaction": {
         "views": 0,
@@ -3892,6 +4093,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "zNrpboD",
         "name": "Discord",
       },
+      "claimed": false,
       "createdAt": "1970-01-01T00:00:00.145Z",
       "creator": {
         "createdAt": "1970-01-01T00:00:00.010Z",
@@ -3899,6 +4101,7 @@ exports[`snippets routes GET /preview can get when filtering by creator 2`] = `
         "id": "MBj8J1K",
         "username": "bah",
       },
+      "creatorId": "MBj8J1K",
       "id": "0Abn9Ag",
       "interaction": {
         "views": 0,
@@ -3939,12 +4142,14 @@ exports[`snippets routes POST / can create a snippet with auth 1`] = `
     "id": "zNrpboD",
     "name": "Discord",
   },
+  "claimed": false,
   "creator": {
     "createdAt": "1970-01-01T00:00:00.010Z",
     "displayName": "Crasken",
     "id": "E21K9jm",
     "username": "crasken",
   },
+  "creatorId": "E21K9jm",
   "id": "BQAYLpr",
   "messages": [
     {
@@ -4339,12 +4544,14 @@ exports[`snippets routes POST / can create a snippet with empty content message 
     "id": "zNrpboD",
     "name": "Discord",
   },
+  "claimed": false,
   "creator": {
     "createdAt": "1970-01-01T00:00:00.010Z",
     "displayName": "Crasken",
     "id": "E21K9jm",
     "username": "crasken",
   },
+  "creatorId": "E21K9jm",
   "id": "BQAYLpr",
   "messages": [
     {
@@ -4378,7 +4585,9 @@ exports[`snippets routes POST / can create a snippet with no auth 1`] = `
     "id": "zNrpboD",
     "name": "Discord",
   },
+  "claimed": false,
   "creator": null,
+  "creatorId": null,
   "id": "BQAYLpr",
   "messages": [
     {
@@ -4774,6 +4983,54 @@ exports[`snippets routes POST / can create a snippet with no auth 2`] = `
   "creatorId": null,
   "id": 1,
   "public": true,
+  "title": "Test snippet title",
+}
+`;
+
+exports[`snippets routes POST /:id can make a snippet public 1`] = `
+{
+  "app": null,
+  "claimed": false,
+  "creator": null,
+  "creatorId": "E21K9jm",
+  "id": "BQAYLpr",
+  "messages": null,
+  "public": true,
+  "title": "Test snippet title",
+}
+`;
+
+exports[`snippets routes POST /:id can make a snippet public 2`] = `
+{
+  "appId": 1,
+  "claimed": false,
+  "creatorId": 1,
+  "id": 1,
+  "public": true,
+  "title": "Test snippet title",
+}
+`;
+
+exports[`snippets routes POST /:id can update a snippet title 1`] = `
+{
+  "app": null,
+  "claimed": false,
+  "creator": null,
+  "creatorId": "E21K9jm",
+  "id": "BQAYLpr",
+  "messages": null,
+  "public": false,
+  "title": "Test snippet title",
+}
+`;
+
+exports[`snippets routes POST /:id can update a snippet title 2`] = `
+{
+  "appId": 1,
+  "claimed": false,
+  "creatorId": 1,
+  "id": 1,
+  "public": false,
   "title": "Test snippet title",
 }
 `;
