@@ -327,109 +327,6 @@ router.post(
   }
 );
 
-export type UpdateSnippetInput = {
-  public?: boolean;
-  title?: string;
-};
-const updateSnippetSchema = Joi.object<UpdateSnippetInput>({
-  public: Joi.boolean(),
-  title: JoiString.max(50),
-});
-router.post(
-  "/:id",
-  rateLimit(
-    "snippets-per-second",
-    1000, // 1 second
-    1
-  ),
-  rateLimit(
-    "snippets-per-day",
-    24 * 60 * 60 * 1000, // 24 hours
-    1000
-  ),
-  validator.body(updateSnippetSchema),
-  withUser({ required: true }),
-  async (
-    req: Request<{ id: string }, {}, UpdateSnippetInput>,
-    res: Response<ExternalSnippet>,
-    next
-  ) => {
-    try {
-      const externalId = req.params.id;
-      const input = req.body;
-      const id = req.prisma.snippet.externalIdToId(externalId);
-      const existingSnippet = await req.prisma.snippet.findUnique({
-        where: { id },
-      });
-      if (!existingSnippet) {
-        return res.sendStatus(404);
-      }
-      if (
-        !existingSnippet.creatorId ||
-        existingSnippet.creatorId !== req.user?.id
-      ) {
-        return res.sendStatus(401);
-      }
-      if (existingSnippet.public) {
-        return res.sendStatus(400); // Can't update once public
-      }
-      const snippet = await req.prisma.snippet.update({
-        where: {
-          id: req.prisma.snippet.externalIdToId(externalId),
-        },
-        data: {
-          public: input.public ? true : undefined, // Can't go back to private once public
-          title: input.title,
-        },
-      });
-      res.status(200).send(entityToType(req.prisma, snippet));
-    } catch (err) {
-      next(err);
-    }
-  }
-);
-
-router.post(
-  "/:id/claim",
-  rateLimit(
-    "snippets-per-second",
-    1000, // 1 second
-    1
-  ),
-  rateLimit(
-    "snippets-per-day",
-    24 * 60 * 60 * 1000, // 24 hours
-    1000
-  ),
-  withUser(),
-  async (
-    req: Request<{ id: string }>,
-    res: Response<ExternalSnippet>,
-    next
-  ) => {
-    try {
-      const externalId = req.params.id;
-      const id = req.prisma.snippet.externalIdToId(externalId);
-      const existingSnippet = await req.prisma.snippet.findUnique({
-        where: { id },
-      });
-      if (!existingSnippet) {
-        return res.sendStatus(404);
-      }
-      if (existingSnippet.claimed) {
-        return res.sendStatus(401);
-      }
-      await req.prisma.snippet.update({
-        where: { id },
-        data: { creatorId: req.user && req.user.id, claimed: true },
-      });
-      res.sendStatus(200);
-    } catch (err) {
-      next(err);
-    }
-  }
-);
-
 const twitterClient = new Client(process.env.TWITTER_BEARER_TOKEN!);
 export type CreateTwitterSnippetInput = {
   tweetIds: string[];
@@ -527,6 +424,109 @@ router.post(
         },
       });
       res.status(201).send(entityToType(req.prisma, snippet));
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+export type UpdateSnippetInput = {
+  public?: boolean;
+  title?: string;
+};
+const updateSnippetSchema = Joi.object<UpdateSnippetInput>({
+  public: Joi.boolean(),
+  title: JoiString.max(50),
+});
+router.post(
+  "/:id",
+  rateLimit(
+    "snippets-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "snippets-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    1000
+  ),
+  validator.body(updateSnippetSchema),
+  withUser({ required: true }),
+  async (
+    req: Request<{ id: string }, {}, UpdateSnippetInput>,
+    res: Response<ExternalSnippet>,
+    next
+  ) => {
+    try {
+      const externalId = req.params.id;
+      const input = req.body;
+      const id = req.prisma.snippet.externalIdToId(externalId);
+      const existingSnippet = await req.prisma.snippet.findUnique({
+        where: { id },
+      });
+      if (!existingSnippet) {
+        return res.sendStatus(404);
+      }
+      if (
+        !existingSnippet.creatorId ||
+        existingSnippet.creatorId !== req.user?.id
+      ) {
+        return res.sendStatus(401);
+      }
+      if (existingSnippet.public) {
+        return res.sendStatus(400); // Can't update once public
+      }
+      const snippet = await req.prisma.snippet.update({
+        where: {
+          id: req.prisma.snippet.externalIdToId(externalId),
+        },
+        data: {
+          public: input.public ? true : undefined, // Can't go back to private once public
+          title: input.title,
+        },
+      });
+      res.status(200).send(entityToType(req.prisma, snippet));
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+router.post(
+  "/:id/claim",
+  rateLimit(
+    "snippets-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "snippets-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    1000
+  ),
+  withUser(),
+  async (
+    req: Request<{ id: string }>,
+    res: Response<ExternalSnippet>,
+    next
+  ) => {
+    try {
+      const externalId = req.params.id;
+      const id = req.prisma.snippet.externalIdToId(externalId);
+      const existingSnippet = await req.prisma.snippet.findUnique({
+        where: { id },
+      });
+      if (!existingSnippet) {
+        return res.sendStatus(404);
+      }
+      if (existingSnippet.claimed) {
+        return res.sendStatus(401);
+      }
+      await req.prisma.snippet.update({
+        where: { id },
+        data: { creatorId: req.user && req.user.id, claimed: true },
+      });
+      res.sendStatus(200);
     } catch (err) {
       next(err);
     }
