@@ -447,16 +447,6 @@ const updateSnippetSchema = Joi.object<UpdateSnippetInput>({
 });
 router.post(
   "/:id",
-  rateLimit(
-    "snippets-per-second",
-    1000, // 1 second
-    1
-  ),
-  rateLimit(
-    "snippets-per-day",
-    24 * 60 * 60 * 1000, // 24 hours
-    1000
-  ),
   validator.body(updateSnippetSchema),
   withUser({ required: true }),
   async (
