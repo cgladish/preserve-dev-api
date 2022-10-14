@@ -132,6 +132,7 @@ export const previewEntityToType = (
 const SNIPPETS_PAGE_SIZE = 20;
 router.get(
   "/preview",
+  withUser(),
   async (
     req: Request<{}, {}, {}, { cursor?: string; creatorId?: string }>,
     res: Response<{
@@ -146,11 +147,12 @@ router.get(
       const creatorId =
         req.query.creatorId &&
         req.prisma.user.externalIdToId(req.query.creatorId);
+      const showPrivate = !!creatorId && creatorId === req.user?.id;
       const snippets = await req.prisma.snippet.findMany({
         where: {
-          public: true,
           nsfw: !!creatorId,
           ...(creatorId ? { creatorId } : {}),
+          ...(showPrivate ? {} : { public: true }),
         },
         orderBy: { id: "desc" },
         take: SNIPPETS_PAGE_SIZE + 1,
