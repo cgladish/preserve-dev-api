@@ -52,6 +52,7 @@ export type ExternalMessage = {
 export type ExternalSnippet = {
   id: string;
   public: boolean;
+  nsfw: boolean;
   claimed: boolean;
   title: string | null;
   creatorId: string | null;
@@ -71,7 +72,7 @@ const entityToType = (
     })[];
   }
 ): ExternalSnippet => ({
-  ...pick(snippet, "public", "claimed", "title", "createdAt"),
+  ...pick(snippet, "public", "claimed", "nsfw", "title", "createdAt"),
   id: prisma.snippet.idToExternalId(snippet.id),
   creatorId: snippet.creatorId
     ? prisma.user.idToExternalId(snippet.creatorId)
@@ -146,7 +147,11 @@ router.get(
         req.query.creatorId &&
         req.prisma.user.externalIdToId(req.query.creatorId);
       const snippets = await req.prisma.snippet.findMany({
-        where: creatorId ? { creatorId } : undefined,
+        where: {
+          public: true,
+          nsfw: !!creatorId,
+          ...(creatorId ? { creatorId } : {}),
+        },
         orderBy: { id: "desc" },
         take: SNIPPETS_PAGE_SIZE + 1,
         skip: req.query.cursor ? 1 : undefined,
@@ -432,10 +437,12 @@ router.post(
 
 export type UpdateSnippetInput = {
   public?: boolean;
+  nsfw?: boolean;
   title?: string;
 };
 const updateSnippetSchema = Joi.object<UpdateSnippetInput>({
   public: Joi.boolean(),
+  nsfw: Joi.boolean(),
   title: JoiString.max(50),
 });
 router.post(
@@ -481,6 +488,7 @@ router.post(
           id: req.prisma.snippet.externalIdToId(externalId),
         },
         data: {
+          nsfw: input.nsfw,
           public: input.public ? true : undefined, // Can't go back to private once public
           title: input.title,
         },

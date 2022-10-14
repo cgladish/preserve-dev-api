@@ -15,6 +15,7 @@ model User {
   sub         String    @unique
   username    String    @unique @db.VarChar(20)
   displayName String    @db.VarChar(20)
+  over18      Boolean   @default(false)
   snippets    Snippet[]
   comments    Comment[]
   createdAt   DateTime  @default(now())
@@ -35,6 +36,7 @@ model Snippet {
   id          Int                 @id @default(autoincrement())
   public      Boolean             @default(false)
   claimed     Boolean             @default(false)
+  nsfw        Boolean             @default(false)
   title       String?             @db.VarChar(50)
   creator     User?               @relation(fields: [creatorId], references: [id])
   creatorId   Int?

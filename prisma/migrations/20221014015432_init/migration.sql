@@ -4,6 +4,7 @@ CREATE TABLE "User" (
     "sub" TEXT NOT NULL,
     "username" VARCHAR(20) NOT NULL,
     "displayName" VARCHAR(20) NOT NULL,
+    "over18" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -25,6 +26,7 @@ CREATE TABLE "Snippet" (
     "id" SERIAL NOT NULL,
     "public" BOOLEAN NOT NULL DEFAULT false,
     "claimed" BOOLEAN NOT NULL DEFAULT false,
+    "nsfw" BOOLEAN NOT NULL DEFAULT false,
     "title" VARCHAR(50),
     "creatorId" INTEGER,
     "appId" INTEGER NOT NULL,

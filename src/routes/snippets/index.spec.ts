@@ -69,6 +69,34 @@ describe("snippets routes", () => {
             },
           })
         );
+        snippetEntities.unshift(
+          await prisma.snippet.create({
+            data: {
+              appId: appEntity.id,
+              public: true,
+              nsfw: true,
+              title: "Test NSFW snippet title",
+              creatorId: creatorEntity.id,
+              interaction: {
+                create: {},
+              },
+              createdAt: new Date(5 * i),
+            },
+          })
+        );
+        snippetEntities.unshift(
+          await prisma.snippet.create({
+            data: {
+              appId: appEntity.id,
+              title: "Test private snippet title",
+              creatorId: creatorEntity.id,
+              interaction: {
+                create: {},
+              },
+              createdAt: new Date(5 * i),
+            },
+          })
+        );
       }
     });
 
@@ -535,7 +563,6 @@ describe("snippets routes", () => {
       await prisma.snippet.create({
         data: {
           appId: appEntity.id,
-          public: false,
           title: "Test snippet title",
           creatorId: creatorEntity.id,
           messages: {
@@ -565,10 +592,12 @@ describe("snippets routes", () => {
 
     it.each([
       ["public", "asdf"],
+      ["nsfw", "asdf"],
       ["title", 123],
     ])("returns a 400 if %s = %p", async (key, value) => {
       const input: UpdateSnippetInput = {
         public: true,
+        nsfw: true,
         title: "Test snippet title",
       };
       set(input, key, value);
@@ -640,6 +669,24 @@ describe("snippets routes", () => {
     it("can make a snippet public", async () => {
       const input: UpdateSnippetInput = {
         public: true,
+      };
+      const response = await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}`)
+        .set("Authorization", `Bearer ${testJwt}`)
+        .send(input)
+        .expect(200);
+      expect(omit(response.body, "createdAt")).toMatchSnapshot();
+
+      const updatedSnippets = await prisma.snippet.findMany();
+      expect(updatedSnippets.length).toEqual(1);
+      expect(
+        omit(updatedSnippets[0], "createdAt", "updatedAt")
+      ).toMatchSnapshot();
+    });
+
+    it("can mark a snippet nsfw", async () => {
+      const input: UpdateSnippetInput = {
+        nsfw: true,
       };
       const response = await request(app)
         .post(`/snippets/${prisma.snippet.idToExternalId(1)}`)

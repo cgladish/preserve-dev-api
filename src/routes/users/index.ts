@@ -15,6 +15,7 @@ const validator = createValidator();
 export type ExternalUser = {
   id: string;
   username: string;
+  over18: boolean;
   displayName: string;
   createdAt: Date;
 };
@@ -22,7 +23,7 @@ export const entityToType = (
   prisma: ExtendedPrismaClient,
   user: User
 ): ExternalUser => ({
-  ...pick(user, "username", "displayName", "createdAt"),
+  ...pick(user, "username", "over18", "displayName", "createdAt"),
   id: prisma.user.idToExternalId(user.id),
 });
 
