@@ -150,8 +150,7 @@ router.get(
       const showPrivate = !!creatorId && creatorId === req.user?.id;
       const snippets = await req.prisma.snippet.findMany({
         where: {
-          nsfw: !!creatorId,
-          ...(creatorId ? { creatorId } : {}),
+          ...(creatorId ? { creatorId } : { nsfw: false }),
           ...(showPrivate ? {} : { public: true }),
         },
         orderBy: { id: "desc" },
