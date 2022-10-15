@@ -33,22 +33,24 @@ model App {
 }
 
 model Snippet {
-  id          Int                 @id @default(autoincrement())
-  public      Boolean             @default(false)
-  claimed     Boolean             @default(false)
-  nsfw        Boolean             @default(false)
-  title       String?             @db.VarChar(50)
-  creator     User?               @relation(fields: [creatorId], references: [id])
-  creatorId   Int?
-  app         App                 @relation(fields: [appId], references: [id])
-  appId       Int
-  interaction SnippetInteraction?
-  messages    Message[]
-  comments    Comment[]
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime            @updatedAt
+  id            Int                 @id @default(autoincrement())
+  public        Boolean             @default(false)
+  claimed       Boolean             @default(false)
+  nsfw          Boolean             @default(false)
+  adminReviewed Boolean             @default(false)
+  adminApproved Boolean             @default(false)
+  title         String?             @db.VarChar(50)
+  creator       User?               @relation(fields: [creatorId], references: [id])
+  creatorId     Int?
+  app           App                 @relation(fields: [appId], references: [id])
+  appId         Int
+  interaction   SnippetInteraction?
+  messages      Message[]
+  comments      Comment[]
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
 
-  @@index([createdAt])
+  @@index([creatorId, public, nsfw, adminReviewed, adminApproved, createdAt])
 }
 
 model SnippetInteraction {

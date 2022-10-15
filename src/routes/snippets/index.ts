@@ -151,7 +151,7 @@ router.get(
       const showPrivate = !!creatorId && creatorId === req.user?.id;
       const snippets = await req.prisma.snippet.findMany({
         where: {
-          ...(creatorId ? { creatorId } : { nsfw: false }),
+          ...(creatorId ? { creatorId } : { nsfw: false, adminApproved: true }),
           ...(showPrivate ? {} : { public: true }),
         },
         orderBy: { id: "desc" },
@@ -183,6 +183,35 @@ router.get(
             totalComments: commentCountsForSnippets[snippet.id]?._count ?? 0,
           })
         ),
+        isLastPage: snippets.length <= SNIPPETS_PAGE_SIZE,
+      });
+    }
+  )
+);
+
+router.get(
+  "/unreviewed",
+  withUser({ permissions: ["read:unreviewed"] }),
+  wrapRequestHandler(
+    async (
+      req: Request<{}, {}, {}, { cursor?: string }>,
+      res: Response<{
+        data: ExternalSnippet[];
+        isLastPage: boolean;
+      }>,
+      next
+    ) => {
+      const cursor =
+        req.query.cursor && req.prisma.snippet.externalIdToId(req.query.cursor);
+      const snippets = await req.prisma.snippet.findMany({
+        where: { public: true, adminReviewed: false, nsfw: false },
+        orderBy: { id: "desc" },
+        take: SNIPPETS_PAGE_SIZE + 1,
+        skip: req.query.cursor ? 1 : undefined,
+        cursor: cursor ? { id: cursor } : undefined,
+      });
+      res.status(200).json({
+        data: snippets.map((snippet) => entityToType(req.prisma, snippet)),
         isLastPage: snippets.length <= SNIPPETS_PAGE_SIZE,
       });
     }

@@ -5,7 +5,7 @@ import { CreateSnippetInput, UpdateSnippetInput } from ".";
 import { omit, set } from "lodash";
 import { randText } from "@ngneat/falso";
 import { App, Snippet, User } from "@prisma/client";
-import { makeUser, testJwt } from "../../mockData";
+import { makeUser, testJwt, testOtherJwt } from "../../mockData";
 
 describe("snippets routes", () => {
   let appEntity: App;
@@ -181,6 +181,101 @@ describe("snippets routes", () => {
     it("can get last page of snippets", async () => {
       const response = await request(app)
         .get(`/snippets/preview`)
+        .query({
+          cursor: prisma.snippet.idToExternalId(snippetEntities[39].id),
+        })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+  });
+
+  describe("GET /unreviewed", () => {
+    let snippetEntities: Snippet[] = [];
+
+    beforeEach(async () => {
+      for (let i = 0; i < 50; ++i) {
+        snippetEntities.unshift(
+          await prisma.snippet.create({
+            data: {
+              appId: appEntity.id,
+              public: true,
+              title: "Test snippet title",
+              creatorId: creatorEntity.id,
+              createdAt: new Date(5 * i),
+            },
+          })
+        );
+        snippetEntities.unshift(
+          await prisma.snippet.create({
+            data: {
+              appId: appEntity.id,
+              public: true,
+              nsfw: true,
+              title: "Test NSFW snippet title",
+              creatorId: creatorEntity.id,
+              createdAt: new Date(5 * i),
+            },
+          })
+        );
+        snippetEntities.unshift(
+          await prisma.snippet.create({
+            data: {
+              appId: appEntity.id,
+              public: false,
+              title: "Test private snippet title",
+              creatorId: creatorEntity.id,
+              createdAt: new Date(5 * i),
+            },
+          })
+        );
+        snippetEntities.unshift(
+          await prisma.snippet.create({
+            data: {
+              appId: appEntity.id,
+              adminReviewed: true,
+              title: "Test private snippet title",
+              creatorId: creatorEntity.id,
+              createdAt: new Date(5 * i),
+            },
+          })
+        );
+      }
+    });
+
+    it("returns 401 if no auth", async () => {
+      await request(app).get(`/snippets/unreviewed`).expect(401);
+    });
+
+    it("returns 401 if missing permissions", async () => {
+      await request(app)
+        .get(`/snippets/unreviewed`)
+        .set("authorization", `Bearer ${testOtherJwt}`)
+        .expect(401);
+    });
+
+    it("can get paginated snippets", async () => {
+      const response = await request(app)
+        .get(`/snippets/unreviewed`)
+        .set("authorization", `Bearer ${testJwt}`)
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("can get paginated snippets after cursor", async () => {
+      const response = await request(app)
+        .get(`/snippets/unreviewed`)
+        .set("authorization", `Bearer ${testJwt}`)
+        .query({
+          cursor: prisma.snippet.idToExternalId(snippetEntities[19].id),
+        })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("can get last page of snippets", async () => {
+      const response = await request(app)
+        .get(`/snippets/unreviewed`)
+        .set("authorization", `Bearer ${testJwt}`)
         .query({
           cursor: prisma.snippet.idToExternalId(snippetEntities[39].id),
         })

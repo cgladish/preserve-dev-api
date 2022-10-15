@@ -13,7 +13,6 @@ import rateLimit from "./middleware/rate-limit";
 import { testJwtSecret } from "./mockData";
 import users from "./routes/users";
 import getRedisClient from "./redis";
-import wrapRequestHandler from "./wrapRequestHandler";
 
 dotenv.config();
 

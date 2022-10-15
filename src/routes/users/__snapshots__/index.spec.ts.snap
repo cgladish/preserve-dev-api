@@ -44,7 +44,7 @@ exports[`users routes POST / can create a user 2`] = `
   "displayName": "Crasken",
   "id": 1,
   "over18": false,
-  "sub": "google-oauth2|116644327347918921624",
+  "sub": "sub1",
   "username": "crasken",
 }
 `;
@@ -63,7 +63,7 @@ exports[`users routes POST /update can update a user 2`] = `
   "displayName": "Brasken",
   "id": 1,
   "over18": false,
-  "sub": "google-oauth2|116644327347918921624",
+  "sub": "sub1",
   "username": "brasken",
 }
 `;
