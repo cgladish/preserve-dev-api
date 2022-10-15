@@ -1,4 +1,4 @@
-import express, { Express, ErrorRequestHandler } from "express";
+import express, { Express, NextFunction, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { expressjwt, GetVerificationKey } from "express-jwt";
@@ -13,31 +13,33 @@ import rateLimit from "./middleware/rate-limit";
 import { testJwtSecret } from "./mockData";
 import users from "./routes/users";
 import getRedisClient from "./redis";
+import wrapRequestHandler from "./wrapRequestHandler";
 
 dotenv.config();
 
 const app: Express = express();
 
-Sentry.init({
-  dsn: "https://74d0dbd8102e47b5b0e7556ae74efc9c@o4503988670496768.ingest.sentry.io/4503988678819840",
-  integrations: [
-    new Sentry.Integrations.Http({ tracing: true }),
-    new Tracing.Integrations.Express({ app }),
-  ],
-  tracesSampleRate: 1.0,
-  environment: process.env.SENTRY_ENV,
-});
-
 if (process.env.NUMBER_OF_PROXIES) {
   app.set("trust proxy", Number(process.env.NUMBER_OF_PROXIES));
 }
 
-app.use(
-  Sentry.Handlers.requestHandler({
-    user: ["id", "username"],
-  })
-);
-app.use(Sentry.Handlers.tracingHandler());
+if (!process.env.JEST_WORKER_ID) {
+  Sentry.init({
+    dsn: "https://74d0dbd8102e47b5b0e7556ae74efc9c@o4503988670496768.ingest.sentry.io/4503988678819840",
+    integrations: [
+      new Sentry.Integrations.Http({ tracing: true }),
+      new Tracing.Integrations.Express({ app }),
+    ],
+    tracesSampleRate: 1.0,
+    environment: process.env.SENTRY_ENV,
+  });
+  app.use(
+    Sentry.Handlers.requestHandler({
+      user: ["id", "username"],
+    })
+  );
+  app.use(Sentry.Handlers.tracingHandler());
+}
 app.use(
   cors({
     origin: "*",
@@ -83,12 +85,12 @@ app.use("/apps", apps);
 app.use("/snippets", snippets);
 app.use("/users", users);
 
-app.use(Sentry.Handlers.errorHandler());
-const fallthroughErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+if (!process.env.JEST_WORKER_ID) {
+  app.use(Sentry.Handlers.errorHandler());
+}
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.status(500).send("Internal server error");
-  next();
-};
-app.use(fallthroughErrorHandler);
+});
 
 if (!process.env.JEST_WORKER_ID) {
   const port = process.env.PORT;
