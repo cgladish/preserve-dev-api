@@ -9,6 +9,7 @@ import { JoiExternalIdOptional, JoiString } from "../../../joi";
 import { entityToType as userEntityToType } from "../../users";
 import rateLimit from "../../../middleware/rate-limit";
 import { withUser } from "../../../middleware/with-user";
+import wrapRequestHandler from "../../../wrapRequestHandler";
 
 const router = express.Router({ mergeParams: true });
 const validator = createValidator();
@@ -44,39 +45,41 @@ const paginatedQuerySchema = Joi.object<PaginatedQueryParams>({
 router.get(
   "/",
   validator.query(paginatedQuerySchema),
-  async (
-    req: Request<{ snippetId: string }, {}, {}, PaginatedQueryParams>,
-    res: Response<{
-      data: ExternalComment[];
-      totalCount: number;
-      isLastPage: boolean;
-    }>,
-    next
-  ) => {
-    const cursor =
-      req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
-    const snippetExternalId = req.params.snippetId;
-    const snippetId = req.prisma.snippet.externalIdToId(snippetExternalId);
+  wrapRequestHandler(
+    async (
+      req: Request<{ snippetId: string }, {}, {}, PaginatedQueryParams>,
+      res: Response<{
+        data: ExternalComment[];
+        totalCount: number;
+        isLastPage: boolean;
+      }>,
+      next
+    ) => {
+      const cursor =
+        req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
+      const snippetExternalId = req.params.snippetId;
+      const snippetId = req.prisma.snippet.externalIdToId(snippetExternalId);
 
-    const totalCount = await req.prisma.comment.count({
-      where: { snippetId },
-    });
-    const comments = await req.prisma.comment.findMany({
-      where: { snippetId },
-      include: { creator: true },
-      orderBy: { id: "asc" },
-      take: COMMENTS_PAGE_SIZE + 1,
-      skip: req.query.cursor ? 1 : undefined,
-      cursor: cursor ? { id: cursor } : undefined,
-    });
-    res.status(200).json({
-      data: comments
-        .slice(0, COMMENTS_PAGE_SIZE)
-        .map((comment) => entityToType(req.prisma, comment)),
-      totalCount,
-      isLastPage: comments.length <= COMMENTS_PAGE_SIZE,
-    });
-  }
+      const totalCount = await req.prisma.comment.count({
+        where: { snippetId },
+      });
+      const comments = await req.prisma.comment.findMany({
+        where: { snippetId },
+        include: { creator: true },
+        orderBy: { id: "asc" },
+        take: COMMENTS_PAGE_SIZE + 1,
+        skip: req.query.cursor ? 1 : undefined,
+        cursor: cursor ? { id: cursor } : undefined,
+      });
+      res.status(200).json({
+        data: comments
+          .slice(0, COMMENTS_PAGE_SIZE)
+          .map((comment) => entityToType(req.prisma, comment)),
+        totalCount,
+        isLastPage: comments.length <= COMMENTS_PAGE_SIZE,
+      });
+    }
+  )
 );
 
 export type CreateCommentInput = {
@@ -99,25 +102,27 @@ router.post(
   ),
   validator.body(createCommentSchema),
   withUser({ required: true }),
-  async (
-    req: Request<{ snippetId: string }, {}, CreateCommentInput>,
-    res: Response<ExternalComment>,
-    next
-  ) => {
-    const snippetExternalId = req.params.snippetId;
-    const input = req.body;
-    const comment = await req.prisma.comment.create({
-      data: {
-        content: input.content,
-        creatorId: req.user!.id,
-        snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
-      },
-      include: {
-        creator: true,
-      },
-    });
-    res.status(201).send(entityToType(req.prisma, comment));
-  }
+  wrapRequestHandler(
+    async (
+      req: Request<{ snippetId: string }, {}, CreateCommentInput>,
+      res: Response<ExternalComment>,
+      next
+    ) => {
+      const snippetExternalId = req.params.snippetId;
+      const input = req.body;
+      const comment = await req.prisma.comment.create({
+        data: {
+          content: input.content,
+          creatorId: req.user!.id,
+          snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
+        },
+        include: {
+          creator: true,
+        },
+      });
+      res.status(201).send(entityToType(req.prisma, comment));
+    }
+  )
 );
 
 export default router;

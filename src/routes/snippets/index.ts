@@ -24,6 +24,7 @@ import interaction, {
   ExternalSnippetInteraction,
   entityToType as interactionEntityToType,
 } from "./interaction";
+import wrapRequestHandler from "../../wrapRequestHandler";
 
 const router = express.Router();
 const validator = createValidator();
@@ -133,88 +134,92 @@ const SNIPPETS_PAGE_SIZE = 20;
 router.get(
   "/preview",
   withUser(),
-  async (
-    req: Request<{}, {}, {}, { cursor?: string; creatorId?: string }>,
-    res: Response<{
-      data: ExternalSnippetPreview[];
-      isLastPage: boolean;
-    }>,
-    next
-  ) => {
-    const cursor =
-      req.query.cursor && req.prisma.snippet.externalIdToId(req.query.cursor);
-    const creatorId =
-      req.query.creatorId &&
-      req.prisma.user.externalIdToId(req.query.creatorId);
-    const showPrivate = !!creatorId && creatorId === req.user?.id;
-    const snippets = await req.prisma.snippet.findMany({
-      where: {
-        ...(creatorId ? { creatorId } : { nsfw: false }),
-        ...(showPrivate ? {} : { public: true }),
-      },
-      orderBy: { id: "desc" },
-      take: SNIPPETS_PAGE_SIZE + 1,
-      skip: req.query.cursor ? 1 : undefined,
-      cursor: cursor ? { id: cursor } : undefined,
-      include: {
-        messages: {
-          orderBy: { sentAt: "asc" },
-          include: {
-            attachments: true,
-          },
+  wrapRequestHandler(
+    async (
+      req: Request<{}, {}, {}, { cursor?: string; creatorId?: string }>,
+      res: Response<{
+        data: ExternalSnippetPreview[];
+        isLastPage: boolean;
+      }>,
+      next
+    ) => {
+      const cursor =
+        req.query.cursor && req.prisma.snippet.externalIdToId(req.query.cursor);
+      const creatorId =
+        req.query.creatorId &&
+        req.prisma.user.externalIdToId(req.query.creatorId);
+      const showPrivate = !!creatorId && creatorId === req.user?.id;
+      const snippets = await req.prisma.snippet.findMany({
+        where: {
+          ...(creatorId ? { creatorId } : { nsfw: false }),
+          ...(showPrivate ? {} : { public: true }),
         },
-        creator: true,
-        app: true,
-        interaction: true,
-      },
-    });
-    const commentCounts = await req.prisma.comment.groupBy({
-      by: ["snippetId"],
-      where: { snippetId: { in: snippets.map(({ id }) => id) } },
-      _count: true,
-    });
-    const commentCountsForSnippets = keyBy(commentCounts, "snippetId");
-    res.status(200).json({
-      data: snippets.map((snippet) =>
-        previewEntityToType(req.prisma, {
-          ...snippet,
-          totalComments: commentCountsForSnippets[snippet.id]?._count ?? 0,
-        })
-      ),
-      isLastPage: snippets.length <= SNIPPETS_PAGE_SIZE,
-    });
-  }
+        orderBy: { id: "desc" },
+        take: SNIPPETS_PAGE_SIZE + 1,
+        skip: req.query.cursor ? 1 : undefined,
+        cursor: cursor ? { id: cursor } : undefined,
+        include: {
+          messages: {
+            orderBy: { sentAt: "asc" },
+            include: {
+              attachments: true,
+            },
+          },
+          creator: true,
+          app: true,
+          interaction: true,
+        },
+      });
+      const commentCounts = await req.prisma.comment.groupBy({
+        by: ["snippetId"],
+        where: { snippetId: { in: snippets.map(({ id }) => id) } },
+        _count: true,
+      });
+      const commentCountsForSnippets = keyBy(commentCounts, "snippetId");
+      res.status(200).json({
+        data: snippets.map((snippet) =>
+          previewEntityToType(req.prisma, {
+            ...snippet,
+            totalComments: commentCountsForSnippets[snippet.id]?._count ?? 0,
+          })
+        ),
+        isLastPage: snippets.length <= SNIPPETS_PAGE_SIZE,
+      });
+    }
+  )
 );
 
 router.get(
   "/:id",
-  async (
-    req: Request<{ id: string }, {}, { full?: string }>,
-    res: Response<ExternalSnippet | null>,
-    next
-  ) => {
-    const externalId = req.params.id;
-    const full = req.query.full === "true";
-    const snippet = await req.prisma.snippet.findUnique({
-      where: { id: req.prisma.snippet.externalIdToId(externalId) },
-      include: full
-        ? {
-            messages: {
-              orderBy: { sentAt: "asc" },
-              include: {
-                attachments: true,
+  wrapRequestHandler(
+    async (
+      req: Request<{ id: string }, {}, { full?: string }>,
+      res: Response<ExternalSnippet | null>,
+      next
+    ) => {
+      const externalId = req.params.id;
+      const full = req.query.full === "true";
+      const snippet = await req.prisma.snippet.findUnique({
+        where: { id: req.prisma.snippet.externalIdToId(externalId) },
+        include: full
+          ? {
+              messages: {
+                orderBy: { sentAt: "asc" },
+                include: {
+                  attachments: true,
+                },
               },
-            },
-            creator: true,
-            app: true,
-          }
-        : undefined,
-    });
-    if (!snippet) {
-      return res.sendStatus(404);
+              creator: true,
+              app: true,
+            }
+          : undefined,
+      });
+      if (!snippet) {
+        return res.sendStatus(404);
+      }
+      res.status(200).json(snippet && entityToType(req.prisma, snippet));
     }
-    res.status(200).json(snippet && entityToType(req.prisma, snippet));
-  }
+  )
 );
 
 export type CreateSnippetInput = {
@@ -277,48 +282,50 @@ router.post(
   ),
   validator.body(createSnippetSchema),
   withUser(),
-  async (
-    req: Request<{}, {}, CreateSnippetInput>,
-    res: Response<ExternalSnippet>,
-    next
-  ) => {
-    const input = req.body;
-    const snippet = await req.prisma.snippet.create({
-      data: {
-        appId: req.prisma.app.externalIdToId(input.appId),
-        public: input.public,
-        title: input.title,
-        creatorId: req.user?.id ?? null,
-        messages: {
-          create: input.messages.map((message) => ({
-            content: message.content,
-            sentAt: message.sentAt,
-            attachments: {
-              create: message.attachments,
-            },
-            authorUsername: message.authorUsername,
-            authorIdentifier: message.authorIdentifier,
-            authorAvatarUrl: message.authorAvatarUrl,
-          })),
-        },
-        interaction: {
-          create: {},
-        },
-      },
-      include: {
-        messages: {
-          orderBy: { sentAt: "asc" },
-          include: {
-            attachments: true,
+  wrapRequestHandler(
+    async (
+      req: Request<{}, {}, CreateSnippetInput>,
+      res: Response<ExternalSnippet>,
+      next
+    ) => {
+      const input = req.body;
+      const snippet = await req.prisma.snippet.create({
+        data: {
+          appId: req.prisma.app.externalIdToId(input.appId),
+          public: input.public,
+          title: input.title,
+          creatorId: req.user?.id ?? null,
+          messages: {
+            create: input.messages.map((message) => ({
+              content: message.content,
+              sentAt: message.sentAt,
+              attachments: {
+                create: message.attachments,
+              },
+              authorUsername: message.authorUsername,
+              authorIdentifier: message.authorIdentifier,
+              authorAvatarUrl: message.authorAvatarUrl,
+            })),
+          },
+          interaction: {
+            create: {},
           },
         },
-        creator: true,
-        app: true,
-        interaction: true,
-      },
-    });
-    res.status(201).send(entityToType(req.prisma, snippet));
-  }
+        include: {
+          messages: {
+            orderBy: { sentAt: "asc" },
+            include: {
+              attachments: true,
+            },
+          },
+          creator: true,
+          app: true,
+          interaction: true,
+        },
+      });
+      res.status(201).send(entityToType(req.prisma, snippet));
+    }
+  )
 );
 
 const twitterClient = new Client(process.env.TWITTER_BEARER_TOKEN!);
@@ -341,83 +348,85 @@ router.post(
     1000
   ),
   validator.body(createTwitterSnippetSchema),
-  async (
-    req: Request<{}, {}, CreateTwitterSnippetInput>,
-    res: Response<ExternalSnippet>,
-    next
-  ) => {
-    const { tweetIds } = req.body;
-    const tweets = await retry(
-      () =>
-        twitterClient.tweets.findTweetsById({
-          ids: tweetIds,
-          expansions: ["author_id", "attachments.media_keys"],
-          "user.fields": ["profile_image_url", "username"],
-          "tweet.fields": ["created_at", "text", "attachments"],
-          "media.fields": ["url", "type", "width", "height"],
-        }),
-      { retries: 3 }
-    );
+  wrapRequestHandler(
+    async (
+      req: Request<{}, {}, CreateTwitterSnippetInput>,
+      res: Response<ExternalSnippet>,
+      next
+    ) => {
+      const { tweetIds } = req.body;
+      const tweets = await retry(
+        () =>
+          twitterClient.tweets.findTweetsById({
+            ids: tweetIds,
+            expansions: ["author_id", "attachments.media_keys"],
+            "user.fields": ["profile_image_url", "username"],
+            "tweet.fields": ["created_at", "text", "attachments"],
+            "media.fields": ["url", "type", "width", "height"],
+          }),
+        { retries: 3 }
+      );
 
-    if (!tweets.data?.length) {
-      return res.sendStatus(400);
-    }
+      if (!tweets.data?.length) {
+        return res.sendStatus(400);
+      }
 
-    const snippet = await req.prisma.snippet.create({
-      data: {
-        appId: Number(process.env.TWITTER_APP_ID!),
-        public: false,
-        title: null,
-        creatorId: null,
-        messages: {
-          create:
-            tweets.data?.map((tweet) => {
-              const author = tweets.includes?.users?.find(
-                ({ id }) => id === tweet.author_id
-              );
-              return {
-                content: tweet.text,
-                sentAt: tweet.created_at!,
-                attachments: {
-                  create:
-                    tweet.attachments?.media_keys
-                      ?.map((mediaKey) => {
-                        const media = tweets.includes?.media?.find(
-                          ({ media_key }) => media_key === mediaKey
-                        );
-                        return (media && {
-                          type: media.type,
-                          url: (media as any).url,
-                          width: media.width,
-                          height: media.height,
-                        })!;
-                      })
-                      .filter((attachment) => attachment) ?? [],
-                },
-                authorUsername: author?.username ?? "unknown",
-                authorIdentifier: null,
-                authorAvatarUrl: author?.profile_image_url,
-              };
-            }) ?? [],
-        },
-        interaction: {
-          create: {},
-        },
-      },
-      include: {
-        messages: {
-          orderBy: { sentAt: "asc" },
-          include: {
-            attachments: true,
+      const snippet = await req.prisma.snippet.create({
+        data: {
+          appId: Number(process.env.TWITTER_APP_ID!),
+          public: false,
+          title: null,
+          creatorId: null,
+          messages: {
+            create:
+              tweets.data?.map((tweet) => {
+                const author = tweets.includes?.users?.find(
+                  ({ id }) => id === tweet.author_id
+                );
+                return {
+                  content: tweet.text,
+                  sentAt: tweet.created_at!,
+                  attachments: {
+                    create:
+                      tweet.attachments?.media_keys
+                        ?.map((mediaKey) => {
+                          const media = tweets.includes?.media?.find(
+                            ({ media_key }) => media_key === mediaKey
+                          );
+                          return (media && {
+                            type: media.type,
+                            url: (media as any).url,
+                            width: media.width,
+                            height: media.height,
+                          })!;
+                        })
+                        .filter((attachment) => attachment) ?? [],
+                  },
+                  authorUsername: author?.username ?? "unknown",
+                  authorIdentifier: null,
+                  authorAvatarUrl: author?.profile_image_url,
+                };
+              }) ?? [],
+          },
+          interaction: {
+            create: {},
           },
         },
-        creator: true,
-        app: true,
-        interaction: true,
-      },
-    });
-    res.status(201).send(entityToType(req.prisma, snippet));
-  }
+        include: {
+          messages: {
+            orderBy: { sentAt: "asc" },
+            include: {
+              attachments: true,
+            },
+          },
+          creator: true,
+          app: true,
+          interaction: true,
+        },
+      });
+      res.status(201).send(entityToType(req.prisma, snippet));
+    }
+  )
 );
 
 export type UpdateSnippetInput = {
@@ -434,41 +443,43 @@ router.post(
   "/:id",
   validator.body(updateSnippetSchema),
   withUser({ required: true }),
-  async (
-    req: Request<{ id: string }, {}, UpdateSnippetInput>,
-    res: Response<ExternalSnippet>,
-    next
-  ) => {
-    const externalId = req.params.id;
-    const input = req.body;
-    const id = req.prisma.snippet.externalIdToId(externalId);
-    const existingSnippet = await req.prisma.snippet.findUnique({
-      where: { id },
-    });
-    if (!existingSnippet) {
-      return res.sendStatus(404);
+  wrapRequestHandler(
+    async (
+      req: Request<{ id: string }, {}, UpdateSnippetInput>,
+      res: Response<ExternalSnippet>,
+      next
+    ) => {
+      const externalId = req.params.id;
+      const input = req.body;
+      const id = req.prisma.snippet.externalIdToId(externalId);
+      const existingSnippet = await req.prisma.snippet.findUnique({
+        where: { id },
+      });
+      if (!existingSnippet) {
+        return res.sendStatus(404);
+      }
+      if (
+        !existingSnippet.creatorId ||
+        existingSnippet.creatorId !== req.user?.id
+      ) {
+        return res.sendStatus(401);
+      }
+      if (existingSnippet.public) {
+        return res.sendStatus(400); // Can't update once public
+      }
+      const snippet = await req.prisma.snippet.update({
+        where: {
+          id: req.prisma.snippet.externalIdToId(externalId),
+        },
+        data: {
+          nsfw: input.nsfw,
+          public: input.public ? true : undefined, // Can't go back to private once public
+          title: input.title,
+        },
+      });
+      res.status(200).send(entityToType(req.prisma, snippet));
     }
-    if (
-      !existingSnippet.creatorId ||
-      existingSnippet.creatorId !== req.user?.id
-    ) {
-      return res.sendStatus(401);
-    }
-    if (existingSnippet.public) {
-      return res.sendStatus(400); // Can't update once public
-    }
-    const snippet = await req.prisma.snippet.update({
-      where: {
-        id: req.prisma.snippet.externalIdToId(externalId),
-      },
-      data: {
-        nsfw: input.nsfw,
-        public: input.public ? true : undefined, // Can't go back to private once public
-        title: input.title,
-      },
-    });
-    res.status(200).send(entityToType(req.prisma, snippet));
-  }
+  )
 );
 
 router.post(
@@ -484,28 +495,30 @@ router.post(
     1000
   ),
   withUser(),
-  async (
-    req: Request<{ id: string }>,
-    res: Response<ExternalSnippet>,
-    next
-  ) => {
-    const externalId = req.params.id;
-    const id = req.prisma.snippet.externalIdToId(externalId);
-    const existingSnippet = await req.prisma.snippet.findUnique({
-      where: { id },
-    });
-    if (!existingSnippet) {
-      return res.sendStatus(404);
+  wrapRequestHandler(
+    async (
+      req: Request<{ id: string }>,
+      res: Response<ExternalSnippet>,
+      next
+    ) => {
+      const externalId = req.params.id;
+      const id = req.prisma.snippet.externalIdToId(externalId);
+      const existingSnippet = await req.prisma.snippet.findUnique({
+        where: { id },
+      });
+      if (!existingSnippet) {
+        return res.sendStatus(404);
+      }
+      if (existingSnippet.claimed) {
+        return res.sendStatus(401);
+      }
+      await req.prisma.snippet.update({
+        where: { id },
+        data: { creatorId: req.user && req.user.id, claimed: true },
+      });
+      res.sendStatus(200);
     }
-    if (existingSnippet.claimed) {
-      return res.sendStatus(401);
-    }
-    await req.prisma.snippet.update({
-      where: { id },
-      data: { creatorId: req.user && req.user.id, claimed: true },
-    });
-    res.sendStatus(200);
-  }
+  )
 );
 
 export default router;

@@ -8,6 +8,7 @@ import { withUser } from "../../middleware/with-user";
 import Joi from "joi";
 import { JoiString } from "../../joi";
 import rateLimit from "../../middleware/rate-limit";
+import wrapRequestHandler from "../../wrapRequestHandler";
 
 const router = express.Router();
 const validator = createValidator();
@@ -30,40 +31,46 @@ export const entityToType = (
 router.get(
   "/me",
   withUser({ required: true }),
-  async (req: Request, res: Response<ExternalUser>, next) => {
-    res.status(200).json(entityToType(req.prisma, req.user!));
-  }
+  wrapRequestHandler(
+    async (req: Request, res: Response<ExternalUser>, next) => {
+      res.status(200).json(entityToType(req.prisma, req.user!));
+    }
+  )
 );
 
 router.get(
   "/:id",
-  async (req: Request<{ id: string }>, res: Response<ExternalUser>, next) => {
-    const externalId = req.params.id;
-    const user = await req.prisma.user.findUnique({
-      where: { id: req.prisma.user.externalIdToId(externalId) },
-    });
-    if (!user) {
-      return res.sendStatus(404);
+  wrapRequestHandler(
+    async (req: Request<{ id: string }>, res: Response<ExternalUser>, next) => {
+      const externalId = req.params.id;
+      const user = await req.prisma.user.findUnique({
+        where: { id: req.prisma.user.externalIdToId(externalId) },
+      });
+      if (!user) {
+        return res.sendStatus(404);
+      }
+      res.status(200).json(entityToType(req.prisma, user));
     }
-    res.status(200).json(entityToType(req.prisma, user));
-  }
+  )
 );
 
 router.get(
   "/username/:username",
-  async (
-    req: Request<{ username: string }>,
-    res: Response<ExternalUser>,
-    next
-  ) => {
-    const user = await req.prisma.user.findUnique({
-      where: { username: req.params.username },
-    });
-    if (!user) {
-      return res.sendStatus(404);
+  wrapRequestHandler(
+    async (
+      req: Request<{ username: string }>,
+      res: Response<ExternalUser>,
+      next
+    ) => {
+      const user = await req.prisma.user.findUnique({
+        where: { username: req.params.username },
+      });
+      if (!user) {
+        return res.sendStatus(404);
+      }
+      res.status(200).json(entityToType(req.prisma, user));
     }
-    res.status(200).json(entityToType(req.prisma, user));
-  }
+  )
 );
 
 export type CreateUserInput = {
@@ -81,33 +88,35 @@ router.post(
   ),
   validator.body(createUserSchema),
   withUser(),
-  async (
-    req: Request<{}, {}, CreateUserInput>,
-    res: Response<ExternalUser | string>,
-    next
-  ) => {
-    if (!req.auth?.sub) {
-      return res.sendStatus(401);
+  wrapRequestHandler(
+    async (
+      req: Request<{}, {}, CreateUserInput>,
+      res: Response<ExternalUser | string>,
+      next
+    ) => {
+      if (!req.auth?.sub) {
+        return res.sendStatus(401);
+      }
+      if (req.user) {
+        return res.status(409).send("User already exists");
+      }
+      const username = req.body.displayName.toLowerCase();
+      const existingUserByUsername = await req.prisma.user.findUnique({
+        where: { username },
+      });
+      if (existingUserByUsername) {
+        return res.status(409).send("Username is taken");
+      }
+      const createdUser = await req.prisma.user.create({
+        data: {
+          sub: req.auth.sub,
+          username,
+          displayName: req.body.displayName,
+        },
+      });
+      res.status(201).json(entityToType(req.prisma, createdUser));
     }
-    if (req.user) {
-      return res.status(409).send("User already exists");
-    }
-    const username = req.body.displayName.toLowerCase();
-    const existingUserByUsername = await req.prisma.user.findUnique({
-      where: { username },
-    });
-    if (existingUserByUsername) {
-      return res.status(409).send("Username is taken");
-    }
-    const createdUser = await req.prisma.user.create({
-      data: {
-        sub: req.auth.sub,
-        username,
-        displayName: req.body.displayName,
-      },
-    });
-    res.status(201).json(entityToType(req.prisma, createdUser));
-  }
+  )
 );
 
 export type UpdateUserInput = {
@@ -125,29 +134,34 @@ router.post(
   ),
   validator.body(updateUserSchema),
   withUser({ required: true }),
-  async (
-    req: Request<{}, {}, CreateUserInput>,
-    res: Response<ExternalUser | string>,
-    next
-  ) => {
-    const username = req.body.displayName.toLowerCase();
-    const existingUserByUsername = await req.prisma.user.findUnique({
-      where: { username },
-    });
-    if (existingUserByUsername && existingUserByUsername.id !== req.user!.id) {
-      return res.status(409).send("Username is taken");
+  wrapRequestHandler(
+    async (
+      req: Request<{}, {}, CreateUserInput>,
+      res: Response<ExternalUser | string>,
+      next
+    ) => {
+      const username = req.body.displayName.toLowerCase();
+      const existingUserByUsername = await req.prisma.user.findUnique({
+        where: { username },
+      });
+      if (
+        existingUserByUsername &&
+        existingUserByUsername.id !== req.user!.id
+      ) {
+        return res.status(409).send("Username is taken");
+      }
+      const updatedUser = await req.prisma.user.update({
+        where: {
+          id: req.user!.id,
+        },
+        data: {
+          username,
+          displayName: req.body.displayName,
+        },
+      });
+      res.status(200).json(entityToType(req.prisma, updatedUser));
     }
-    const updatedUser = await req.prisma.user.update({
-      where: {
-        id: req.user!.id,
-      },
-      data: {
-        username,
-        displayName: req.body.displayName,
-      },
-    });
-    res.status(200).json(entityToType(req.prisma, updatedUser));
-  }
+  )
 );
 
 export default router;
