@@ -19,14 +19,10 @@ export const entityToType = (
 });
 
 router.get("/", async (req: Request, res: Response<ExternalApp[]>, next) => {
-  try {
-    const apps = await req.prisma.app.findMany({
-      orderBy: { id: "asc" },
-    });
-    res.status(200).json(apps.map((app) => entityToType(req.prisma, app)));
-  } catch (err) {
-    next(err);
-  }
+  const apps = await req.prisma.app.findMany({
+    orderBy: { id: "asc" },
+  });
+  res.status(200).json(apps.map((app) => entityToType(req.prisma, app)));
 });
 
 router.get(
@@ -36,18 +32,14 @@ router.get(
     res: Response<ExternalApp | null>,
     next
   ) => {
-    try {
-      const externalId = req.params.id;
-      const app = await req.prisma.app.findUnique({
-        where: { id: req.prisma.app.externalIdToId(externalId) },
-      });
-      if (!app) {
-        return res.sendStatus(404);
-      }
-      res.status(200).json(app && entityToType(req.prisma, app));
-    } catch (err) {
-      next(err);
+    const externalId = req.params.id;
+    const app = await req.prisma.app.findUnique({
+      where: { id: req.prisma.app.externalIdToId(externalId) },
+    });
+    if (!app) {
+      return res.sendStatus(404);
     }
+    res.status(200).json(app && entityToType(req.prisma, app));
   }
 );
 

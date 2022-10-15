@@ -24,8 +24,7 @@ router.get(
     res: Response<ExternalSnippetInteraction | null>,
     next
   ) => {
-    try {
-      /*
+    /*
       const redisKey = `snippet-interaction:${req.params.snippetId}`;
       const cachedSnippetInteraction = await req.redis.get(redisKey);
       if (cachedSnippetInteraction) {
@@ -33,27 +32,22 @@ router.get(
       }
       */
 
-      const snippetInteraction = await req.prisma.snippetInteraction.findUnique(
-        {
-          where: {
-            snippetId: req.prisma.snippet.externalIdToId(req.params.snippetId),
-          },
-        }
-      );
-      if (!snippetInteraction) {
-        return res.sendStatus(404);
-      }
-      const externalEntity = entityToType(req.prisma, snippetInteraction);
-      res.status(200).json(externalEntity);
+    const snippetInteraction = await req.prisma.snippetInteraction.findUnique({
+      where: {
+        snippetId: req.prisma.snippet.externalIdToId(req.params.snippetId),
+      },
+    });
+    if (!snippetInteraction) {
+      return res.sendStatus(404);
+    }
+    const externalEntity = entityToType(req.prisma, snippetInteraction);
+    res.status(200).json(externalEntity);
 
-      /*
+    /*
       await req.redis.set(redisKey, JSON.stringify(externalEntity), {
         EX: INTERACTION_REFRESH_RATE,
       });
       */
-    } catch (err) {
-      next(err);
-    }
   }
 );
 
@@ -64,18 +58,14 @@ router.post(
     res: Response<ExternalSnippetInteraction | null>,
     next
   ) => {
-    try {
-      const result = await req.prisma
-        .$executeRaw`UPDATE "SnippetInteraction" SET "views" = "views" + 1 WHERE "snippetId" = ${req.prisma.snippet.externalIdToId(
-        req.params.snippetId
-      )}`;
-      if (result < 1) {
-        return res.sendStatus(404);
-      }
-      res.sendStatus(200);
-    } catch (err) {
-      next(err);
+    const result = await req.prisma
+      .$executeRaw`UPDATE "SnippetInteraction" SET "views" = "views" + 1 WHERE "snippetId" = ${req.prisma.snippet.externalIdToId(
+      req.params.snippetId
+    )}`;
+    if (result < 1) {
+      return res.sendStatus(404);
     }
+    res.sendStatus(200);
   }
 );
 

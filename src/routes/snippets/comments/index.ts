@@ -53,33 +53,29 @@ router.get(
     }>,
     next
   ) => {
-    try {
-      const cursor =
-        req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
-      const snippetExternalId = req.params.snippetId;
-      const snippetId = req.prisma.snippet.externalIdToId(snippetExternalId);
+    const cursor =
+      req.query.cursor && req.prisma.comment.externalIdToId(req.query.cursor);
+    const snippetExternalId = req.params.snippetId;
+    const snippetId = req.prisma.snippet.externalIdToId(snippetExternalId);
 
-      const totalCount = await req.prisma.comment.count({
-        where: { snippetId },
-      });
-      const comments = await req.prisma.comment.findMany({
-        where: { snippetId },
-        include: { creator: true },
-        orderBy: { id: "asc" },
-        take: COMMENTS_PAGE_SIZE + 1,
-        skip: req.query.cursor ? 1 : undefined,
-        cursor: cursor ? { id: cursor } : undefined,
-      });
-      res.status(200).json({
-        data: comments
-          .slice(0, COMMENTS_PAGE_SIZE)
-          .map((comment) => entityToType(req.prisma, comment)),
-        totalCount,
-        isLastPage: comments.length <= COMMENTS_PAGE_SIZE,
-      });
-    } catch (err) {
-      next(err);
-    }
+    const totalCount = await req.prisma.comment.count({
+      where: { snippetId },
+    });
+    const comments = await req.prisma.comment.findMany({
+      where: { snippetId },
+      include: { creator: true },
+      orderBy: { id: "asc" },
+      take: COMMENTS_PAGE_SIZE + 1,
+      skip: req.query.cursor ? 1 : undefined,
+      cursor: cursor ? { id: cursor } : undefined,
+    });
+    res.status(200).json({
+      data: comments
+        .slice(0, COMMENTS_PAGE_SIZE)
+        .map((comment) => entityToType(req.prisma, comment)),
+      totalCount,
+      isLastPage: comments.length <= COMMENTS_PAGE_SIZE,
+    });
   }
 );
 
@@ -108,23 +104,19 @@ router.post(
     res: Response<ExternalComment>,
     next
   ) => {
-    try {
-      const snippetExternalId = req.params.snippetId;
-      const input = req.body;
-      const comment = await req.prisma.comment.create({
-        data: {
-          content: input.content,
-          creatorId: req.user!.id,
-          snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
-        },
-        include: {
-          creator: true,
-        },
-      });
-      res.status(201).send(entityToType(req.prisma, comment));
-    } catch (err) {
-      next(err);
-    }
+    const snippetExternalId = req.params.snippetId;
+    const input = req.body;
+    const comment = await req.prisma.comment.create({
+      data: {
+        content: input.content,
+        creatorId: req.user!.id,
+        snippetId: req.prisma.snippet.externalIdToId(snippetExternalId),
+      },
+      include: {
+        creator: true,
+      },
+    });
+    res.status(201).send(entityToType(req.prisma, comment));
   }
 );
 

@@ -1,8 +1,10 @@
-import express, { Express } from "express";
+import express, { Express, ErrorRequestHandler } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { expressjwt, GetVerificationKey } from "express-jwt";
 import jwks from "jwks-rsa";
+import * as Sentry from "@sentry/node";
+import * as Tracing from "@sentry/tracing";
 import prisma from "./prisma";
 import { Request } from "./types";
 import apps from "./routes/apps";
@@ -15,12 +17,27 @@ import getRedisClient from "./redis";
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT;
+
+Sentry.init({
+  dsn: "https://74d0dbd8102e47b5b0e7556ae74efc9c@o4503988670496768.ingest.sentry.io/4503988678819840",
+  integrations: [
+    new Sentry.Integrations.Http({ tracing: true }),
+    new Tracing.Integrations.Express({ app }),
+  ],
+  tracesSampleRate: 1.0,
+  environment: process.env.SENTRY_ENV,
+});
 
 if (process.env.NUMBER_OF_PROXIES) {
   app.set("trust proxy", Number(process.env.NUMBER_OF_PROXIES));
 }
 
+app.use(
+  Sentry.Handlers.requestHandler({
+    user: ["id", "username"],
+  })
+);
+app.use(Sentry.Handlers.tracingHandler());
 app.use(
   cors({
     origin: "*",
@@ -66,7 +83,15 @@ app.use("/apps", apps);
 app.use("/snippets", snippets);
 app.use("/users", users);
 
+app.use(Sentry.Handlers.errorHandler());
+const fallthroughErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  res.status(500).send("Internal server error");
+  next();
+};
+app.use(fallthroughErrorHandler);
+
 if (!process.env.JEST_WORKER_ID) {
+  const port = process.env.PORT;
   app.listen(port, () => {
     console.log(`Server is running at https://localhost:${port}`);
   });
