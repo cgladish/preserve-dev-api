@@ -511,6 +511,48 @@ router.post(
   )
 );
 
+export type ReviewSnippetInput = {
+  approved: boolean;
+};
+const reviewSnippetSchema = Joi.object<ReviewSnippetInput>({
+  approved: Joi.boolean().required(),
+});
+router.post(
+  "/:id/review",
+  validator.body(reviewSnippetSchema),
+  withUser({ required: true, permissions: ["edit:unreviewed"] }),
+  wrapRequestHandler(
+    async (
+      req: Request<{ id: string }, {}, ReviewSnippetInput>,
+      res: Response<ExternalSnippet>,
+      next
+    ) => {
+      const externalId = req.params.id;
+      const input = req.body;
+      const id = req.prisma.snippet.externalIdToId(externalId);
+      const existingSnippet = await req.prisma.snippet.findUnique({
+        where: { id },
+      });
+      if (!existingSnippet) {
+        return res.sendStatus(404);
+      }
+      if (existingSnippet.adminApproved) {
+        return res.sendStatus(400); // Can't reapprove a snippet
+      }
+      const snippet = await req.prisma.snippet.update({
+        where: {
+          id: req.prisma.snippet.externalIdToId(externalId),
+        },
+        data: {
+          adminReviewed: true,
+          adminApproved: input.approved,
+        },
+      });
+      res.status(200).send(entityToType(req.prisma, snippet));
+    }
+  )
+);
+
 router.post(
   "/:id/claim",
   rateLimit(

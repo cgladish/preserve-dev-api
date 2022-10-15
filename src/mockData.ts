@@ -9,7 +9,7 @@ export const testJwt = jwt.sign(
     sub: "sub1",
     iat: 1665870819,
     exp: 4102444800,
-    permissions: ["read:unreviewed"],
+    permissions: ["read:unreviewed", "edit:unreviewed"],
   },
   testJwtSecret,
   { algorithm: "HS512" }

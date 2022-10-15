@@ -367,6 +367,121 @@ describe("snippets routes", () => {
     });
   });
 
+  describe("POST /:id/review", () => {
+    it("returns a 401 with no authorization", async () => {
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}/review`)
+        .send({ approved: true })
+        .expect(401);
+    });
+
+    it("returns a 401 with missing permissions", async () => {
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}/review`)
+        .set("authorization", `Bearer ${testOtherJwt}`)
+        .send({ approved: true })
+        .expect(401);
+    });
+
+    it("returns 404 if no entity found", async () => {
+      await request(app)
+        .post(`/snippets/${prisma.snippet.idToExternalId(1)}/claim`)
+        .set("authorization", `Bearer ${testJwt}`)
+        .send({ approved: true })
+        .expect(404);
+    });
+
+    it("can approve a snippet by external ID", async () => {
+      const snippetEntity = await prisma.snippet.create({
+        data: {
+          appId: appEntity.id,
+          public: true,
+          title: "Test snippet title",
+          creatorId: creatorEntity.id,
+          messages: {
+            create: [
+              {
+                content: "Content",
+                sentAt: new Date(10).toISOString(),
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
+                authorUsername: "Icyspawn",
+                authorIdentifier: "1234",
+                authorAvatarUrl: "http://example.com/123.png",
+              },
+            ],
+          },
+        },
+      });
+
+      await request(app)
+        .post(
+          `/snippets/${prisma.snippet.idToExternalId(snippetEntity.id)}/review`
+        )
+        .set("authorization", `Bearer ${testJwt}`)
+        .send({ approved: true })
+        .expect(200);
+
+      const updatedSnippet = await prisma.snippet.findUnique({
+        where: { id: snippetEntity.id },
+      });
+      expect(omit(updatedSnippet, "createdAt", "updatedAt")).toMatchSnapshot();
+    });
+
+    it("can disapprove a snippet by external ID", async () => {
+      const snippetEntity = await prisma.snippet.create({
+        data: {
+          appId: appEntity.id,
+          public: true,
+          title: "Test snippet title",
+          creatorId: creatorEntity.id,
+          messages: {
+            create: [
+              {
+                content: "Content",
+                sentAt: new Date(10).toISOString(),
+                attachments: {
+                  create: [
+                    {
+                      type: "photo",
+                      url: "https://pbs.twimg.com/media/FewPHITXkAANNAN.jpg",
+                      height: 599,
+                      width: 672,
+                    },
+                  ],
+                },
+                authorUsername: "Icyspawn",
+                authorIdentifier: "1234",
+                authorAvatarUrl: "http://example.com/123.png",
+              },
+            ],
+          },
+        },
+      });
+
+      await request(app)
+        .post(
+          `/snippets/${prisma.snippet.idToExternalId(snippetEntity.id)}/review`
+        )
+        .set("authorization", `Bearer ${testJwt}`)
+        .send({ approved: false })
+        .expect(200);
+
+      const updatedSnippet = await prisma.snippet.findUnique({
+        where: { id: snippetEntity.id },
+      });
+      expect(omit(updatedSnippet, "createdAt", "updatedAt")).toMatchSnapshot();
+    });
+  });
+
   describe("POST /:id/claim", () => {
     it("can claim a snippet by external ID", async () => {
       const snippetEntity = await prisma.snippet.create({

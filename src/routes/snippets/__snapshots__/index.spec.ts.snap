@@ -3514,3 +3514,31 @@ exports[`snippets routes POST /:id/claim can claim a snippet by external ID when
   "title": "Test snippet title",
 }
 `;
+
+exports[`snippets routes POST /:id/review can approve a snippet by external ID 1`] = `
+{
+  "adminApproved": true,
+  "adminReviewed": true,
+  "appId": 1,
+  "claimed": false,
+  "creatorId": 1,
+  "id": 1,
+  "nsfw": false,
+  "public": true,
+  "title": "Test snippet title",
+}
+`;
+
+exports[`snippets routes POST /:id/review can disapprove a snippet by external ID 1`] = `
+{
+  "adminApproved": false,
+  "adminReviewed": true,
+  "appId": 1,
+  "claimed": false,
+  "creatorId": 1,
+  "id": 1,
+  "nsfw": false,
+  "public": true,
+  "title": "Test snippet title",
+}
+`;
