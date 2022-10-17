@@ -12,10 +12,76 @@ async function main() {
       sub: "fake-sub",
     },
   });
+  for (let i = 0; i < 50; ++i) {
+    await prisma.snippet.create({
+      data: {
+        appId: appEntity.id,
+        public: true,
+        adminReviewed: true,
+        adminApproved: true,
+        title: randText({ charCount: randomInt(1, 50) }),
+        creatorId: userEntity.id,
+        interaction: {
+          create: {
+            views: randomInt(30),
+          },
+        },
+        messages: {
+          create: new Array(randomInt(50)).fill(null).map(() => ({
+            content: randText({ charCount: randomInt(1, 2000) }),
+            sentAt: "2022-09-08T22:53:43.675000+00:00",
+            authorUsername: randText({ charCount: randomInt(1, 30) }),
+            authorAvatarUrl:
+              "https://cdn.discordapp.com/avatars/91403530358775808/118670c2636c3ca9a045ad49a2b7d926",
+          })),
+        },
+        comments: {
+          create: new Array(randomInt(120)).fill(null).map(() => ({
+            content: randText({ charCount: randomInt(1, 2000) }),
+            creatorId: userEntity.id,
+          })),
+        },
+      },
+    });
+  }
+  for (let i = 0; i < 20; ++i) {
+    await prisma.snippet.create({
+      data: {
+        appId: appEntity.id,
+        public: true,
+        adminReviewed: false,
+        adminApproved: false,
+        title: randText({ charCount: randomInt(1, 50) }),
+        creatorId: userEntity.id,
+        interaction: {
+          create: {
+            views: randomInt(30),
+          },
+        },
+        messages: {
+          create: new Array(randomInt(50)).fill(null).map(() => ({
+            content: randText({ charCount: randomInt(1, 2000) }),
+            sentAt: "2022-09-08T22:53:43.675000+00:00",
+            authorUsername: randText({ charCount: randomInt(1, 30) }),
+            authorAvatarUrl:
+              "https://cdn.discordapp.com/avatars/91403530358775808/118670c2636c3ca9a045ad49a2b7d926",
+          })),
+        },
+        comments: {
+          create: new Array(randomInt(120)).fill(null).map(() => ({
+            content: randText({ charCount: randomInt(1, 2000) }),
+            creatorId: userEntity.id,
+          })),
+        },
+      },
+    });
+  }
   await prisma.snippet.create({
     data: {
       appId: appEntity.id,
       public: true,
+      adminReviewed: true,
+      adminApproved: true,
       title: "Test snippet title",
       creatorId: userEntity.id,
       interaction: {
@@ -23,6 +89,24 @@ async function main() {
       },
       messages: {
         create: [
+          {
+            content: "TESTNIG WITH IMAGE",
+            sentAt: "2022-09-08T23:53:43.675000+00:00",
+            authorUsername: "Crasken",
+            authorAvatarUrl:
+              "https://cdn.discordapp.com/avatars/91403530358775808/118670c2636c3ca9a045ad49a2b7d926",
+            attachments: {
+              create: [
+                {
+                  type: "image",
+                  filename: "baby",
+                  url: "https://pbs.twimg.com/semantic_core_img/1201473568208326657/AXzmdajX?format=jpg&name=900x900",
+                  width: 576,
+                  height: 327,
+                },
+              ],
+            },
+          },
           {
             content: "what the",
             sentAt: "2022-09-08T22:53:43.675000+00:00",
@@ -221,36 +305,6 @@ async function main() {
       },
     },
   });
-  for (let i = 0; i < 50; ++i) {
-    await prisma.snippet.create({
-      data: {
-        appId: appEntity.id,
-        public: true,
-        title: randText({ charCount: randomInt(1, 50) }),
-        creatorId: userEntity.id,
-        interaction: {
-          create: {
-            views: randomInt(30),
-          },
-        },
-        messages: {
-          create: new Array(randomInt(50)).fill(null).map(() => ({
-            content: randText({ charCount: randomInt(1, 2000) }),
-            sentAt: "2022-09-08T22:53:43.675000+00:00",
-            authorUsername: randText({ charCount: randomInt(1, 30) }),
-            authorAvatarUrl:
-              "https://cdn.discordapp.com/avatars/91403530358775808/118670c2636c3ca9a045ad49a2b7d926",
-          })),
-        },
-        comments: {
-          create: new Array(randomInt(120)).fill(null).map(() => ({
-            content: randText({ charCount: randomInt(1, 2000) }),
-            creatorId: userEntity.id,
-          })),
-        },
-      },
-    });
-  }
 }
 main()
   .then(async () => {
