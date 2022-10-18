@@ -7,6 +7,7 @@ const config: Config = {
   },
   setupFilesAfterEnv: ["./jest.setup.ts"],
   verbose: true,
+  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 };
 
 export default config;

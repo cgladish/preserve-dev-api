@@ -119,6 +119,22 @@ describe("comments routes", () => {
       expect(response.body).toMatchSnapshot();
     });
 
+    it("can get paginated comments for a snippet sorted by newest", async () => {
+      const response = await request(app)
+        .get(url)
+        .query({ sortBy: "newest" })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
+    it("can get paginated comments for a snippet sorted by oldest", async () => {
+      const response = await request(app)
+        .get(url)
+        .query({ sortBy: "oldest" })
+        .expect(200);
+      expect(response.body).toMatchSnapshot();
+    });
+
     it("can get paginated comments after a cursor for a snippet", async () => {
       const response = await request(app)
         .get(url)

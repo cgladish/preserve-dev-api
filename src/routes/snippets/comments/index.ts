@@ -2,7 +2,7 @@ import express, { Response } from "express";
 import * as Joi from "joi";
 import { createValidator } from "express-joi-validation";
 import { Request } from "../../../types";
-import { Comment, User } from "@prisma/client";
+import { Comment, Snippet, User } from "@prisma/client";
 import { ExtendedPrismaClient } from "../../../prisma";
 import { pick } from "lodash";
 import { JoiExternalIdOptional, JoiString } from "../../../joi";
@@ -36,11 +36,14 @@ const entityToType = (
 });
 
 const COMMENTS_PAGE_SIZE = 20;
+const sortByOptions = ["newest", "oldest"] as const;
 export type PaginatedQueryParams = {
   cursor?: string;
+  sortBy?: typeof sortByOptions[number];
 };
 const paginatedQuerySchema = Joi.object<PaginatedQueryParams>({
   cursor: JoiExternalIdOptional,
+  sortBy: JoiString.valid(...sortByOptions),
 });
 router.get(
   "/",
@@ -63,10 +66,20 @@ router.get(
       const totalCount = await req.prisma.comment.count({
         where: { snippetId },
       });
+
+      const orderBy: Partial<Record<keyof Snippet, "asc" | "desc">> = (() => {
+        switch (req.query.sortBy) {
+          case "newest":
+            return { id: "desc" };
+          case "oldest":
+          default:
+            return { id: "asc" };
+        }
+      })();
       const comments = await req.prisma.comment.findMany({
         where: { snippetId },
         include: { creator: true },
-        orderBy: { id: "asc" },
+        orderBy,
         take: COMMENTS_PAGE_SIZE + 1,
         skip: req.query.cursor ? 1 : undefined,
         cursor: cursor ? { id: cursor } : undefined,
