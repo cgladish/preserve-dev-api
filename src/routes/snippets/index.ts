@@ -61,6 +61,7 @@ export type ExternalSnippet = {
   creator: ExternalUser | null;
   app: ExternalApp | null;
   messages: ExternalMessage[] | null;
+  interaction: ExternalSnippetInteraction | null;
   createdAt: Date;
 };
 
@@ -72,6 +73,7 @@ const entityToType = (
     messages?: (Message & {
       attachments?: MessageAttachment[];
     })[];
+    interaction?: SnippetInteraction | null;
   }
 ): ExternalSnippet => ({
   ...pick(snippet, "public", "claimed", "nsfw", "title", "createdAt"),
@@ -106,10 +108,12 @@ const entityToType = (
           id: prisma.messageAttachment.idToExternalId(attachment.id),
         })) ?? null,
     })) ?? null,
+  interaction: snippet.interaction
+    ? interactionEntityToType(prisma, snippet.interaction)
+    : null,
 });
 
 export type ExternalSnippetPreview = ExternalSnippet & {
-  interaction: ExternalSnippetInteraction | null;
   totalComments: number;
 };
 
@@ -121,14 +125,12 @@ export const previewEntityToType = (
     messages: (Message & {
       attachments: MessageAttachment[];
     })[];
-    interaction: SnippetInteraction | null;
     totalComments: number;
+    interaction: SnippetInteraction | null;
   }
 ): ExternalSnippetPreview => ({
   ...entityToType(prisma, snippet),
   ...pick(snippet, "totalComments"),
-  interaction:
-    snippet.interaction && interactionEntityToType(prisma, snippet.interaction),
 });
 
 const SNIPPETS_PAGE_SIZE = 20;
@@ -241,6 +243,7 @@ router.get(
               },
               creator: true,
               app: true,
+              interaction: true,
             }
           : undefined,
       });
