@@ -2,6 +2,7 @@ import express, { Response } from "express";
 import * as Joi from "joi";
 import { createValidator } from "express-joi-validation";
 import retry from "async-retry";
+import AWS from "aws-sdk";
 import { Request } from "../../types";
 import {
   App,
@@ -555,16 +556,6 @@ router.post(
 
 router.post(
   "/:id/claim",
-  rateLimit(
-    "snippets-per-second",
-    1000, // 1 second
-    1
-  ),
-  rateLimit(
-    "snippets-per-day",
-    24 * 60 * 60 * 1000, // 24 hours
-    1000
-  ),
   withUser(),
   wrapRequestHandler(
     async (
@@ -588,6 +579,64 @@ router.post(
         data: { creatorId: req.user && req.user.id, claimed: true },
       });
       res.sendStatus(200);
+    }
+  )
+);
+
+const SES = new AWS.SES({ region: "us-east-1" });
+export type CreateDeletionRequestInput = {
+  reasonText: string;
+};
+const createDeletionRequestSchema = Joi.object<CreateDeletionRequestInput>({
+  reasonText: Joi.string().max(1000).required(),
+});
+router.post(
+  "/:id/deletionRequest",
+  rateLimit(
+    "deletion-requests-per-second",
+    1000, // 1 second
+    1
+  ),
+  rateLimit(
+    "deletion-requests-per-day",
+    24 * 60 * 60 * 1000, // 24 hours
+    100
+  ),
+  validator.body(createDeletionRequestSchema),
+  withUser(),
+  wrapRequestHandler(
+    async (
+      req: Request<{ id: string }, {}, CreateDeletionRequestInput>,
+      res: Response<ExternalSnippet>,
+      next
+    ) => {
+      const externalId = req.params.id;
+      await SES.sendEmail({
+        Source: "noreply@preserve.dev",
+        Destination: { ToAddresses: ["support@preserve.dev"] },
+        Message: {
+          Subject: {
+            Charset: "UTF-8",
+            Data: `Deletion request for Snippet ${externalId}`,
+          },
+          Body: {
+            Html: {
+              Charset: "UTF-8",
+              Data: `
+Deletion requested for <a href="https://www.preserve.dev/p/${externalId}">${externalId}</a>
+<br /><br />
+<b>Username:</b> ${req.user?.username ?? "non-logged in user"}
+<br />
+<b>IP Address:</b> ${req.ip}
+<br />
+<b>Reason:</b> <p>${req.body.reasonText}</p>
+              `,
+            },
+          },
+        },
+      }).promise();
+
+      res.sendStatus(201);
     }
   )
 );

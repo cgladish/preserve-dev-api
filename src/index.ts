@@ -89,6 +89,7 @@ if (!process.env.JEST_WORKER_ID) {
 }
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.status(500).send("Internal server error");
+  console.error(err);
 });
 
 if (!process.env.JEST_WORKER_ID) {
