@@ -44,6 +44,7 @@ export type ExternalAttachment = {
 };
 export type ExternalMessage = {
   id: string;
+  externalId: string | null;
   content: string;
   sentAt: string;
   attachments: ExternalAttachment[] | null;
@@ -87,6 +88,7 @@ const entityToType = (
     snippet.messages?.map((message) => ({
       ...pick(
         message,
+        "externalId",
         "content",
         "authorUsername",
         "authorIdentifier",
@@ -404,6 +406,8 @@ router.post(
         return res.sendStatus(400);
       }
 
+      console.log(JSON.stringify(tweets, null, 2));
+
       const snippet = await req.prisma.snippet.create({
         data: {
           appId: Number(process.env.TWITTER_APP_ID!),
@@ -417,6 +421,7 @@ router.post(
                   ({ id }) => id === tweet.author_id
                 );
                 return {
+                  externalId: tweet.id,
                   content: tweet.text,
                   sentAt: tweet.created_at!,
                   attachments: {
