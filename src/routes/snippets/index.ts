@@ -259,8 +259,6 @@ router.get(
 
 export type CreateSnippetInput = {
   appId: string;
-  public: boolean;
-  title?: string;
   messages: {
     content: string;
     sentAt: Date;
@@ -278,8 +276,6 @@ export type CreateSnippetInput = {
 };
 const createSnippetSchema = Joi.object<CreateSnippetInput>({
   appId: JoiExternalId,
-  public: Joi.boolean().required(),
-  title: JoiString.max(50),
   messages: Joi.array()
     .min(1)
     .max(500)
@@ -327,8 +323,6 @@ router.post(
       const snippet = await req.prisma.snippet.create({
         data: {
           appId: req.prisma.app.externalIdToId(input.appId),
-          public: input.public,
-          title: input.title,
           creatorId: req.user?.id ?? null,
           messages: {
             create: input.messages.map((message) => ({
@@ -399,14 +393,12 @@ router.post(
             "tweet.fields": ["created_at", "text", "attachments"],
             "media.fields": ["url", "type", "width", "height"],
           }),
-        { retries: 3 }
+        { retries: 1 }
       );
 
       if (!tweets.data?.length) {
         return res.sendStatus(400);
       }
-
-      console.log(JSON.stringify(tweets, null, 2));
 
       const snippet = await req.prisma.snippet.create({
         data: {

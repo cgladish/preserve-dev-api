@@ -641,8 +641,6 @@ describe("snippets routes", () => {
     ])("returns a 400 if %s = %p", async (key, value) => {
       const input: CreateSnippetInput = {
         appId: prisma.app.idToExternalId(1),
-        public: true,
-        title: "Test snippet title",
         messages: [
           {
             content: "Content",
@@ -669,8 +667,6 @@ describe("snippets routes", () => {
     it("can create a snippet with no auth", async () => {
       const input: CreateSnippetInput = {
         appId: prisma.app.idToExternalId(appEntity.id),
-        public: true,
-        title: "Test snippet title",
         messages: Array(20)
           .fill(null)
           .map((_, index) => ({
@@ -706,8 +702,6 @@ describe("snippets routes", () => {
     it("can create a snippet with auth", async () => {
       const input: CreateSnippetInput = {
         appId: prisma.app.idToExternalId(appEntity.id),
-        public: true,
-        title: "Test snippet title",
         messages: Array(20)
           .fill(null)
           .map((_, index) => ({
@@ -738,8 +732,6 @@ describe("snippets routes", () => {
     it("can create a snippet with empty content message", async () => {
       const input: CreateSnippetInput = {
         appId: prisma.app.idToExternalId(appEntity.id),
-        public: true,
-        title: "Test snippet title",
         messages: [
           {
             content: ``,
